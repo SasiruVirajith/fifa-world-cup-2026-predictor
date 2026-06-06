@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────
+#  World Cup Predictor — dependencies
+#  Install with: pip install -r requirements.txt
+# ─────────────────────────────────────────
+
+# Core data
+pandas==2.2.2
+numpy==1.26.4
+
+# Football data sources
+statsbombpy==1.14.0       # StatsBomb open data (WC 2018 + 2022 event data)
+soccerdata==1.6.1         # FBref + Transfermarkt scraping wrapper
+
+# Machine learning
+scikit-learn==1.4.2
+xgboost==2.0.3
+
+# Explainability
+shap==0.45.1
+
+# Visualisation
+matplotlib==3.8.4
+seaborn==0.13.2
+plotly==5.22.0
+
+# Dashboard
+streamlit==1.35.0
+
+# Notebook support
+jupyter==1.0.0
+ipykernel==6.29.4
+
+# Utilities
+requests==2.32.2
+beautifulsoup4==4.12.3
+tqdm==4.66.4
+python-dotenv==1.0.1
