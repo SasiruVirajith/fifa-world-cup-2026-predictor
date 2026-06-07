@@ -32,21 +32,21 @@ Built on **25,000+ international matches** (martj42 dataset, 1872–present), Gr
 
 ```mermaid
 flowchart LR
-    martj42[martj42 1872-present] --> historical_data
-    FIFA[FIFA rankings] --> historical_data
-    StatsBomb --> data_pipeline
-    historical_data --> match_features
-    match_features --> match_model
-    match_model --> wc2026_sim[WC 2026 simulator]
-    data_pipeline --> features
-    features --> models
-    models --> predict
-    wc2026_sim --> app[Streamlit app]
-    predict --> app
-    simulator --> app
-    upset_detector --> app
-    player_tournament --> app
-    squad_depth --> app
+    martj42["martj42 1872-present"] --> historical_data["historical_data.py"]
+    fifa["FIFA rankings"] --> historical_data
+    statsbomb["StatsBomb"] --> data_pipeline["data_pipeline.py"]
+    historical_data --> match_features["match_features.py"]
+    match_features --> match_model["match_model.py"]
+    match_model --> wc2026_sim["WC 2026 simulator"]
+    data_pipeline --> features["features.py"]
+    features --> models_py["models.py"]
+    models_py --> predict_py["predict.py"]
+    wc2026_sim --> streamlit_app["Streamlit app"]
+    predict_py --> streamlit_app
+    simulator["simulator.py"] --> streamlit_app
+    upset_detector["upset_detector.py"] --> streamlit_app
+    player_tournament["player_tournament.py"] --> streamlit_app
+    squad_depth["squad_depth.py"] --> streamlit_app
 ```
 
 ---
