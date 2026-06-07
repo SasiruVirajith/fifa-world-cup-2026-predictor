@@ -4,15 +4,14 @@ models.py
 Trains and saves all prediction models.
 
 Models:
-    1. tournament_winner    — XGBoost classifier (team features -> win probability)
-    2. golden_boot          — XGBoost regressor (player features -> predicted goals)
-    3. golden_glove         — XGBoost classifier (keeper features -> best keeper score)
-    4. best_playmaker       — Multi-metric ranking (no training needed — composite score)
+    1. tournament_winner    - XGBoost classifier (team features -> win probability)
+    2. golden_boot          - XGBoost regressor (player features -> predicted goals)
+    3. golden_glove         - XGBoost classifier (keeper features -> best keeper score)
+    4. best_playmaker       - Multi-metric ranking (no training needed - composite score)
 
 Usage:
     python src/models.py
-    
-    Or from a notebook:
+
     from src.models import train_winner_model, train_golden_boot_model
 """
 
@@ -65,7 +64,7 @@ def plot_shap_summary(model, X: pd.DataFrame, model_name: str):
 
     plt.figure(figsize=(10, 6))
     shap.summary_plot(shap_values, X, show=False)
-    plt.title(f"Feature importance — {model_name}")
+    plt.title(f"Feature importance - {model_name}")
     plt.tight_layout()
 
     save_path = OUTPUTS_DIR / f"shap_{model_name}.png"
@@ -81,7 +80,7 @@ def train_winner_model(features_path: str = "data/processed/team_features.csv"):
     Train an XGBoost classifier to predict World Cup winner probability.
 
     Target variable: 'won_tournament' (1 if team won WC that year, 0 otherwise)
-    This requires labelled training data — you need to add a 'won_tournament'
+    This requires labelled training data - you need to add a 'won_tournament'
     column to your team_features.csv based on historical WC results.
 
     TODO: Once you have labelled data, this function will:
@@ -104,7 +103,7 @@ def train_winner_model(features_path: str = "data/processed/team_features.csv"):
     if "won_tournament" not in df.columns:
         print("  [ERR] 'won_tournament' column missing from team_features.csv")
         print("    You need to add historical WC winner labels first.")
-        print("    See notebooks/03_modelling.ipynb for a guide.")
+        print("    Add labels via src/labels.py (won_tournament from WC_WINNERS).")
         return None
 
     feature_cols = ["elo", "win_rate_last20", "goals_scored_avg", "goals_conceded_avg"]
@@ -151,7 +150,7 @@ def train_golden_boot_model(features_path: str = "data/processed/striker_feature
     """
     Train an XGBoost regressor to predict tournament goals scored.
 
-    Target variable: 'tournament_goals' — goals scored in that tournament.
+    Target variable: 'tournament_goals' - goals scored in that tournament.
     Feature set: xG per 90, shots per 90, club season goals, etc.
 
     TODO: Add 'tournament_goals' column using StatsBomb event data.
@@ -167,7 +166,7 @@ def train_golden_boot_model(features_path: str = "data/processed/striker_feature
 
     if "tournament_goals" not in df.columns:
         print("  [ERR] 'tournament_goals' column missing.")
-        print("    Derive this from StatsBomb event data in notebooks/02_features.ipynb")
+        print("    Derive this from StatsBomb event data via src/labels.py")
         return None
 
     feature_cols = ["xg_per90", "npxg_per90", "shots_per90", "shots_on_target_pct"]
@@ -247,12 +246,12 @@ def train_golden_glove_model(features_path: str = "data/processed/goalkeeper_fea
     return model
 
 
-# ── 4. Best Playmaker — composite ranking ──────────────────────────────────
+# ── 4. Best Playmaker - composite ranking ──────────────────────────────────
 
 def rank_playmakers(features_path: str = "data/processed/playmaker_features.csv") -> pd.DataFrame:
     """
     Rank players by a weighted composite playmaking score.
-    No ML training needed — this is a weighted multi-metric ranking.
+    No ML training needed - this is a weighted multi-metric ranking.
 
     Weights:
         40% xA per 90
@@ -283,7 +282,7 @@ def rank_playmakers(features_path: str = "data/processed/playmaker_features.csv"
 
     if missing:
         print(f"  [ERR] Missing columns: {missing}")
-        print("    Check your FBref data column names in notebooks/02_features.ipynb")
+        print("    Check your FBref data column names in src/features.py")
         return df
 
     df["playmaker_score"] = (
@@ -305,7 +304,7 @@ def rank_playmakers(features_path: str = "data/processed/playmaker_features.csv"
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("  World Cup Predictor — Model Training")
+    print("  World Cup Predictor - Model Training")
     print("=" * 50)
 
     print("\n[1/4] Tournament winner model...")

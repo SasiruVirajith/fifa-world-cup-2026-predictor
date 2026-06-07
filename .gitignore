@@ -3,7 +3,7 @@ venv/
 .venv/
 env/
 
-# Raw data — too large for git
+# Raw data - too large for git
 data/raw/
 
 # Jupyter checkpoints

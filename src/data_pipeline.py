@@ -50,7 +50,7 @@ def refresh_data(force: bool = False, skip_events: bool = False):
         skip_events: Skip StatsBomb event fetch (large/slow).
     """
     print("=" * 50)
-    print("  World Cup Predictor — Data Pipeline")
+    print("  World Cup Predictor - Data Pipeline")
     print("=" * 50)
 
     for year, season_id in STATSBOMB_SEASONS.items():
@@ -59,7 +59,7 @@ def refresh_data(force: bool = False, skip_events: bool = False):
             print(f"\n[StatsBomb] Fetching WC {year} match list...")
             fetch_world_cup_matches(season_id=season_id)
         else:
-            print(f"\n[StatsBomb] WC {year} matches cached — skipping")
+            print(f"\n[StatsBomb] WC {year} matches cached - skipping")
 
         events_path = RAW_DIR / f"statsbomb_events_wc{year}.csv"
         if not skip_events:
@@ -67,7 +67,7 @@ def refresh_data(force: bool = False, skip_events: bool = False):
                 print(f"\n[StatsBomb] Fetching WC {year} events (this takes several minutes)...")
                 fetch_all_wc_events(season_id=season_id, force=force)
             else:
-                print(f"[StatsBomb] WC {year} events cached — skipping")
+                print(f"[StatsBomb] WC {year} events cached - skipping")
         else:
             print(f"[StatsBomb] Skipping WC {year} events (--skip-events)")
 
@@ -86,14 +86,14 @@ def refresh_data(force: bool = False, skip_events: bool = False):
         print("\n[ELO] Syncing international results alias...")
         fetch_elo_ratings()
     else:
-        print("\n[ELO] International results cached — skipping")
+        print("\n[ELO] International results cached - skipping")
 
     wc_hist_path = RAW_DIR / "wc_historical_matches.csv"
     if force or not _is_cache_fresh(wc_hist_path):
         print("\n[WC History] Fetching historical WC match results...")
         fetch_wc_historical_matches()
     else:
-        print("\n[WC History] Historical matches cached — skipping")
+        print("\n[WC History] Historical matches cached - skipping")
 
     for year in [2018, 2022]:
         shooting_path = RAW_DIR / f"fbref_shooting_{year}.csv"
@@ -102,7 +102,7 @@ def refresh_data(force: bool = False, skip_events: bool = False):
             fetch_fbref_player_stats(season=year)
             time.sleep(2)
         else:
-            print(f"\n[FBref] {year} stats cached — skipping")
+            print(f"\n[FBref] {year} stats cached - skipping")
 
         tm_path = RAW_DIR / f"transfermarkt_squad_values_{year}.csv"
         if force or not _is_cache_fresh(tm_path):
@@ -110,7 +110,7 @@ def refresh_data(force: bool = False, skip_events: bool = False):
             fetch_transfermarkt_squad_values(season=year)
             time.sleep(2)
         else:
-            print(f"\n[Transfermarkt] {year} squad values cached — skipping")
+            print(f"\n[Transfermarkt] {year} squad values cached - skipping")
 
     print("\n[DONE] Data pipeline complete. Check data/raw/ for your files.")
     print("   Next step: python src/features.py")
@@ -280,7 +280,7 @@ def fetch_wc_historical_matches():
             wc = df[df.get("competition", pd.Series()).str.contains("World Cup", case=False, na=False)]
 
         if wc.empty:
-            # Fallback: use all matches — wc_win_rate will be approximate
+            # Fallback: use all matches - wc_win_rate will be approximate
             wc = df
 
         save_path = RAW_DIR / "wc_historical_matches.csv"

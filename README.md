@@ -1,6 +1,6 @@
 # World Cup Predictor
 
-An ML-powered prediction system for the FIFA World Cup — forecasting **WC 2026 champion probabilities** via full-tournament Monte Carlo simulation, plus award predictions (Golden Boot, Golden Glove, Playmaker) using real football statistics.
+An ML-powered prediction system for the FIFA World Cup - forecasting **WC 2026 champion probabilities** via full-tournament Monte Carlo simulation, plus award predictions (Golden Boot, Golden Glove, Playmaker) using real football statistics.
 
 Built on **25,000+ international matches** (martj42 dataset, 1872–present), Gradient Boosting match outcomes, StatsBomb WC data, and a Streamlit dashboard.
 
@@ -58,7 +58,6 @@ football-predictor/
 ├── data/
 │   ├── raw/              <- downloaded datasets (gitignored)
 │   └── processed/        <- feature CSVs (committed for deploy)
-├── notebooks/            <- EDA, features, modelling
 ├── src/
 │   ├── config.py           <- WC2026 groups, martj42 URLs, round variance
 │   ├── historical_data.py  <- download martj42 + FIFA + achievements
@@ -134,11 +133,11 @@ Use `--refresh` to force re-download cached data.
 
 ## Data sources
 
-- **[martj42 international football](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017)** — 49,000+ results, goalscorers, shootouts, former names (auto-downloaded from GitHub)
-- **FIFA rankings** — fetched from official `api.fifa.com` (men's world ranking)
-- **Team achievements** — built locally from martj42 results + `WC_WINNERS` (WC/continental semi/final/win years)
-- **StatsBomb open data** — event-level WC 2018 + 2022 (via `statsbombpy`) for player award models
-- **FBref** — attempted via `soccerdata`; falls back to StatsBomb-derived features when blocked
+- **[martj42 international football](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017)** - 49,000+ results, goalscorers, shootouts, former names (auto-downloaded from GitHub)
+- **FIFA rankings** - fetched from official `api.fifa.com` (men's world ranking)
+- **Team achievements** - built locally from martj42 results + `WC_WINNERS` (WC/continental semi/final/win years)
+- **StatsBomb open data** - event-level WC 2018 + 2022 (via `statsbombpy`) for player award models
+- **FBref** - attempted via `soccerdata`; falls back to StatsBomb-derived features when blocked
 
 ---
 
@@ -166,16 +165,16 @@ Use `--refresh` to force re-download cached data.
 ## How I built this
 
 - **Match outcome model** trained on 25,000+ international matches from 2000–present (friendlies, qualifiers, continental cups, World Cups)
-- **Walk-forward features** — ELO, FIFA rank diff, last-5 form, head-to-head, penalty record, tournament importance weights
-- **Full WC 2026 simulator** — 5000+ Monte Carlo runs through groups, play-in, pre-R16 knockout, and final
-- **Modern football strength** — recency-weighted WC/continental achievements (built from martj42) + tactical squad tiers
+- **Walk-forward features** - ELO, FIFA rank diff, last-5 form, head-to-head, penalty record, tournament importance weights
+- **Full WC 2026 simulator** - 5000+ Monte Carlo runs through groups, play-in, pre-R16 knockout, and final
+- **Modern football strength** - recency-weighted WC/continental achievements (built from martj42) + tactical squad tiers
 - **Award models** use StatsBomb player events; SHAP explains winner predictions
 
 ### Limitations
 
 - Award models (Golden Boot, etc.) still trained on 2018 + 2022 WC only
 - Playoff placeholders (UEFA/FIFA intercontinental) use average strength of candidate teams
-- FBref scraping may fail due to rate limits — StatsBomb fallback used
+- FBref scraping may fail due to rate limits - StatsBomb fallback used
 
 ---
 

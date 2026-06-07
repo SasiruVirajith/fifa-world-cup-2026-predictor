@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────
-#  World Cup Predictor — dependencies
+#  World Cup Predictor - dependencies
 #  Install with: pip install -r requirements.txt
 # ─────────────────────────────────────────
 
@@ -25,10 +25,6 @@ plotly==5.22.0
 
 # Dashboard
 streamlit==1.35.0
-
-# Notebook support
-jupyter==1.0.0
-ipykernel==6.29.4
 
 # Utilities
 requests==2.32.2

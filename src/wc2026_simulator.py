@@ -211,7 +211,7 @@ def simulate_group(
 
     for i in range(len(teams)):
         for j in range(i + 1, len(teams)):
-            # Neutral-site WC matches — randomise designated home side per fixture
+            # Neutral-site WC matches - randomise designated home side per fixture
             t1, t2 = teams[i], teams[j]
             if rng.random() < 0.5:
                 t1, t2 = t2, t1
@@ -324,7 +324,7 @@ def run_wc2026_simulation(
     print(f"Running {n_simulations} WC 2026 tournament simulations...")
     model, feature_cols = load_match_model()
     if model is None:
-        print("  [WARN] No match model found — using ELO fallback")
+        print("  [WARN] No match model found - using ELO fallback")
 
     rng = np.random.default_rng(seed)
     win_counts = {team: 0 for team in WC2026_ALL_TEAMS}

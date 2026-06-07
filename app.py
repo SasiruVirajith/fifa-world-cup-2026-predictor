@@ -140,7 +140,7 @@ with st.sidebar:
     if MODELS_LOADED:
         st.success("Models loaded")
     else:
-        st.warning("Using placeholder data — run `python src/models.py`")
+        st.warning("Using placeholder data - run `python src/models.py`")
 
     st.caption("2026: martj42 + FIFA + club stats")
     st.caption("Backtest: StatsBomb 2018/2022")
@@ -185,7 +185,7 @@ tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
 
 # ── Tab 0: WC 2026 Full Tournament Simulation ────────────────────────────────
 with tab0:
-    st.header("World Cup 2026 — Champion Probabilities")
+    st.header("World Cup 2026 - Champion Probabilities")
     st.caption(
         "Monte Carlo simulation of all 48 teams in the official 2026 draw: "
         "12 groups of 4, top 2 + 8 best third-place teams → Round of 32, then knockouts. "
@@ -239,7 +239,7 @@ with tab1:
     st.header("Tournament Winner Probabilities")
     if year == 2026:
         st.info(
-            "For WC 2026, use the **WC 2026 Champion** tab — full 48-team Monte Carlo simulation. "
+            "For WC 2026, use the **WC 2026 Champion** tab - full 48-team Monte Carlo simulation. "
             "This tab remains for 2018/2022 backtests."
         )
     st.caption("ELO ratings, recent form, squad value, and historical WC performance.")
@@ -282,7 +282,7 @@ with tab1:
 
 # ── Tab 2: Golden Boot ─────────────────────────────────────────────────────
 with tab2:
-    st.header("Golden Boot — Top Scorer Predictions")
+    st.header("Golden Boot - Top Scorer Predictions")
     st.caption(
         "2026: weighted international goals (martj42) + club xG/goals when available. "
         "Run `python scripts/build_player_2026.py` to refresh."
@@ -308,7 +308,7 @@ with tab2:
 
 # ── Tab 3: Golden Glove ────────────────────────────────────────────────────
 with tab3:
-    st.header("Golden Glove — Best Goalkeeper Predictions")
+    st.header("Golden Glove - Best Goalkeeper Predictions")
     st.caption("2026: primary national-team GK + club shot-stopping + team defensive form.")
     glove_preds = predict_golden_glove(year_gk, top_n=top_n)
 
@@ -360,7 +360,7 @@ with tab5:
     st.header("Why did the model predict this?")
     shap_img = Path("outputs/shap_tournament_winner.png")
     if shap_img.exists():
-        st.image(str(shap_img), caption="SHAP summary — tournament winner model")
+        st.image(str(shap_img), caption="SHAP summary - tournament winner model")
     else:
         st.info("Run `python src/models.py` to generate SHAP plots.")
 

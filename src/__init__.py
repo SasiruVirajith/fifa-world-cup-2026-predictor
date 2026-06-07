@@ -1,1 +1,1 @@
-# World Cup Predictor — src package
+# World Cup Predictor - src package

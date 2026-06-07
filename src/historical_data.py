@@ -192,7 +192,7 @@ def build_team_achievements() -> pd.DataFrame:
         results["year"] = results["date"].dt.year
         _participation_from_martj42(results, stats)
     else:
-        print("  [WARN] results.csv missing — participation years left blank")
+        print("  [WARN] results.csv missing - participation years left blank")
 
     for team in WC2026_ALL_TEAMS:
         stats[team]["last_world_cup_participation"] = 2026

@@ -115,7 +115,7 @@ WC2026_ALL_TEAMS = sorted({
     team for teams in WC2026_GROUPS.values() for team in teams
 })
 
-# Legacy — no playoff placeholders in the confirmed draw
+# Legacy - no playoff placeholders in the confirmed draw
 WC2026_PLAYOFF_CANDIDATES = {}
 
 ROUND_VARIANCE = {

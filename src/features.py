@@ -33,7 +33,7 @@ from src.labels import (
 
 PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
-# FBref flattened column name mappings (inspect via 01_eda if names change)
+# FBref flattened column name mappings (update if soccerdata column names change)
 STRIKER_COLUMN_MAP = {
     "Per 90 Minutes_xG": "xg_per90",
     "Per 90 Minutes_npxG": "npxg_per90",
@@ -478,7 +478,7 @@ def _find_column(df: pd.DataFrame, candidates: list) -> str | None:
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("  World Cup Predictor — Feature Engineering")
+    print("  World Cup Predictor - Feature Engineering")
     print("=" * 50)
 
     print("\n[1/2] Building team features...")

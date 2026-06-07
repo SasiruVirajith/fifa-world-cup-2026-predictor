@@ -189,7 +189,7 @@ def get_playmaker_ranking(top_n: int = 10, year: int = 2026) -> pd.DataFrame:
 
 def get_shap_explanation(model_name: str, team_features: pd.DataFrame, team: str) -> dict:
     """
-    Return SHAP values for a single team — used in the dashboard explainability panel.
+    Return SHAP values for a single team - used in the dashboard explainability panel.
 
     Returns:
         dict with {feature: shap_value} for the given team
