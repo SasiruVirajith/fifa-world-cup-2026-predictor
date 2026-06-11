@@ -237,7 +237,7 @@ Refreshes champion probabilities and group-stage Monte Carlo outputs. **Player t
 
 ```cmd
 venv\Scripts\activate
-python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run is the better
+python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run, the better
 python -m streamlit run app.py
 ```
 
@@ -263,7 +263,7 @@ Run **in this order**. Uses the committed club snapshot (`player_club_2026.csv`)
 
 ```cmd
 venv\Scripts\activate
-python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run is the better
+python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run, the better
 python scripts/build_player_2026.py --no-fetch-club --use-cache
 python -m streamlit run app.py
 ```
@@ -288,7 +288,7 @@ REM Edit .env and set APIFOOTBALL_KEY=your_key_here
 
 venv\Scripts\activate
 python scripts/fetch_club_stats.py --force
-python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run is the better
+python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run, the better
 python scripts/build_player_2026.py --no-fetch-club --use-cache
 python -m streamlit run app.py
 ```
@@ -387,7 +387,7 @@ python scripts/build_player_2026.py --no-fetch-club --use-cache --run-group-sim
 
 ## Note
 
-None of the predictions are a guarentee. At the end of the day football has more factors than skills and luck. This is merely a data-driven prediction. Football is not deterministic :)
+None of these predictions are a guarentee. At the end of the day, football has more factors than just skill and luck. This is merely a data-driven prediction. Football is not deterministic :)
 
 ---
 
