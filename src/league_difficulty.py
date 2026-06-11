@@ -1,10 +1,9 @@
-"""
-league_difficulty.py
-────────────────────
-Difficulty multipliers for domestic leagues (0–1).
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-Low values down-weight stat-padded leagues (e.g. Saudi Pro League, MLS)
-so Golden Boot / Golden Ball favor production in top competitions.
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -18,13 +17,11 @@ from src.config import API_FOOTBALL_CONFIG_PATH
 
 # league_id → difficulty (1.0 = elite, ~0.35 = heavily padded)
 _DEFAULT_DIFFICULTY: dict[int, float] = {
-    # Big 5
     39: 1.00,
     140: 1.00,
     78: 1.00,
     135: 1.00,
     61: 1.00,
-    # Tier B  -  proper leagues
     94: 0.82,
     88: 0.78,
     144: 0.76,
@@ -32,7 +29,6 @@ _DEFAULT_DIFFICULTY: dict[int, float] = {
     40: 0.68,
     71: 0.74,
     128: 0.70,
-    # Lower-tier / padded
     253: 0.52,
     262: 0.54,
     307: 0.35,

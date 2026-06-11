@@ -1,7 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-match_model.py
-──────────────
-Train Gradient Boosting classifier for match outcomes (away/draw/home).
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import pickle
@@ -34,7 +36,6 @@ def train_match_model(
     features_path: str = None,
     sample_weight_tournaments: bool = True,
 ) -> GradientBoostingClassifier:
-    """Train match outcome model on 2000+ international matches."""
     print("Training match outcome model (Gradient Boosting)...")
 
     path = Path(features_path or PROCESSED_DIR / "match_features.csv")
@@ -77,7 +78,6 @@ def train_match_model(
 
 
 def load_match_model() -> tuple:
-    """Load match model and feature column list."""
     path = MODELS_DIR / "match_outcome.pkl"
     if not path.exists():
         return None, FEATURE_COLS

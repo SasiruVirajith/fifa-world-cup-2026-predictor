@@ -1,7 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-labels.py
-─────────
-Team and player name harmonization across data sources.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import re
@@ -13,7 +15,6 @@ from src.config import TEAM_ALIASES
 
 
 def normalize_team_name(name: str) -> str:
-    """Harmonize team names across data sources."""
     if pd.isna(name):
         return name
     name = str(name).strip()
@@ -21,7 +22,6 @@ def normalize_team_name(name: str) -> str:
 
 
 def normalize_player_name(name: str) -> str:
-    """Normalize player names for fuzzy matching."""
     if pd.isna(name):
         return ""
     name = unicodedata.normalize("NFKD", str(name))

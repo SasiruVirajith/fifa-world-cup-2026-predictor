@@ -1,11 +1,9 @@
-"""
-player_club.py
-──────────────
-Club-season player stats for pre-WC 2026 snapshot (2024/25 + 2025/26 blended).
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-Layers:
-  - Understat (Big 5 xG/xA)
-  - API-Football (Tier B + Big 5 fallback)
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -22,6 +20,7 @@ from src.understat_scraper import load_cached_understat_stats
 from src.config import (
     CLUB_RAW_DIR,
     NATION_ALIASES,
+    PROCESSED_DIR,
     WC2026_ALL_TEAMS,
 )
 from src.labels import normalize_player_name, normalize_team_name
@@ -56,10 +55,6 @@ def _normalize_unified_rows(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _consolidate_unified(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    One row per player with difficulty-weighted club production.
-    Goals/xG from Saudi/MLS etc. are discounted vs Big 5 output.
-    """
     if df.empty:
         return df
     df = attach_league_difficulty(df)
@@ -109,7 +104,6 @@ def _consolidate_unified(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _dedupe_unified(df: pd.DataFrame) -> pd.DataFrame:
-    """Legacy alias  -  consolidates with league difficulty weighting."""
     return _consolidate_unified(df)
 
 
@@ -220,17 +214,41 @@ def fetch_and_cache_club_stats(force: bool = False) -> None:
     _CLUB_UNIFIED = _dedupe_unified(unified)
 
 
+def _load_club_from_processed_snapshot() -> pd.DataFrame:
+    # used on fresh clones when data/raw/club/ is empty
+    path = PROCESSED_DIR / "player_club_2026.csv"
+    if not path.exists():
+        return pd.DataFrame()
+    df = pd.read_csv(path)
+    if df.empty or "player_norm" not in df.columns:
+        return pd.DataFrame()
+    out = df.copy()
+    if "nation_raw" not in out.columns:
+        out["nation_raw"] = ""
+    if "source" not in out.columns:
+        out["source"] = "processed_snapshot"
+    for col in (
+        "assists_total", "xa_total", "key_passes_total", "progressive_passes_total",
+        "ga_total", "save_pct", "clean_sheet_pct", "ga90", "psxg_minus_ga",
+        "pass_completion_pct",
+    ):
+        if col not in out.columns:
+            out[col] = np.nan
+    return out
+
+
 def load_club_from_cache() -> None:
-    """Populate in-memory club table from cached JSON only (no HTTP)."""
     global _CLUB_UNIFIED
     frames = [load_cached_understat_stats(), load_cached_api_football_stats()]
     frames = [f for f in frames if not f.empty]
-    if not frames:
-        _CLUB_UNIFIED = pd.DataFrame()
+    if frames:
+        unified = pd.concat(frames, ignore_index=True)
+        unified = _normalize_unified_rows(unified)
+        _CLUB_UNIFIED = _dedupe_unified(unified)
         return
-    unified = pd.concat(frames, ignore_index=True)
-    unified = _normalize_unified_rows(unified)
-    _CLUB_UNIFIED = _dedupe_unified(unified)
+
+    snapshot = _load_club_from_processed_snapshot()
+    _CLUB_UNIFIED = snapshot if not snapshot.empty else pd.DataFrame()
 
 
 def club_data_status() -> dict:
@@ -239,6 +257,7 @@ def club_data_status() -> dict:
         "understat_files": 0,
         "api_files": 0,
         "player_rows": 0,
+        "source": None,
     }
     understat_dir = CLUB_RAW_DIR / "understat"
     api_dir = CLUB_RAW_DIR / "api_football"
@@ -249,8 +268,15 @@ def club_data_status() -> dict:
     if _CLUB_UNIFIED is not None and not _CLUB_UNIFIED.empty:
         status["loaded"] = True
         status["player_rows"] = len(_CLUB_UNIFIED)
+        src = _CLUB_UNIFIED["source"] if "source" in _CLUB_UNIFIED.columns else pd.Series(dtype=str)
+        if not src.empty and (src == "processed_snapshot").any():
+            status["source"] = "processed_snapshot"
+        else:
+            status["source"] = "raw_cache"
     elif status["understat_files"] or status["api_files"]:
         status["loaded"] = True
+    elif (PROCESSED_DIR / "player_club_2026.csv").exists():
+        status["source"] = "processed_snapshot_available"
     return status
 
 

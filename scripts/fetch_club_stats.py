@@ -1,4 +1,10 @@
-"""Fetch domestic club stats (Understat + API-Football)."""
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
+"""
 
 import argparse
 import sys
@@ -13,9 +19,6 @@ from src.player_club import club_data_status, fetch_and_cache_club_stats, load_c
 
 def main(force: bool = False, cache_only: bool = False) -> None:
     load_dotenv()
-    print("=" * 60)
-    print("  Club stats fetch (Understat + API-Football)")
-    print("=" * 60)
 
     if cache_only:
         load_club_from_cache()
@@ -23,9 +26,9 @@ def main(force: bool = False, cache_only: bool = False) -> None:
         fetch_and_cache_club_stats(force=force)
 
     status = club_data_status()
-    print(f"\n  Status: {status}")
+    print(f"Club stats: {status}")
     if not cache_only and not force and status["api_files"] == 0:
-        print("\n  Tip: set APIFOOTBALL_KEY in .env for Tier B / MLS / Saudi coverage.")
+        print("Tip: set APIFOOTBALL_KEY in .env for Tier B / MLS / Saudi.")
 
 
 if __name__ == "__main__":

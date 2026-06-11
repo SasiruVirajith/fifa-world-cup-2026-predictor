@@ -1,11 +1,9 @@
-"""
-understat_scraper.py
-────────────────────
-Layer 2: Big 5 player season stats from Understat (xG, xA, goals).
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-Uses cloudscraper + JSON.parse extraction (same approach as soccerdata).
-Understat occasionally changes page layout; failures are non-fatal  -  API-Football
-covers Big 5 when this layer returns empty.
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -50,7 +48,6 @@ def _cache_path(league_key: str, season: int) -> Path:
 
 
 def _extract_json_vars(html: bytes, var_names: list[str]) -> dict:
-    """Extract Understat JSON.parse('...') blobs from league page HTML."""
     found: dict = {}
     for var in var_names:
         pattern = var.encode("utf-8") + br"[\s\t]*=[\s\t]*JSON\.parse\('(.*?)'\)"
@@ -132,7 +129,6 @@ def fetch_understat_player_stats(
     force: bool = False,
     ttl_days: int = CLUB_CACHE_TTL_DAYS,
 ) -> tuple[pd.DataFrame, UnderstatFetchReport]:
-    """Download Big 5 player season aggregates from Understat."""
     cfg = _load_config()
     leagues = cfg.get("leagues", {})
     seasons = club_seasons_from_config(cfg)
@@ -162,7 +158,6 @@ def fetch_understat_player_stats(
 
 
 def load_cached_understat_stats() -> pd.DataFrame:
-    """Load player rows from cached Understat JSON only (no HTTP)."""
     cfg = _load_config()
     leagues = cfg.get("leagues", {})
     seasons = club_seasons_from_config(cfg)

@@ -1,7 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-player_international.py
-───────────────────────
-Weighted international player stats from martj42 results + goalscorers.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -18,7 +20,6 @@ from src.labels import normalize_player_name, normalize_team_name
 
 
 def classify_tournament(tournament: str) -> str:
-    """Map martj42 tournament label to a weight tier."""
     t = str(tournament).lower()
     if "world cup" in t and "qualif" not in t:
         return "world_cup"
@@ -55,11 +56,6 @@ def build_international_player_stats(
     start_date: str = PLAYER_INTL_START,
     end_date: str | None = None,
 ) -> pd.DataFrame:
-    """
-    Aggregate scorer stats per (player, national team) with tournament weights.
-
-    Returns columns used by striker / playmaker / POT feature builders.
-    """
     teams = set(teams or WC2026_ALL_TEAMS)
     results_path = RAW_DIR / "results.csv"
     scorers_path = RAW_DIR / "goalscorers.csv"
@@ -130,9 +126,6 @@ def build_international_player_stats(
 
 
 def _consolidate_by_player_norm(agg: pd.DataFrame) -> pd.DataFrame:
-    """
-    Merge rows that share player_norm + team (e.g. 'Julián Alvarez' vs 'Julián Álvarez').
-    """
     if agg.empty or "player_norm" not in agg.columns:
         return agg
 
@@ -167,7 +160,6 @@ def build_international_team_defense(
     start_date: str = PLAYER_INTL_START,
     end_date: str | None = None,
 ) -> pd.DataFrame:
-    """Team defensive form from martj42 for Golden Glove context."""
     teams = set(teams or WC2026_ALL_TEAMS)
     results_path = RAW_DIR / "results.csv"
     if not results_path.exists():

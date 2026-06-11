@@ -1,7 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-build_metadata.py
-─────────────────
-Write/read metadata for the last WC champion pipeline run.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import json
@@ -32,7 +34,6 @@ def write_build_metadata(
     refresh_data: bool,
     pipeline: str = "wc2026",
 ) -> Path:
-    """Persist build timestamp and key data freshness markers."""
     OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
     champion_path = OUTPUTS_DIR / "wc2026_champion_probabilities.csv"
@@ -58,7 +59,6 @@ def write_build_metadata(
 
 
 def load_build_metadata() -> dict | None:
-    """Load build metadata if present."""
     if not METADATA_PATH.exists():
         return None
     try:

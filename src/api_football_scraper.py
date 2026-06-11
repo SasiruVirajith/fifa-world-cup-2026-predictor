@@ -1,13 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-api_football_scraper.py
-───────────────────────
-Layer 3: domestic league player stats via API-Football (api-sports.io).
-
-Strategy (fits free 100 req/day tier):
-  - /players/topscorers + /players/topassists per league (~2 calls each)
-  - /players?team=&season= for high-impact clubs (Messi/MLS, Saudi, etc.)
-
-Responses are cached under data/raw/club/api_football/ (long TTL  -  frozen snapshot).
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -284,7 +280,6 @@ def fetch_api_football_player_stats(
     force: bool = False,
     ttl_days: int = CLUB_CACHE_TTL_DAYS,
 ) -> tuple[pd.DataFrame, ApiFootballReport]:
-    """Fetch league top scorers/assists (+ optional targeted club squads) for all configured seasons."""
     cfg = _load_config()
     seasons = club_seasons_from_config(cfg)
     report = ApiFootballReport()
@@ -323,7 +318,6 @@ def fetch_api_football_player_stats(
 
 
 def load_cached_api_football_stats() -> pd.DataFrame:
-    """Load player rows from cached API-Football JSON only (no HTTP)."""
     cfg = _load_config()
     seasons = set(club_seasons_from_config(cfg))
     all_rows: list[dict] = []

@@ -1,11 +1,9 @@
-"""
-achievements_canonical.py
-─────────────────────────
-Record-book team honours for WC 2026 participants.
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-Counts and last-achievement years come from canonical football history
-(edition tables below). Martj42 is used only for participation recency
-(see historical_data.build_team_achievements).
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -254,7 +252,6 @@ CONTINENTAL_BY_TEAM: dict[str, dict] = {
 
 
 def canon_team(name: str) -> str:
-    """Resolve historical labels to WC 2026 team names."""
     return normalize_team_name(HISTORICAL_TEAM_NAMES.get(name, name))
 
 
@@ -287,7 +284,6 @@ def _bump_year(current, year: int | None) -> int | None:
 
 
 def compute_wc_stats(team: str) -> dict:
-    """Derive World Cup honour counts and recency from edition table."""
     row = {
         "wc_titles": 0,
         "wc_finals": 0,
@@ -318,7 +314,6 @@ def compute_wc_stats(team: str) -> dict:
 
 
 def get_canonical_achievements(team: str) -> dict:
-    """Full canonical honour row for one team (no participation fields)."""
     team = normalize_team_name(team)
     row = _empty_row(team)
     row.update(compute_wc_stats(team))
@@ -330,6 +325,5 @@ def get_canonical_achievements(team: str) -> dict:
 
 
 def build_canonical_achievements(teams: list[str] | None = None) -> dict[str, dict]:
-    """Build canonical honour rows keyed by team name."""
     target = teams or WC2026_ALL_TEAMS
     return {team: get_canonical_achievements(team) for team in target}

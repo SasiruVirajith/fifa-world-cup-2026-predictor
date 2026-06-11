@@ -1,26 +1,8 @@
-# ─────────────────────────────────────────
-#  World Cup Predictor - dependencies
-#  Install with: pip install -r requirements.txt
-# ─────────────────────────────────────────
-
-# Core data
 pandas==2.2.2
 numpy==1.26.4
-
-# Football data sources
-cloudscraper>=1.2.71      # Understat fetch (understat_scraper)
-
-# Machine learning
+cloudscraper>=1.2.71
 scikit-learn==1.4.2
-
-# Visualisation
 plotly==5.22.0
-
-# Dashboard
 streamlit==1.35.0
-
-# Utilities
 requests==2.32.2
-beautifulsoup4==4.12.3
-tqdm==4.66.4
 python-dotenv==1.0.1

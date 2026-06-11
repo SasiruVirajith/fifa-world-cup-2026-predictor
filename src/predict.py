@@ -1,7 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-predict.py
-──────────
-Loads pre-computed rankings and feature scores for the Streamlit dashboard.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import pickle
@@ -13,7 +15,6 @@ MODELS_DIR = Path("models")
 
 
 def load_model(name: str):
-    """Load a saved model by name from models/."""
     path = MODELS_DIR / f"{name}.pkl"
     if not path.exists():
         return None
@@ -22,7 +23,6 @@ def load_model(name: str):
 
 
 def predict_golden_boot(player_features: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
-    """Top Golden Boot candidates from pre-computed boot_score."""
     if player_features is None or player_features.empty:
         return pd.DataFrame(columns=["player", "team", "predicted_goals"])
 
@@ -32,7 +32,6 @@ def predict_golden_boot(player_features: pd.DataFrame, top_n: int = 10) -> pd.Da
 
     if "boot_score" in result.columns:
         if "predicted_goals" not in result.columns:
-            # Fallback when striker CSV lacks column (≈ top boot_score maps to ~6–7 goals)
             result["predicted_goals"] = (result["boot_score"] * 18).round(2)
         if "player_norm" in result.columns:
             result = (
@@ -50,7 +49,6 @@ def predict_golden_boot(player_features: pd.DataFrame, top_n: int = 10) -> pd.Da
 
 
 def predict_golden_glove(keeper_features: pd.DataFrame, top_n: int = 5) -> pd.DataFrame:
-    """Top Golden Glove candidates from pre-computed glove_score."""
     if keeper_features is None or keeper_features.empty:
         return pd.DataFrame(columns=["player", "team", "golden_glove_probability"])
 
@@ -73,7 +71,6 @@ def predict_golden_glove(keeper_features: pd.DataFrame, top_n: int = 5) -> pd.Da
 
 
 def predict_golden_ball(top_n: int = 10) -> pd.DataFrame:
-    """Top Golden Ball candidates from pre-computed POT scores."""
     path = Path("outputs/player_tournament_2026.csv")
     if not path.exists():
         return pd.DataFrame(columns=["player", "team", "pot_score"])
@@ -87,7 +84,6 @@ def predict_golden_ball(top_n: int = 10) -> pd.DataFrame:
 
 
 def predict_team_surprise(top_n: int = 10) -> pd.DataFrame:
-    """Underdog teams (low FIFA rank) projected to outperform expectations."""
     from src.team_expectations import compute_underdog_surprises
 
     df = compute_underdog_surprises()
@@ -100,7 +96,6 @@ def predict_team_surprise(top_n: int = 10) -> pd.DataFrame:
 
 
 def predict_team_upset(top_n: int = 10) -> pd.DataFrame:
-    """Big teams (high FIFA rank) projected to underperform expectations."""
     from src.team_expectations import compute_big_team_upsets
 
     df = compute_big_team_upsets()

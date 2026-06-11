@@ -1,7 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-team_expectations.py
-────────────────────
-Team-level tournament context and surprise / disappointment vs FIFA ranking.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -84,16 +86,11 @@ def _group_opponent_fifa(team: str, fifa: pd.DataFrame) -> float:
 
 
 def _safe_max(series: pd.Series, floor: float = 1.0) -> float:
-    """Series max with a floor  -  avoids .clip() on numpy scalars."""
     val = float(series.max()) if len(series) else floor
     return max(val, floor)
 
 
 def load_team_tournament_context() -> pd.DataFrame:
-    """
-    Per-team WC 2026 context: group, qualification odds, knockout depth proxy,
-    group difficulty, recent national-team form.
-    """
     fifa = _load_fifa_ranks()
     group_sim = _load_group_sim()
     champs = _load_champion_probs()
@@ -143,7 +140,6 @@ def load_team_tournament_context() -> pd.DataFrame:
 
 
 def _sim_performance_score(ctx: pd.DataFrame) -> pd.Series:
-    """Single index of simulated tournament outcome (0–1 scale)."""
     q = ctx["p_qualify"]
     w = ctx["team_win_prob"]
     ep = ctx["expected_points"] / _safe_max(ctx["expected_points"], 1.0)
@@ -151,7 +147,6 @@ def _sim_performance_score(ctx: pd.DataFrame) -> pd.Series:
 
 
 def _fifa_expected_score(ctx: pd.DataFrame) -> pd.Series:
-    """Expected outcome from FIFA rank among WC 2026 teams (higher rank = lower score)."""
     rank = ctx["fifa_rank"].astype(float)
     inv = 1.0 / rank
     mn, mx = inv.min(), inv.max()
@@ -161,12 +156,6 @@ def _fifa_expected_score(ctx: pd.DataFrame) -> pd.Series:
 
 
 def compute_team_surprise_disappointment() -> pd.DataFrame:
-    """
-    Compare simulated performance vs FIFA-rank expectation.
-
-    surprise_delta > 0 → outperforms ranking
-    surprise_delta < 0 → underperforms ranking
-    """
     ctx = load_team_tournament_context()
     ctx["sim_score"] = _sim_performance_score(ctx)
     ctx["fifa_expected"] = _fifa_expected_score(ctx)
@@ -181,13 +170,6 @@ UNDERDOG_MIN_RANK = 28
 
 
 def compute_big_team_upsets() -> pd.DataFrame:
-    """
-    Big nations (top ~20 FIFA) projected to disappoint vs their ranking.
-
-    Uses **rank gap**: simulated win-probability rank minus FIFA rank.
-    Positive gap = the model rates them below where FIFA rank suggests.
-    Filters to teams that are actually projected to struggle (not just #1 vs #3).
-    """
     ctx = compute_team_surprise_disappointment()
     big = ctx[ctx["fifa_rank"] <= BIG_TEAM_MAX_RANK].copy()
 
@@ -219,9 +201,6 @@ def compute_big_team_upsets() -> pd.DataFrame:
 
 
 def compute_underdog_surprises() -> pd.DataFrame:
-    """
-    Underdogs (FIFA rank 28+) projected to punch above their ranking.
-    """
     ctx = compute_team_surprise_disappointment()
     dogs = ctx[ctx["fifa_rank"] >= UNDERDOG_MIN_RANK].copy()
     dogs["surprise_score"] = (dogs["sim_score"] - dogs["fifa_expected"]).round(4)

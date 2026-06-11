@@ -1,15 +1,19 @@
-"""
-wc2026_simulator.py
-───────────────────
-Full FIFA World Cup 2026 Monte Carlo tournament simulation.
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-Format (official 2026):
-  - 12 groups of 4 (round robin, neutral venues)
-  - Top 2 per group (24 teams) + 8 best third-place teams -> Round of 32
-  - Knockout bracket through the final
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
+from __future__ import annotations
+
+import os
 import sys
+import time
+import warnings
+from concurrent.futures import ProcessPoolExecutor, as_completed
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -32,6 +36,13 @@ from src.config import (
 from src.match_model import FEATURE_COLS, load_match_model
 from src.labels import normalize_team_name
 
+warnings.filterwarnings(
+    "ignore",
+    message="X does not have valid feature names",
+    category=UserWarning,
+    module="sklearn.base",
+)
+
 OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 CURRENT_YEAR = 2026
 
@@ -40,20 +51,20 @@ _WC_TEAM_LOOKUP = {
     normalize_team_name(team): team for team in WC2026_ALL_TEAMS
 }
 
+_STATIC_STATE = None
+
 
 def to_wc_team(name: str) -> str:
-    """Resolve harmonized data names to official WC 2026 team labels."""
     return _WC_TEAM_LOOKUP.get(normalize_team_name(name), name)
 
 
 class TournamentState:
-    """Holds team ratings and H2H for one simulation run."""
 
     def __init__(self):
-        self.fifa_points = {}
-        self.last5_form = {}
-        self.penalty_win_rate = {}
-        self.h2h = {}
+        self.fifa_points: dict[str, float] = {}
+        self.last5_form: dict[str, float] = {}
+        self.penalty_win_rate: dict[str, float] = {}
+        self.h2h: dict = {}
         self.achievements = None
         self._load_data()
 
@@ -61,17 +72,18 @@ class TournamentState:
         strength_path = PROCESSED_DIR / "team_strength_2026.csv"
         if strength_path.exists():
             strength = pd.read_csv(strength_path)
-            for _, row in strength.iterrows():
-                t = normalize_team_name(row["team"])
-                self.fifa_points[t] = row.get("fifa_points", row.get("elo", 1500))
-                self.last5_form[t] = row.get("last5_win_rate", 0.5)
+            teams = strength["team"].map(normalize_team_name)
+            pts_col = "fifa_points" if "fifa_points" in strength.columns else "elo"
+            self.fifa_points.update(dict(zip(teams, strength[pts_col].fillna(1500))))
+            if "last5_win_rate" in strength.columns:
+                self.last5_form.update(dict(zip(teams, strength["last5_win_rate"].fillna(0.5))))
 
         fifa_path = RAW_DIR / "fifa_latest_ranking.csv"
         if fifa_path.exists():
             fifa = pd.read_csv(fifa_path)
-            for _, row in fifa.iterrows():
-                t = to_wc_team(row["country"])
-                self.fifa_points[t] = row["total_points"]
+            for country, points in zip(fifa["country"], fifa["total_points"]):
+                t = to_wc_team(country)
+                self.fifa_points[t] = points
                 if t not in self.last5_form:
                     self.last5_form[t] = 0.5
 
@@ -91,14 +103,12 @@ class TournamentState:
             games = pd.concat([so["home_team"], so["away_team"]]).value_counts()
             self.penalty_win_rate = (wins / games).fillna(0.5).to_dict()
 
-        # Playoff placeholder strengths (only if placeholders remain in groups)
         for playoff, candidates in WC2026_PLAYOFF_CANDIDATES.items():
             pts = [self.fifa_points.get(normalize_team_name(c), 1400) for c in candidates]
             forms = [self.last5_form.get(normalize_team_name(c), 0.5) for c in candidates]
-            self.fifa_points[playoff] = np.mean(pts)
-            self.last5_form[playoff] = np.mean(forms)
+            self.fifa_points[playoff] = float(np.mean(pts))
+            self.last5_form[playoff] = float(np.mean(forms))
 
-        # Ensure every confirmed WC team has FIFA/form defaults
         for team in WC2026_ALL_TEAMS:
             t = normalize_team_name(team)
             if t not in self.fifa_points:
@@ -106,7 +116,14 @@ class TournamentState:
             if t not in self.last5_form:
                 self.last5_form[t] = 0.35
 
+        self._smooth_form_cache = {
+            team: self.smooth_form(team) for team in self.fifa_points
+        }
+
     def smooth_form(self, team: str, alpha: float = 0.65) -> float:
+        cached = getattr(self, "_smooth_form_cache", None)
+        if cached is not None and team in cached and alpha == 0.65:
+            return cached[team]
         wr = self.last5_form.get(team, 0.5)
         return alpha * wr + (1 - alpha) * 0.5
 
@@ -131,32 +148,60 @@ class TournamentState:
         return self.h2h.get(key, {"home_win_rate": 0.5, "draw_rate": 0.25, "matches_played": 0})
 
 
-def simulate_match(
+def get_tournament_state() -> TournamentState:
+    global _STATIC_STATE
+    if _STATIC_STATE is None:
+        _STATIC_STATE = TournamentState()
+    return _STATIC_STATE
+
+
+@dataclass
+class _SimContext:
+    model: object | None
+    feature_cols: list[str]
+    col_idx: dict[str, int]
+    state: TournamentState
+    feature_buf: np.ndarray
+    group_buf: np.ndarray
+
+
+def _make_sim_context(model, feature_cols: list[str]) -> _SimContext:
+    cols = feature_cols or FEATURE_COLS
+    col_idx = {name: i for i, name in enumerate(cols)}
+    n = len(cols)
+    return _SimContext(
+        model=model,
+        feature_cols=cols,
+        col_idx=col_idx,
+        state=get_tournament_state(),
+        feature_buf=np.zeros((1, n), dtype=np.float64),
+        group_buf=np.zeros((6, n), dtype=np.float64),
+    )
+
+
+def _write_feature_row(
+    buf: np.ndarray,
+    row: int,
+    col_idx: dict[str, int],
+    features: dict[str, float],
+) -> None:
+    for name, value in features.items():
+        idx = col_idx.get(name)
+        if idx is not None:
+            buf[row, idx] = value
+
+
+def _match_features(
+    state: TournamentState,
     team_a: str,
     team_b: str,
-    model,
-    feature_cols: list,
-    state: TournamentState,
-    rng: np.random.Generator,
-    round_name: str = "group",
-) -> str:
-    """
-    Simulate one match. Returns 'A' (team_a wins), 'B' (team_b wins), or 'D' (draw).
-    """
+    fifa_diff: float,
+) -> dict[str, float]:
     h2h = state.h2h_get(team_a, team_b)
-    fifa_diff = state.fifa_points.get(team_a, 1500) - state.fifa_points.get(team_b, 1500)
     form_a = state.smooth_form(team_a)
     form_b = state.smooth_form(team_b)
-
-    # Tactical/squad-quality edge (achievements already baked into FIFA points)
-    tactical_diff = MODERN_TEAMS.get(team_a, 0) - MODERN_TEAMS.get(team_b, 0)
-    fifa_diff += tactical_diff * 12
-
-    # Tournament variance injection
-    fifa_diff += rng.normal(0, ROUND_VARIANCE.get(round_name, 20))
-
     h2h_weight = min(1.0, h2h["matches_played"] / 10)
-    features = {
+    return {
         "fifa_diff": fifa_diff,
         "elo_diff": fifa_diff * 0.95,
         "home_last5_win_rate": form_a,
@@ -173,24 +218,69 @@ def simulate_match(
         "is_tournament": 1,
     }
 
-    if model is not None:
-        X = pd.DataFrame([{c: features.get(c, 0) for c in feature_cols}])
-        probs = model.predict_proba(X)[0]
-        # sklearn order: classes 0=away, 1=draw, 2=home -> map to B, D, A
+
+def _base_fifa_diff(state: TournamentState, team_a: str, team_b: str) -> float:
+    fifa_diff = state.fifa_points.get(team_a, 1500) - state.fifa_points.get(team_b, 1500)
+    tactical_diff = MODERN_TEAMS.get(team_a, 0) - MODERN_TEAMS.get(team_b, 0)
+    return fifa_diff + tactical_diff * 12
+
+
+def _outcome_from_probs(
+    p_away: float,
+    p_draw: float,
+    p_home: float,
+    rng: np.random.Generator,
+) -> str:
+    if p_draw > DRAW_THRESHOLD:
+        return "D"
+    p_nodraw_home = p_home / (p_home + p_away)
+    return "A" if rng.random() < p_nodraw_home else "B"
+
+
+def _apply_group_result(table: dict, t1: str, t2: str, result: str) -> None:
+    if result == "A":
+        table[t1]["points"] += 3
+        table[t1]["gd"] += 1
+        table[t1]["gf"] += 1
+        table[t2]["gd"] -= 1
+    elif result == "B":
+        table[t2]["points"] += 3
+        table[t2]["gd"] += 1
+        table[t2]["gf"] += 1
+        table[t1]["gd"] -= 1
+    else:
+        table[t1]["points"] += 1
+        table[t2]["points"] += 1
+
+
+def _predict_match_probs(ctx: _SimContext, features: dict) -> np.ndarray:
+    _write_feature_row(ctx.feature_buf, 0, ctx.col_idx, features)
+    return ctx.model.predict_proba(ctx.feature_buf)[0]
+
+
+def simulate_match(
+    team_a: str,
+    team_b: str,
+    ctx: _SimContext,
+    rng: np.random.Generator,
+    round_name: str = "group",
+) -> str:
+    state = ctx.state
+    fifa_diff = _base_fifa_diff(state, team_a, team_b)
+    fifa_diff += rng.normal(0, ROUND_VARIANCE.get(round_name, 20))
+    features = _match_features(state, team_a, team_b, fifa_diff)
+
+    if ctx.model is not None:
+        probs = _predict_match_probs(ctx, features)
         p_away, p_draw, p_home = probs[0], probs[1], probs[2]
     else:
-        # ELO fallback
         p_home = 1 / (1 + 10 ** (-fifa_diff / 400))
         p_away = 1 - p_home
         p_draw = 0.25
         total = p_home + p_away + p_draw
-        p_home, p_away, p_draw = p_home / total, p_away / total, p_draw / total
+        p_away, p_draw, p_home = p_away / total, p_draw / total, p_home / total
 
-    if p_draw > DRAW_THRESHOLD:
-        return "D"
-
-    p_nodraw_home = p_home / (p_home + p_away)
-    return "A" if rng.random() < p_nodraw_home else "B"
+    return _outcome_from_probs(p_away, p_draw, p_home, rng)
 
 
 def simulate_penalty(team_a: str, team_b: str, state: TournamentState, rng) -> str:
@@ -199,44 +289,59 @@ def simulate_penalty(team_a: str, team_b: str, state: TournamentState, rng) -> s
     return team_a if rng.random() < pa / (pa + pb) else team_b
 
 
-def simulate_group(
-    teams: list,
-    model,
-    feature_cols: list,
-    state: TournamentState,
-    rng: np.random.Generator,
-) -> pd.DataFrame:
-    """Round-robin group stage (6 matches)."""
-    table = {t: {"points": 0, "gd": 0, "gf": 0} for t in teams}
-
-    for i in range(len(teams)):
-        for j in range(i + 1, len(teams)):
-            # Neutral-site WC matches - randomise designated home side per fixture
-            t1, t2 = teams[i], teams[j]
-            if rng.random() < 0.5:
-                t1, t2 = t2, t1
-            result = simulate_match(t1, t2, model, feature_cols, state, rng, "group")
-            if result == "A":
-                table[t1]["points"] += 3
-                table[t1]["gd"] += 1
-                table[t1]["gf"] += 1
-                table[t2]["gd"] -= 1
-            elif result == "B":
-                table[t2]["points"] += 3
-                table[t2]["gd"] += 1
-                table[t2]["gf"] += 1
-                table[t1]["gd"] -= 1
-            else:
-                table[t1]["points"] += 1
-                table[t2]["points"] += 1
-
-    return pd.DataFrame(table).T.sort_values(
-        ["points", "gd", "gf"], ascending=False
+def _sort_group_table(table: dict) -> list[tuple[str, dict]]:
+    return sorted(
+        table.items(),
+        key=lambda item: (item[1]["points"], item[1]["gd"], item[1]["gf"]),
+        reverse=True,
     )
 
 
+def simulate_group(
+    teams: list,
+    ctx: _SimContext,
+    rng: np.random.Generator,
+) -> list[tuple[str, dict]]:
+    table = {t: {"points": 0, "gd": 0, "gf": 0} for t in teams}
+    pairs: list[tuple[str, str]] = []
+
+    for i in range(len(teams)):
+        for j in range(i + 1, len(teams)):
+            t1, t2 = teams[i], teams[j]
+            if rng.random() < 0.5:
+                t1, t2 = t2, t1
+            pairs.append((t1, t2))
+
+    if ctx.model is None:
+        for t1, t2 in pairs:
+            result = simulate_match(t1, t2, ctx, rng, "group")
+            _apply_group_result(table, t1, t2, result)
+        return _sort_group_table(table)
+
+    state = ctx.state
+    group_variance = ROUND_VARIANCE.get("group", 20)
+    n_matches = len(pairs)
+    buf = ctx.group_buf[:n_matches]
+
+    for row, (t1, t2) in enumerate(pairs):
+        fifa_diff = _base_fifa_diff(state, t1, t2)
+        fifa_diff += rng.normal(0, group_variance)
+        _write_feature_row(
+            buf, row, ctx.col_idx,
+            _match_features(state, t1, t2, fifa_diff),
+        )
+
+    all_probs = ctx.model.predict_proba(buf)
+
+    for row, (t1, t2) in enumerate(pairs):
+        p_away, p_draw, p_home = all_probs[row]
+        result = _outcome_from_probs(p_away, p_draw, p_home, rng)
+        _apply_group_result(table, t1, t2, result)
+
+    return _sort_group_table(table)
+
+
 def rank_third_places(third_places: list) -> list:
-    """Rank third-place teams for best-8 qualification (points, GD, GF)."""
     return sorted(
         third_places,
         key=lambda x: (x["points"], x["gd"], x["gf"]),
@@ -247,31 +352,21 @@ def rank_third_places(third_places: list) -> list:
 def simulate_knockout_match(
     team_a: str,
     team_b: str,
-    model,
-    feature_cols: list,
-    state: TournamentState,
+    ctx: _SimContext,
     rng: np.random.Generator,
     round_name: str,
 ) -> str:
-    result = simulate_match(team_a, team_b, model, feature_cols, state, rng, round_name)
+    result = simulate_match(team_a, team_b, ctx, rng, round_name)
     if result == "D":
-        return simulate_penalty(team_a, team_b, state, rng)
+        return simulate_penalty(team_a, team_b, ctx.state, rng)
     return team_a if result == "A" else team_b
 
 
 def simulate_one_tournament(
-    model,
-    feature_cols: list,
+    ctx: _SimContext,
     rng: np.random.Generator,
 ) -> tuple[str, dict[str, dict]]:
-    """
-    Run one full WC 2026 simulation.
-
-    Returns (champion, group_stats) where group_stats[team] has
-    points, qualified (incl. best third-place), top_group, group.
-    """
-    state = TournamentState()
-
+    state = ctx.state
     third_places = []
     qualified = []
     team_groups = {
@@ -288,36 +383,32 @@ def simulate_one_tournament(
     }
 
     for group_name, teams in WC2026_GROUPS.items():
-        table = simulate_group(teams, model, feature_cols, state, rng)
-        ranked = table.reset_index().rename(columns={"index": "team"})
-        group_winner = ranked.iloc[0]["team"]
+        ranked = simulate_group(teams, ctx, rng)
+        group_winner = ranked[0][0]
         group_stats[group_winner]["top_group"] = True
-        for _, row in ranked.iterrows():
-            team = row["team"]
-            group_stats[team]["points"] = float(row["points"])
+        for team, stats in ranked:
+            group_stats[team]["points"] = float(stats["points"])
             group_stats[team]["group"] = group_name
 
-        qualified.append(ranked.iloc[0]["team"])
-        qualified.append(ranked.iloc[1]["team"])
+        qualified.append(ranked[0][0])
+        qualified.append(ranked[1][0])
+        third = ranked[2][1]
         third_places.append({
-            "team": ranked.iloc[2]["team"],
-            "points": ranked.iloc[2]["points"],
-            "gd": ranked.iloc[2]["gd"],
-            "gf": ranked.iloc[2]["gf"],
+            "team": ranked[2][0],
+            "points": third["points"],
+            "gd": third["gd"],
+            "gf": third["gf"],
             "group": group_name,
         })
 
-    # 8 best third-place teams join the 24 automatic qualifiers -> Round of 32
     ranked_third = rank_third_places(third_places)
     qualified += [r["team"] for r in ranked_third[:8]]
     qualified = list(dict.fromkeys(qualified))
     for team in qualified:
         group_stats[team]["qualified"] = True
 
-    # Seed knockout bracket by FIFA points (higher seed = slight structural edge via ordering)
     qualified.sort(key=lambda t: state.fifa_points.get(t, 0), reverse=True)
 
-    # Standard knockout rounds (32 -> 16 -> 8 -> 4 -> 2 -> 1)
     rounds = ["round_of_32", "round_of_16", "quarterfinal", "semifinal", "final"]
     current = qualified[:32] if len(qualified) >= 32 else qualified
 
@@ -328,7 +419,7 @@ def simulate_one_tournament(
         next_round = []
         for i in range(0, len(current) - 1, 2):
             w = simulate_knockout_match(
-                current[i], current[i + 1], model, feature_cols, state, rng, round_name
+                current[i], current[i + 1], ctx, rng, round_name
             )
             next_round.append(w)
         if len(current) % 2 == 1:
@@ -339,13 +430,74 @@ def simulate_one_tournament(
     return champion, group_stats
 
 
+def _empty_team_counters() -> tuple[dict, dict, dict, dict]:
+    return (
+        {team: 0 for team in WC2026_ALL_TEAMS},
+        {team: 0 for team in WC2026_ALL_TEAMS},
+        {team: 0 for team in WC2026_ALL_TEAMS},
+        {team: 0.0 for team in WC2026_ALL_TEAMS},
+    )
+
+
+def _accumulate_tournament(
+    win_counts: dict,
+    qualify_counts: dict,
+    top_group_counts: dict,
+    points_total: dict,
+    champion: str,
+    group_stats: dict[str, dict],
+) -> None:
+    champion = to_wc_team(champion)
+    win_counts[champion] = win_counts.get(champion, 0) + 1
+    for team, stats in group_stats.items():
+        points_total[team] += stats["points"]
+        if stats["qualified"]:
+            qualify_counts[team] += 1
+        if stats["top_group"]:
+            top_group_counts[team] += 1
+
+
+def _run_simulation_batch(n_sims: int, seed: int) -> tuple[dict, dict, dict, dict]:
+    model, feature_cols = load_match_model()
+    ctx = _make_sim_context(model, feature_cols)
+    rng = np.random.default_rng(seed)
+    win_counts, qualify_counts, top_group_counts, points_total = _empty_team_counters()
+
+    for _ in range(n_sims):
+        champion, group_stats = simulate_one_tournament(ctx, rng)
+        _accumulate_tournament(
+            win_counts, qualify_counts, top_group_counts, points_total,
+            champion, group_stats,
+        )
+
+    return win_counts, qualify_counts, top_group_counts, points_total
+
+
+def _merge_counter_dicts(target: dict, source: dict) -> None:
+    for key, value in source.items():
+        target[key] += value
+
+
+def _split_simulation_batches(
+    n_simulations: int,
+    n_workers: int,
+    seed: int,
+) -> list[tuple[int, int]]:
+    base, remainder = divmod(n_simulations, n_workers)
+    batches = []
+    for worker_id in range(n_workers):
+        count = base + (1 if worker_id < remainder else 0)
+        if count > 0:
+            batches.append((count, seed + worker_id * 1_000_003))
+    return batches
+
+
 def _write_group_simulation_csv(
     qualify_counts: dict[str, int],
     top_group_counts: dict[str, int],
     points_total: dict[str, float],
     n_simulations: int,
 ) -> pd.DataFrame:
-    """Persist group-stage aggregates alongside champion probabilities."""
     team_groups = {
         team: grp for grp, teams in WC2026_GROUPS.items() for team in teams
     }
@@ -366,38 +518,58 @@ def _write_group_simulation_csv(
     return df
 
 
+def _default_worker_count() -> int:
+    # Cap at 4 by default — safer on laptops with limited RAM; override with --workers
+    return max(1, min(os.cpu_count() or 1, 4))
+
+
 def run_wc2026_simulation(
     n_simulations: int = N_SIMULATIONS_DEFAULT,
     seed: int = 42,
+    n_workers: int | None = None,
 ) -> pd.DataFrame:
-    """
-    Run N full tournament simulations.
+    workers = n_workers if n_workers is not None else _default_worker_count()
+    workers = max(1, min(workers, n_simulations))
+    mode = f"{workers} worker{'s' if workers > 1 else ''}"
+    print(f"Running {n_simulations} WC 2026 tournament simulations ({mode})...")
+    t0 = time.perf_counter()
 
-    Returns DataFrame with [team, win_probability, simulations].
-    """
-    print(f"Running {n_simulations} WC 2026 tournament simulations...")
     model, feature_cols = load_match_model()
     if model is None:
         print("  [WARN] No match model found - using ELO fallback")
 
-    rng = np.random.default_rng(seed)
-    win_counts = {team: 0 for team in WC2026_ALL_TEAMS}
-    qualify_counts = {team: 0 for team in WC2026_ALL_TEAMS}
-    top_group_counts = {team: 0 for team in WC2026_ALL_TEAMS}
-    points_total = {team: 0.0 for team in WC2026_ALL_TEAMS}
+    win_counts, qualify_counts, top_group_counts, points_total = _empty_team_counters()
 
-    for i in range(n_simulations):
-        if (i + 1) % 500 == 0:
-            print(f"  ... {i + 1}/{n_simulations}")
-        champion, group_stats = simulate_one_tournament(model, feature_cols, rng)
-        champion = to_wc_team(champion)
-        win_counts[champion] = win_counts.get(champion, 0) + 1
-        for team, stats in group_stats.items():
-            points_total[team] += stats["points"]
-            if stats["qualified"]:
-                qualify_counts[team] += 1
-            if stats["top_group"]:
-                top_group_counts[team] += 1
+    if workers == 1:
+        ctx = _make_sim_context(model, feature_cols)
+        rng = np.random.default_rng(seed)
+        for i in range(n_simulations):
+            if (i + 1) % 500 == 0:
+                print(f"  ... {i + 1}/{n_simulations}")
+            champion, group_stats = simulate_one_tournament(ctx, rng)
+            _accumulate_tournament(
+                win_counts, qualify_counts, top_group_counts, points_total,
+                champion, group_stats,
+            )
+    else:
+        batches = _split_simulation_batches(n_simulations, workers, seed)
+        completed = 0
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            futures = {
+                pool.submit(_run_simulation_batch, count, batch_seed): count
+                for count, batch_seed in batches
+            }
+            for future in as_completed(futures):
+                batch_wins, batch_qualify, batch_top, batch_points = future.result()
+                _merge_counter_dicts(win_counts, batch_wins)
+                _merge_counter_dicts(qualify_counts, batch_qualify)
+                _merge_counter_dicts(top_group_counts, batch_top)
+                _merge_counter_dicts(points_total, batch_points)
+                completed += futures[future]
+                print(f"  ... {completed}/{n_simulations}")
+
+    elapsed = time.perf_counter() - t0
+    print(f"  Simulations finished in {elapsed:.1f}s ({n_simulations / elapsed:.0f} sims/s)")
 
     _write_group_simulation_csv(
         qualify_counts, top_group_counts, points_total, n_simulations,

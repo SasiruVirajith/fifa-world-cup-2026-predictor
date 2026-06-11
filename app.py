@@ -1,10 +1,9 @@
-"""
-app.py
-──────
-Streamlit dashboard for the World Cup Predictor.
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-Run with:
-    streamlit run app.py
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import html
@@ -29,7 +28,7 @@ from src.predict import (
 from components.macos_sidebar import macos_sidebar_controls
 from src.wc2026_simulator import run_wc2026_simulation
 
-# ── macOS design tokens ─────────────────────────────────────────────────────
+# macOS design tokens
 def _build_macos_css(*, dark: bool) -> str:
     if dark:
         tokens = """
@@ -526,7 +525,6 @@ def _macos_plot_ranked_bar(
     color_scale: str = "Blues",
     dark: bool = False,
 ):
-    """Horizontal bar chart with best-ranked entry at the top."""
     plot_df = df.sort_values(x, ascending=True).copy()
     scale = MACOS_COLOR_SCALES.get(color_scale, MACOS_COLOR_SCALES["Blues"])
     colors = scale["dark" if dark else "light"]
@@ -569,7 +567,6 @@ def _macos_plot_ranked_bar(
 
 
 def _interp_hex(c0: str, c1: str, t: float) -> str:
-    """Linear interpolate between two hex colors."""
     t = max(0.0, min(1.0, t))
     r0, g0, b0 = int(c0[1:3], 16), int(c0[3:5], 16), int(c0[5:7], 16)
     r1, g1, b1 = int(c1[1:3], 16), int(c1[3:5], 16), int(c1[5:7], 16)
@@ -580,7 +577,6 @@ def _interp_hex(c0: str, c1: str, t: float) -> str:
 
 
 def _render_ranked_table(df: pd.DataFrame) -> None:
-    """HTML table that follows our dark/light CSS variables (unlike st.dataframe canvas)."""
     headers = "".join(f"<th>{html.escape(str(col))}</th>" for col in df.columns)
     rows = []
     for _, row in df.iterrows():
@@ -596,7 +592,6 @@ def _render_ranked_table(df: pd.DataFrame) -> None:
 
 
 def _sidebar_social_html() -> str:
-    """Flush-left HTML only; indented markdown is rendered as a code block in Streamlit."""
     github_icon = (
         '<svg viewBox="0 0 16 16" aria-hidden="true">'
         '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 '
@@ -743,7 +738,7 @@ st.markdown(_build_macos_css(dark=st.session_state.dark_mode), unsafe_allow_html
 
 DARK = st.session_state.dark_mode
 
-# ── Header ─────────────────────────────────────────────────────────────────
+# Header
 status_class = "ok" if MODELS_LOADED else "warn"
 status_label = "Model loaded" if MODELS_LOADED else "Cached outputs"
 
@@ -782,7 +777,7 @@ tab_winner, tab_boot, tab_glove, tab_ball, tab_upset, tab_surprise = st.tabs([
     "Surprise",
 ])
 
-# ── WC 2026 Winner ─────────────────────────────────────────────────────────
+# WC 2026 Winner
 with tab_winner:
     _section_header(
         "Champion probabilities",
@@ -815,7 +810,7 @@ with tab_winner:
             dark=DARK,
         )
 
-# ── Golden Boot ────────────────────────────────────────────────────────────
+# Golden Boot
 with tab_boot:
     _section_header(
         "Golden Boot: top scorer",
@@ -849,7 +844,7 @@ with tab_boot:
         dark=DARK,
     )
 
-# ── Golden Glove ───────────────────────────────────────────────────────────
+# Golden Glove
 with tab_glove:
     _section_header(
         "Golden Glove: best goalkeeper",
@@ -877,7 +872,7 @@ with tab_glove:
         dark=DARK,
     )
 
-# ── Golden Ball ────────────────────────────────────────────────────────────
+# Golden Ball
 with tab_ball:
     _section_header(
         "Golden Ball: player of the tournament",
@@ -905,7 +900,7 @@ with tab_ball:
         dark=DARK,
     )
 
-# ── Biggest Upset (team) ───────────────────────────────────────────────────
+# Biggest Upset (team)
 with tab_upset:
     _section_header(
         "Biggest upset (team)",
@@ -938,7 +933,7 @@ with tab_upset:
         dark=DARK,
     )
 
-# ── Biggest Surprise (team) ────────────────────────────────────────────────
+# Biggest Surprise (team)
 with tab_surprise:
     _section_header(
         "Biggest surprise (team)",

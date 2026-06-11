@@ -1,8 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-match_features.py
-───────────────────
-Build match-level features for the Gradient Boosting outcome model.
-Uses full history for ELO/H2H, trains on matches from 2000 onwards.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import sys
@@ -26,7 +27,6 @@ def calculate_elo_ratings(
     k: int = 32,
     initial_elo: int = 1500,
 ) -> dict:
-    """ELO ratings for all teams from international match results."""
     elo = {}
     results_df = results_df.sort_values("date").copy()
 
@@ -59,7 +59,6 @@ def calculate_elo_ratings(
 
 
 def _team_result(home_score, away_score, perspective: str) -> float:
-    """Return 1=win, 0.5=draw, 0=loss from team perspective."""
     if home_score == away_score:
         return 0.5
     if perspective == "home":
@@ -68,7 +67,6 @@ def _team_result(home_score, away_score, perspective: str) -> float:
 
 
 def _last_n_form(team: str, history: list, n: int = 5) -> float:
-    """Win rate in last n matches from pre-computed history list."""
     if not history:
         return 0.5
     recent = history[-n:]
@@ -88,15 +86,10 @@ def _h2h_stats(home: str, away: str, h2h: dict) -> dict:
 
 
 def build_match_features(start_year: int = MATCH_MODEL_START_YEAR) -> pd.DataFrame:
-    """
-    Walk through all matches chronologically and build features
-    using only information available BEFORE each match.
-    """
     print("Building match-level features (walk-forward)...")
     results = load_and_normalize_results()
     results = get_tournament_categories(results)
 
-    # Load FIFA points as strength proxy (fallback to ELO)
     fifa_path = RAW_DIR / "fifa_latest_ranking.csv"
     fifa_latest = {}
     if fifa_path.exists():
@@ -106,7 +99,6 @@ def build_match_features(start_year: int = MATCH_MODEL_START_YEAR) -> pd.DataFra
             fifa["total_points"],
         ))
 
-    # Penalty win rates from shootouts
     pen_path = RAW_DIR / "shootouts.csv"
     penalty_win_rate = {}
     if pen_path.exists():
@@ -129,12 +121,12 @@ def build_match_features(start_year: int = MATCH_MODEL_START_YEAR) -> pd.DataFra
 
     train_matches = results[results["year"] >= start_year]
 
+    # features use pre-match state only (no leakage from this row's result)
     for idx, row in train_matches.iterrows():
         home = row["home_team"]
         away = row["away_team"]
         hs, aws = row["home_score"], row["away_score"]
 
-        # Features BEFORE match
         home_elo = elo_state.get(home, 1500)
         away_elo = elo_state.get(away, 1500)
         home_fifa = fifa_latest.get(home, home_elo)
@@ -147,7 +139,6 @@ def build_match_features(start_year: int = MATCH_MODEL_START_YEAR) -> pd.DataFra
         fifa_diff = home_fifa - away_fifa
         elo_diff = home_elo - away_elo
 
-        # Outcome label: 0=away win, 1=draw, 2=home win
         if hs > aws:
             outcome = 2
         elif hs < aws:
@@ -181,7 +172,6 @@ def build_match_features(start_year: int = MATCH_MODEL_START_YEAR) -> pd.DataFra
             "is_tournament": int(row["match_type"] in ("world_cup", "continental")),
         })
 
-        # Update state AFTER match
         home_res = _team_result(hs, aws, "home")
         away_res = _team_result(hs, aws, "away")
         team_history[home].append(home_res)
@@ -198,7 +188,6 @@ def build_match_features(start_year: int = MATCH_MODEL_START_YEAR) -> pd.DataFra
         else:
             h2h[key]["wins"][away] = h2h[key]["wins"].get(away, 0) + 1
 
-        # Update ELO incrementally
         exp_home = 1 / (1 + 10 ** ((away_elo - home_elo) / 400))
         actual_home = home_res
         k = 32 if row["match_type"] != "friendly" else 16
@@ -213,7 +202,6 @@ def build_match_features(start_year: int = MATCH_MODEL_START_YEAR) -> pd.DataFra
 
 
 def build_team_strength_table() -> pd.DataFrame:
-    """Current team strength snapshot for simulation (ELO, form, FIFA)."""
     results = load_and_normalize_results()
     results = get_tournament_categories(results)
 

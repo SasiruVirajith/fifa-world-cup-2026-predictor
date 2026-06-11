@@ -1,7 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-wc2026_group_sim.py
-───────────────────
-Monte Carlo group-stage simulation for the official WC 2026 draw.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -11,15 +13,14 @@ import itertools
 import numpy as np
 import pandas as pd
 
-from src.config import OUTPUTS_DIR, PROCESSED_DIR, RAW_DIR, WC2026_GROUPS
+from src.config import OUTPUTS_DIR, WC2026_GROUPS
 from src.match_model import FEATURE_COLS, load_match_model
-from src.wc2026_simulator import TournamentState, simulate_match
+from src.wc2026_simulator import TournamentState, _make_sim_context, simulate_match
 
 OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def get_wc2026_group_fixtures() -> pd.DataFrame:
-    """Round-robin fixtures for each official 2026 group."""
     records = []
     for group, teams in WC2026_GROUPS.items():
         for home, away in itertools.combinations(teams, 2):
@@ -32,18 +33,14 @@ def _team_strength(team: str, state: TournamentState) -> float:
 
 
 def run_wc2026_group_simulation(n_simulations: int = 2000, seed: int = 42) -> pd.DataFrame:
-    """
-    Simulate each 2026 group using the match outcome model when available.
-
-    Returns [team, group, p_qualify, p_top_group, expected_points, year].
-    """
     fixtures = get_wc2026_group_fixtures()
     if fixtures.empty:
         return pd.DataFrame()
 
     model, feature_cols = load_match_model()
     feature_cols = feature_cols or FEATURE_COLS
-    state = TournamentState()
+    ctx = _make_sim_context(model, feature_cols)
+    state = ctx.state
     rng = np.random.default_rng(seed)
 
     team_groups = {team: grp for grp, teams in WC2026_GROUPS.items() for team in teams}
@@ -57,7 +54,7 @@ def run_wc2026_group_simulation(n_simulations: int = 2000, seed: int = 42) -> pd
         for _, fix in fixtures.iterrows():
             home, away = fix["home_team"], fix["away_team"]
             if model is not None:
-                result = simulate_match(home, away, model, feature_cols, state, rng, round_name="group")
+                result = simulate_match(home, away, ctx, rng, round_name="group")
                 if result == "A":
                     group_points[home] += 3
                 elif result == "D":

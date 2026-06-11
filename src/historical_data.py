@@ -1,12 +1,9 @@
-"""
-historical_data.py
-──────────────────
-Download and prepare international football data.
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-Sources:
-  - martj42 GitHub (results, goalscorers, shootouts)
-  - FIFA api.fifa.com (men's world rankings)
-  - Team achievements: canonical record-book honours + martj42 participation recency
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import sys
@@ -43,11 +40,6 @@ CONTINENTAL_KEYWORDS = {
 
 
 def download_martj42_dataset(force: bool = False, ttl_days: int = CACHE_TTL_DAYS) -> dict:
-    """
-    Download all martj42 international results files from GitHub.
-
-    Re-downloads when force=True, file is missing, or cache is older than ttl_days.
-    """
     paths = {}
     for name, filename in MARTJ42_FILES.items():
         path = RAW_DIR / filename
@@ -74,12 +66,10 @@ def download_martj42_dataset(force: bool = False, ttl_days: int = CACHE_TTL_DAYS
 
 
 def _fifa_team_name(raw: str) -> str:
-    """Map FIFA API country label to project team name."""
     return normalize_team_name(raw.strip())
 
 
 def fetch_fifa_rankings(force: bool = False, ttl_days: int = CACHE_TTL_DAYS) -> pd.DataFrame:
-    """Fetch latest men's FIFA world rankings from api.fifa.com."""
     path = RAW_DIR / "fifa_latest_ranking.csv"
     if path.exists() and not force and is_cache_fresh(path, ttl_days):
         return pd.read_csv(path)
@@ -151,12 +141,6 @@ def _participation_from_martj42(
     results: pd.DataFrame,
     stats: dict[str, dict],
 ) -> None:
-    """
-    Overlay participation recency from martj42 only.
-
-    Honour counts and last achievement years stay canonical; martj42 never
-    overwrites those fields.
-    """
     wc_valid_years = set(WC_YEARS)
     max_cont_year = 2025
 
@@ -190,13 +174,6 @@ def _participation_from_martj42(
 
 
 def build_team_achievements() -> pd.DataFrame:
-    """
-    Hybrid team achievements for WC 2026 participants.
-
-    - Canonical record-book honours (counts + last achievement years)
-    - martj42 for last World Cup / continental participation only
-    - All 48 confirmed WC 2026 teams get last_world_cup_participation = 2026
-    """
     stats = build_canonical_achievements(WC2026_ALL_TEAMS)
 
     results_path = RAW_DIR / "results.csv"
@@ -220,21 +197,7 @@ def build_team_achievements() -> pd.DataFrame:
     return df
 
 
-def download_fifa_rankings(force: bool = False) -> pd.DataFrame:
-    """Backward-compatible alias for FIFA rankings fetch."""
-    return fetch_fifa_rankings(force=force)
-
-
-def download_team_achievements(force: bool = False) -> pd.DataFrame:
-    """Build hybrid team achievements locally (canonical + martj42 participation)."""
-    path = RAW_DIR / "team_achievements.csv"
-    if path.exists() and not force:
-        return pd.read_csv(path)
-    return build_team_achievements()
-
-
 def load_and_normalize_results() -> pd.DataFrame:
-    """Load results.csv with normalized team names and parsed dates."""
     path = RAW_DIR / "results.csv"
     if not path.exists():
         path = RAW_DIR / "international_results.csv"
@@ -252,7 +215,6 @@ def load_and_normalize_results() -> pd.DataFrame:
 
 
 def get_tournament_categories(results: pd.DataFrame) -> pd.DataFrame:
-    """Tag matches by type: World Cup, continental, friendly, qualifier, other."""
     df = results.copy()
     t = df["tournament"].fillna("").str.lower()
 

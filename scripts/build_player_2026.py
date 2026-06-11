@@ -1,14 +1,9 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-Build 2026 player award features and supporting outputs.
-
-Group simulation must exist before player features are built (for progression_factor).
-Normally written by build_wc2026.py from the same full-tournament sim run.
-If missing, this script runs a fallback group-only sim first (unless --skip-sim).
-
-Usage:
-    python scripts/build_player_2026.py
-    python scripts/build_player_2026.py --no-fetch-club --use-cache
-    python scripts/build_player_2026.py --run-group-sim   REM player-only refresh
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import argparse
@@ -33,9 +28,6 @@ def ensure_group_simulation(
     run_group_sim: bool,
     n_simulations: int = 500,
 ) -> None:
-    """
-    Player features read group_simulation_2026.csv during build  -  run sim first if needed.
-    """
     if GROUP_SIM_PATH.exists() and not run_group_sim:
         print(f"Using group simulation -> {GROUP_SIM_PATH}")
         return
@@ -48,7 +40,7 @@ def ensure_group_simulation(
             )
         return
 
-    print("\n[Pre] WC 2026 group simulation (before player features)...")
+    print("\n[Pre] Group simulation...")
     run_wc2026_group_simulation(n_simulations=n_simulations)
 
 
@@ -91,7 +83,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--no-fetch-club",
         action="store_true",
-        help="Skip club HTTP fetch (use cached data/raw/club/ JSON only)",
+        help="Skip club HTTP fetch (use data/raw/club/ JSON or committed player_club_2026.csv)",
     )
     parser.add_argument(
         "--fetch-club-force",

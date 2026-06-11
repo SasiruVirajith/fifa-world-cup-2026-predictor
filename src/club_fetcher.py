@@ -1,11 +1,9 @@
-"""
-club_fetcher.py
-───────────────
-Orchestrate club stat layers for the 2026 player pipeline:
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-  Layer 2  -  Understat (Big 5 xG/xA)
-  Layer 3  -  API-Football (Tier B + Big 5 fallback)
-  Layer 4  -  intl proxies applied downstream in player_features_2026
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from __future__ import annotations
@@ -32,14 +30,9 @@ def fetch_club_stats(
     force: bool = False,
     ttl_days: int = CLUB_CACHE_TTL_DAYS,
 ) -> tuple[pd.DataFrame, ClubFetchReport]:
-    """
-    Fetch all club player rows and return a unified normalized DataFrame.
-
-    API-Football Big 5 is only requested when Understat returns no rows.
-    """
     report = ClubFetchReport()
 
-    print("  [Layer 2] Understat  -  Big 5...")
+    print("  Understat (Big 5)...")
     understat_df, u_report = fetch_understat_player_stats(force=force, ttl_days=ttl_days)
     report.understat = u_report
     report.understat_rows = len(understat_df)
@@ -50,13 +43,13 @@ def fetch_club_stats(
             f"({u_report.ok} fetched, {u_report.cached} cached)",
         )
     elif u_report.failed:
-        print("       Understat: unavailable  -  will use API-Football for Big 5")
+        print("       Understat unavailable, falling back to API-Football for Big 5")
         for err in u_report.errors[:3]:
             print(f"         {err}")
 
     need_big5_api = understat_df.empty
     suffix = " + Big 5 fallback" if need_big5_api else ""
-    print(f"  [Layer 3] API-Football  -  Tier B{suffix}...")
+    print(f"  API-Football (Tier B{suffix})...")
     api_df, a_report = fetch_api_football_player_stats(
         include_big5=need_big5_api,
         include_tier_b=True,

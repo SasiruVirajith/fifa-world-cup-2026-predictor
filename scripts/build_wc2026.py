@@ -1,12 +1,9 @@
-"""
-Full WC 2026 pipeline:
-  1. Download historical data (martj42 + FIFA)
-  2. Build match features
-  3. Train match model
-  4. Run tournament simulations (champion + group-stage CSVs)
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
 
-By default re-downloads martj42 and FIFA on every run so predictions use the
-latest available data. Use --use-cache to keep existing raw CSVs.
+"""
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 import sys
@@ -29,17 +26,13 @@ def run_wc2026_pipeline(
     n_simulations: int = 5000,
     *,
     refresh_data: bool = True,
+    n_workers: int | None = None,
 ):
-    """Download data, rebuild features, retrain, and simulate the WC 2026 tournament."""
-    print("=" * 60)
-    print("  WC 2026 Full Build Pipeline")
-    print("=" * 60)
-
-    print("\n[1/5] Downloading historical data...")
+    print("\n[1/5] Historical data...")
     if refresh_data:
-        print("  (refresh_data=True  -  fetching latest martj42 + FIFA)")
+        print("  fetching martj42 + FIFA")
     else:
-        print("  (refresh_data=False  -  using TTL cache for raw downloads)")
+        print("  using cached raw files")
     download_martj42_dataset(force=refresh_data)
     fetch_fifa_rankings(force=refresh_data)
     build_team_achievements()
@@ -52,7 +45,7 @@ def run_wc2026_pipeline(
     train_match_model()
 
     print("\n[4/5] Running tournament simulations...")
-    results = run_wc2026_simulation(n_simulations=n_simulations)
+    results = run_wc2026_simulation(n_simulations=n_simulations, n_workers=n_workers)
 
     meta_path = write_build_metadata(
         n_simulations=n_simulations,
@@ -63,8 +56,16 @@ def run_wc2026_pipeline(
     return results
 
 
-def main(n_simulations: int = 5000, refresh_data: bool = True):
-    return run_wc2026_pipeline(n_simulations=n_simulations, refresh_data=refresh_data)
+def main(
+    n_simulations: int = 5000,
+    refresh_data: bool = True,
+    n_workers: int | None = None,
+):
+    return run_wc2026_pipeline(
+        n_simulations=n_simulations,
+        refresh_data=refresh_data,
+        n_workers=n_workers,
+    )
 
 
 if __name__ == "__main__":
@@ -72,6 +73,12 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="WC 2026 champion pipeline")
     parser.add_argument("--simulations", type=int, default=5000)
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=None,
+        help="Parallel simulation workers (default: min(CPU cores, 4))",
+    )
     parser.add_argument(
         "--use-cache",
         action="store_true",
@@ -81,4 +88,5 @@ if __name__ == "__main__":
     main(
         n_simulations=args.simulations,
         refresh_data=not args.use_cache,
+        n_workers=args.workers,
     )

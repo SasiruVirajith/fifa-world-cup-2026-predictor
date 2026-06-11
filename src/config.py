@@ -1,29 +1,21 @@
+# Copyright (c) 2026 Sasiru Virajith Kankanamge
+# SPDX-License-Identifier: MIT
+
 """
-config.py
-─────────
-Central constants for the World Cup Predictor project.
+FIFA World Cup 2026 Predictor
+Built by: K. Sasiru Virajith
 """
 
 from pathlib import Path
 
-# ── Paths ──────────────────────────────────────────────────────────────────
 ROOT_DIR = Path(__file__).parent.parent
 RAW_DIR = ROOT_DIR / "data" / "raw"
 PROCESSED_DIR = ROOT_DIR / "data" / "processed"
 MODELS_DIR = ROOT_DIR / "models"
 OUTPUTS_DIR = ROOT_DIR / "outputs"
 
-# ── Tournament years ─────────────────────────────────────────────────────────
 WC_YEARS = [1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022]
 
-WC_START_DATES = {
-    1990: "1990-06-08", 1994: "1994-06-17", 1998: "1998-06-10",
-    2002: "2002-05-31", 2006: "2006-06-09", 2010: "2010-06-11",
-    2014: "2014-06-12", 2018: "2018-06-14", 2022: "2022-11-20",
-    2026: "2026-06-11",
-}
-
-# ── martj42 international results (Kaggle mirror on GitHub) ─────────────────
 MARTJ42_BASE = "https://raw.githubusercontent.com/martj42/international_results/master"
 MARTJ42_FILES = {
     "results": "results.csv",
@@ -34,15 +26,12 @@ MARTJ42_FILES = {
 
 INTERNATIONAL_RESULTS_URL = f"{MARTJ42_BASE}/results.csv"
 
-# Official FIFA rankings API (men's)
 FIFA_RANKINGS_API = "https://api.fifa.com/api/v3/rankings"
 FIFA_RANKINGS_LIMIT = 300
 
-# Match model training window
 MATCH_MODEL_START_YEAR = 2000
 RECENT_FORM_YEARS = 4  # friendlies + tournaments in last N years weighted heavily
 
-# ── Team name harmonization ───────────────────────────────────────────────────
 TEAM_ALIASES = {
     "Korea Republic": "South Korea",
     "Republic of Korea": "South Korea",
@@ -76,9 +65,6 @@ TEAM_ALIASES = {
     "SUR": "Suriname",
 }
 
-# ── WC 2026 format ───────────────────────────────────────────────────────────
-# Official Final Draw (all 48 teams confirmed, playoffs resolved)
-# Knockout: top 2 per group (24) + 8 best third-place teams -> Round of 32
 WC2026_GROUPS = {
     "A": ["Mexico", "South Korea", "South Africa", "Czechia"],
     "B": ["Canada", "Switzerland", "Qatar", "Bosnia and Herzegovina"],
@@ -129,17 +115,14 @@ CLUB_SEASONS = [2024, 2025]
 
 
 def club_seasons_from_config(cfg: dict) -> list[int]:
-    """Resolve club stat seasons from config (supports legacy single ``season`` key)."""
     if cfg.get("seasons"):
         return [int(s) for s in cfg["seasons"]]
     if cfg.get("season") is not None:
         return [int(cfg["season"])]
     return list(CLUB_SEASONS)
 
-# ── 2026 player award pipeline ───────────────────────────────────────────────
 PLAYER_INTL_START = "2023-01-01"
-# Scale raw rate×matches estimate to historical WC Golden Boot band (~6–8 for favorites)
-GOLDEN_BOOT_GOALS_CALIBRATION = 1.70
+GOLDEN_BOOT_GOALS_CALIBRATION = 1.70  # scale to historical WC top-scorer band (~6–8)
 CLUB_RAW_DIR = RAW_DIR / "club"
 CLUB_RAW_UNDERSTAT = CLUB_RAW_DIR / "understat"
 CLUB_RAW_API_FOOTBALL = CLUB_RAW_DIR / "api_football"
@@ -150,30 +133,6 @@ API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
 API_FOOTBALL_KEY_ENV = "APIFOOTBALL_KEY"
 API_FOOTBALL_RATE_LIMIT_SEC = 6  # free tier: 10 req/min
 
-# Big 5  -  Understat (primary) with API-Football fallback
-UNDERSTAT_LEAGUE_KEYS = [
-    "ENG-Premier League",
-    "ESP-La Liga",
-    "GER-Bundesliga",
-    "ITA-Serie A",
-    "FRA-Ligue 1",
-]
-
-# Tier B  -  API-Football only (MLS, Saudi, etc.)
-API_FOOTBALL_TIER_B_KEYS = [
-    "POR-Primeira Liga",
-    "NED-Eredivisie",
-    "BEL-Belgian Pro League",
-    "TUR-Super Lig",
-    "ENG-Championship",
-    "USA-MLS",
-    "MEX-Liga MX",
-    "KSA-Saudi Pro League",
-    "BRA-Serie A",
-    "ARG-Primera Division",
-]
-
-# Tournament weighting for international goal involvement
 TOURNAMENT_TIER_WEIGHTS = {
     "world_cup": 1.0,
     "major_continental": 1.0,
@@ -183,7 +142,6 @@ TOURNAMENT_TIER_WEIGHTS = {
     "other": 0.5,
 }
 
-# Likely #1 GK per confirmed WC 2026 nation (updated when squads are named)
 PRIMARY_GK_2026 = {
     "Algeria": "Anthony Mandrea",
     "Argentina": "Emiliano Martínez",
