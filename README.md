@@ -189,7 +189,7 @@ football-predictor/
 
 ```cmd
 git clone https://github.com/SasiruVirajith/fifa-world-cup-2026-predictor.git
-cd football-predictor
+cd fifa-world-cup-2026-predictor
 py -3.12 -m venv venv
 venv\Scripts\activate
 python -m pip install --upgrade pip
