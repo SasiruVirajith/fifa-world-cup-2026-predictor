@@ -1,12 +1,12 @@
 # World Cup Predictor
 
-An ML-powered **FIFA World Cup 2026** forecasting toolkit. It combines a Gradient Boosting match model trained on **25,000+ international fixtures** (martj42, 1872-present) with full-tournament Monte Carlo simulation, player award scoring (Golden Boot, Golden Glove, Golden Ball), and team-level surprise/upset analysis versus FIFA rankings.
+An ML-powered **FIFA World Cup 2026** predictor. It combines a Gradient Boosting match model trained on **25,000+ international fixtures** (martj42, 1872-present) with full-tournament Monte Carlo simulation, player award scoring (Golden Boot, Golden Glove, Golden Ball), and team-level surprise/upset analysis versus FIFA rankings.
 
 The project ships with pre-built outputs so you can open the dashboard immediately - no API keys required for testing.
 
 ---
 
-## What you get
+## What is included
 
 | Output | Description |
 |--------|-------------|
@@ -42,7 +42,7 @@ Player tabs are **rule-based composite pipelines** in `player_features_2026.py`,
 | **Golden Glove** | Primary NT goalkeeper, save %, clean sheets, goals against per 90, team defensive progression |
 | **Golden Ball** | Blend of striker and playmaker scores × knockout progression factor |
 
-Club stats come from a committed snapshot (`player_club_2026.csv`) on fresh clones. Maintainers can refresh via API-Football and Understat (Path 4).
+Club stats come from a committed snapshot (`player_club_2026.csv`) on fresh clones. If anyone wants to, they can refresh via API-Football and Understat (Path 4). Not needed since the domestic club seasons are done for both seasons 2024/25 and 2025/26.
 
 ### WC 2026 format (simulated)
 
@@ -52,7 +52,7 @@ Club stats come from a committed snapshot (`player_club_2026.csv`) on fresh clon
 
 ---
 
-## Dashboard
+## Streamlit Dashboard
 
 | Tab | What it shows |
 |-----|---------------|
@@ -63,7 +63,49 @@ Club stats come from a committed snapshot (`player_club_2026.csv`) on fresh clon
 | **Biggest Upset (team)** | Top-20 FIFA nations underperforming vs ranking expectation |
 | **Biggest Surprise (team)** | Lower-ranked nations overperforming in sims |
 
-The sidebar can re-run a quick champion simulation (uses cached model + features). Player tabs read pre-built CSVs unless you rebuild (Path 3).
+
+---
+
+## Predicted Winner: Argentina
+
+![Screenshot from the dashboard](src/img/wc-win.png)
+
+**_Note:_** The bookmakers predict Spain to win, but my data driven model predicts Argentina :)
+
+---
+
+## Predicted Golden Boot Winner: Harry Kane (ENG)
+
+![Screenshot from the dashboard](src/img/wc-gbt.png)
+
+
+---
+
+## Predicted Golden Glove Winner: Emi Martínez (ARG)
+
+![Screenshot from the dashboard](src/img/wc-ggl.png)
+
+
+---
+
+## Predicted Golden Ball Winner: Harry Kane (ENG)
+
+![Screenshot from the dashboard](src/img/wc-gbl.png)
+
+
+---
+
+## Predicted Biggest Upset Team: Netherlands (NED)
+
+![Screenshot from the dashboard](src/img/wc-ups.png)
+
+
+---
+
+## Predicted Biggest Surprise Team: Canada (CAN)
+
+![Screenshot from the dashboard](src/img/wc-spr.png)
+
 
 ---
 
@@ -146,7 +188,7 @@ football-predictor/
 **Python 3.12** recommended (`py -3.12`). One-time from the project folder:
 
 ```cmd
-git clone <repo-url>
+git clone https://github.com/SasiruVirajith/fifa-world-cup-2026-predictor.git
 cd football-predictor
 py -3.12 -m venv venv
 venv\Scripts\activate
@@ -170,7 +212,7 @@ No `.env` file is required for the paths below unless you are refreshing club da
 
 Pick **one path** depending on how much you want to rebuild.
 
-### Path 1 - Dashboard only (recommended for testers)
+### Path 1 - Dashboard only
 
 Uses committed `data/processed/`, `models/`, and `outputs/`. Fastest way to explore the app.
 
@@ -195,7 +237,7 @@ Refreshes champion probabilities and group-stage Monte Carlo outputs. **Player t
 
 ```cmd
 venv\Scripts\activate
-python scripts/build_wc2026.py --use-cache --simulations 5000
+python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run is the better
 python -m streamlit run app.py
 ```
 
@@ -215,13 +257,13 @@ python -m streamlit run app.py
 
 ---
 
-### Path 3 - Full rebuild: tournament + player awards
+### Path 3 - Full rebuild: tournament + player awards (Recommended)
 
 Run **in this order**. Uses the committed club snapshot (`player_club_2026.csv`) when raw club JSON is not present - **no API key on a fresh clone**.
 
 ```cmd
 venv\Scripts\activate
-python scripts/build_wc2026.py --use-cache --simulations 5000
+python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run is the better
 python scripts/build_player_2026.py --no-fetch-club --use-cache
 python -m streamlit run app.py
 ```
@@ -246,7 +288,7 @@ REM Edit .env and set APIFOOTBALL_KEY=your_key_here
 
 venv\Scripts\activate
 python scripts/fetch_club_stats.py --force
-python scripts/build_wc2026.py --use-cache --simulations 5000
+python scripts/build_wc2026.py --use-cache --simulations 5000       #The more simulations you run is the better
 python scripts/build_player_2026.py --no-fetch-club --use-cache
 python -m streamlit run app.py
 ```
@@ -343,6 +385,19 @@ python scripts/build_player_2026.py --no-fetch-club --use-cache --run-group-sim
 
 ---
 
+## Note
+
+None of the predictions are a guarentee. At the end of the day football has more factors than skills and luck. This is merely a data-driven prediction. Football is not deterministic :)
+
+---
+
 ## Built with
 
 Python · pandas · NumPy · scikit-learn · Streamlit · Plotly · cloudscraper · martj42 · API-Football
+
+---
+
+## License
+
+- MIT License: Copyright (c) 2026 Sasiru Virajith Kankanamge
+- This project is intended for educational and research purposes only.
