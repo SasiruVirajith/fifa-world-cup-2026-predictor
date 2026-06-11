@@ -1,8 +1,8 @@
 # World Cup Predictor
 
-An ML-powered **FIFA World Cup 2026** forecasting toolkit. It combines a Gradient Boosting match model trained on **25,000+ international fixtures** (martj42, 1872–present) with full-tournament Monte Carlo simulation, player award scoring (Golden Boot, Golden Glove, Golden Ball), and team-level surprise/upset analysis versus FIFA rankings.
+An ML-powered **FIFA World Cup 2026** forecasting toolkit. It combines a Gradient Boosting match model trained on **25,000+ international fixtures** (martj42, 1872-present) with full-tournament Monte Carlo simulation, player award scoring (Golden Boot, Golden Glove, Golden Ball), and team-level surprise/upset analysis versus FIFA rankings.
 
-The project ships with pre-built outputs so you can open the dashboard immediately — no API keys required for testing.
+The project ships with pre-built outputs so you can open the dashboard immediately - no API keys required for testing.
 
 ---
 
@@ -11,9 +11,9 @@ The project ships with pre-built outputs so you can open the dashboard immediate
 | Output | Description |
 |--------|-------------|
 | **WC 2026 champion probabilities** | Full knockout bracket simulation (48-team format) |
-| **Golden Boot ranking** | Top scorers — international form + league-adjusted club stats × team progression |
-| **Golden Glove ranking** | Best goalkeeper — NT #1, shot-stopping, clean sheets × defensive team path |
-| **Golden Ball ranking** | Player of the tournament — attack + creation × knockout depth |
+| **Golden Boot ranking** | Top scorers - international form + league-adjusted club stats × team progression |
+| **Golden Glove ranking** | Best goalkeeper - NT #1, shot-stopping, clean sheets × defensive team path |
+| **Golden Ball ranking** | Player of the tournament - attack + creation × knockout depth |
 | **Biggest upset (team)** | FIFA top-20 nations projected below their ranking in sims |
 | **Biggest surprise (team)** | FIFA rank 28+ underdogs punching above their weight |
 
@@ -25,10 +25,10 @@ All of the above are exposed in a **6-tab Streamlit dashboard** with interactive
 
 ### Tournament simulation
 
-1. **Historical data** — martj42 international results and goalscorers are downloaded from GitHub; FIFA rankings provide a live strength baseline.
-2. **Feature engineering** — `match_features.py` builds Elo-style ratings, recent form, head-to-head, achievement history, and home-advantage signals.
-3. **Match model** — A scikit-learn Gradient Boosting classifier predicts home win / draw / away win for each fixture.
-4. **Monte Carlo** — `wc2026_simulator.py` plays out the official 2026 group draw thousands of times, resolves the Round of 32 (top 2 + 8 best third-place teams), and runs knockouts through the final.
+1. **Historical data** - martj42 international results and goalscorers are downloaded from GitHub; FIFA rankings provide a live strength baseline.
+2. **Feature engineering** - `match_features.py` builds Elo-style ratings, recent form, head-to-head, achievement history, and home-advantage signals.
+3. **Match model** - A scikit-learn Gradient Boosting classifier predicts home win / draw / away win for each fixture.
+4. **Monte Carlo** - `wc2026_simulator.py` plays out the official 2026 group draw thousands of times, resolves the Round of 32 (top 2 + 8 best third-place teams), and runs knockouts through the final.
 
 Knockout rounds apply increasing score variance (group stage is relatively stable; finals are more volatile) to reflect single-elimination unpredictability.
 
@@ -48,7 +48,7 @@ Club stats come from a committed snapshot (`player_club_2026.csv`) on fresh clon
 
 - **48 teams**, 12 groups of 4 (official draw in `src/config.py` → `WC2026_GROUPS`)
 - Top 2 per group + **8 best third-place** teams → Round of 32 → final
-- No playoff placeholders — all 48 slots are confirmed
+- No playoff placeholders - all 48 slots are confirmed
 
 ---
 
@@ -89,8 +89,8 @@ flowchart LR
 
 **Two build pipelines:**
 
-1. **Champion** — `scripts/build_wc2026.py` → match features, `models/match_outcome.pkl`, champion + group simulation CSVs
-2. **Player awards** — `scripts/build_player_2026.py` → international/club features, Boot/Glove/Ball scores, team upset/surprise (reads `group_simulation_2026.csv` from step 1)
+1. **Champion** - `scripts/build_wc2026.py` → match features, `models/match_outcome.pkl`, champion + group simulation CSVs
+2. **Player awards** - `scripts/build_player_2026.py` → international/club features, Boot/Glove/Ball scores, team upset/surprise (reads `group_simulation_2026.csv` from step 1)
 
 ---
 
@@ -170,7 +170,7 @@ No `.env` file is required for the paths below unless you are refreshing club da
 
 Pick **one path** depending on how much you want to rebuild.
 
-### Path 1 — Dashboard only (recommended for testers)
+### Path 1 - Dashboard only (recommended for testers)
 
 Uses committed `data/processed/`, `models/`, and `outputs/`. Fastest way to explore the app.
 
@@ -189,7 +189,7 @@ python -m streamlit run app.py
 
 ---
 
-### Path 2 — Rebuild tournament sims only
+### Path 2 - Rebuild tournament sims only
 
 Refreshes champion probabilities and group-stage Monte Carlo outputs. **Player tabs still use committed player CSVs** unless you also run Path 3.
 
@@ -203,7 +203,7 @@ python -m streamlit run app.py
 |---|---|
 | **API key** | No |
 | **`.env`** | No |
-| **Time** | ~1–3 min (5000 sims, parallel) |
+| **Time** | ~1-3 min (5000 sims, parallel) |
 
 **Useful flags:**
 
@@ -215,9 +215,9 @@ python -m streamlit run app.py
 
 ---
 
-### Path 3 — Full rebuild: tournament + player awards
+### Path 3 - Full rebuild: tournament + player awards
 
-Run **in this order**. Uses the committed club snapshot (`player_club_2026.csv`) when raw club JSON is not present — **no API key on a fresh clone**.
+Run **in this order**. Uses the committed club snapshot (`player_club_2026.csv`) when raw club JSON is not present - **no API key on a fresh clone**.
 
 ```cmd
 venv\Scripts\activate
@@ -230,13 +230,13 @@ python -m streamlit run app.py
 |---|---|
 | **API key** | No |
 | **`.env`** | No |
-| **Time** | ~3–6 min total |
+| **Time** | ~3-6 min total |
 
 **Important:** Do **not** run `build_player_2026.py` without `--no-fetch-club` unless you have an API key configured (Path 4). Without it, a sparse in-memory fetch can produce worse player data than the committed snapshot.
 
 ---
 
-### Path 4 — Refresh club data from API (maintainers only)
+### Path 4 - Refresh club data from API (maintainers only)
 
 Only needed when updating **2024/25 + 2025/26** club stats from live sources. Testers on a fresh clone can skip this entirely.
 
@@ -331,15 +331,15 @@ python scripts/build_player_2026.py --no-fetch-club --use-cache --run-group-sim
 **Cache TTL:**
 
 - martj42 / FIFA: **7 days** (`CACHE_TTL_DAYS`)
-- Club snapshot: **long cache** (`CLUB_CACHE_TTL_DAYS`) — refresh when updating club seasons via `config/api_football.json` and `config/understat_leagues.json`
+- Club snapshot: **long cache** (`CLUB_CACHE_TTL_DAYS`) - refresh when updating club seasons via `config/api_football.json` and `config/understat_leagues.json`
 
 ---
 
 ## Design notes
 
-- **League difficulty** — Domestic league quality scales club and international credibility in Golden Boot scoring. Players in weaker leagues (e.g. Saudi Pro League) get a lower boot score multiplier even with strong international records; `predicted_goals` uses a separate blend and may rank them higher.
-- **Name harmonization** — International data uses full names (`Harry Kane`); club API data uses short names (`H. Kane`). The pipeline merges on surname + nation when exact names differ.
-- **Committed snapshots** — `player_club_2026.csv`, feature CSVs, model, and outputs are in git so Path 1 works offline after clone.
+- **League difficulty** - Domestic league quality scales club and international credibility in Golden Boot scoring. Players in weaker leagues (e.g. Saudi Pro League) get a lower boot score multiplier even with strong international records; `predicted_goals` uses a separate blend and may rank them higher.
+- **Name harmonization** - International data uses full names (`Harry Kane`); club API data uses short names (`H. Kane`). The pipeline merges on surname + nation when exact names differ.
+- **Committed snapshots** - `player_club_2026.csv`, feature CSVs, model, and outputs are in git so Path 1 works offline after clone.
 
 ---
 

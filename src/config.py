@@ -122,7 +122,7 @@ def club_seasons_from_config(cfg: dict) -> list[int]:
     return list(CLUB_SEASONS)
 
 PLAYER_INTL_START = "2023-01-01"
-GOLDEN_BOOT_GOALS_CALIBRATION = 1.70  # scale to historical WC top-scorer band (~6–8)
+GOLDEN_BOOT_GOALS_CALIBRATION = 1.70  # scale to historical WC top-scorer band (~6-8)
 CLUB_RAW_DIR = RAW_DIR / "club"
 CLUB_RAW_UNDERSTAT = CLUB_RAW_DIR / "understat"
 CLUB_RAW_API_FOOTBALL = CLUB_RAW_DIR / "api_football"

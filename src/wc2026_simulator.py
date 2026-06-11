@@ -519,7 +519,7 @@ def _write_group_simulation_csv(
 
 
 def _default_worker_count() -> int:
-    # Cap at 4 by default — safer on laptops with limited RAM; override with --workers
+    # Cap at 4 by default - safer on laptops with limited RAM; override with --workers
     return max(1, min(os.cpu_count() or 1, 4))
 
 
