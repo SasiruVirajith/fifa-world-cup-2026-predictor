@@ -1,0 +1,46 @@
+{
+  "seasons": [2024, 2025],
+  "big5_leagues": {
+    "39": "eng_premier",
+    "140": "esp_laliga",
+    "78": "ger_bundesliga",
+    "135": "ita_serie_a",
+    "61": "fra_ligue1"
+  },
+  "tier_b_leagues": {
+    "94": "por_primeira",
+    "88": "ned_eredivisie",
+    "144": "bel_pro",
+    "203": "tur_super_lig",
+    "40": "eng_championship",
+    "253": "usa_mls",
+    "262": "mex_liga_mx",
+    "307": "ksa_pro",
+    "71": "bra_serie_a",
+    "128": "arg_primera"
+  },
+  "target_teams": [
+    {"id": 9568, "label": "inter_miami"},
+    {"id": 2939, "label": "al_nassr"},
+    {"id": 2932, "label": "al_hilal"},
+    {"id": 1616, "label": "la_galaxy"},
+    {"id": 1597, "label": "lafc"}
+  ],
+  "league_difficulty": {
+    "39": 1.0,
+    "140": 1.0,
+    "78": 1.0,
+    "135": 1.0,
+    "61": 1.0,
+    "94": 0.82,
+    "88": 0.78,
+    "144": 0.76,
+    "203": 0.72,
+    "40": 0.68,
+    "71": 0.74,
+    "128": 0.70,
+    "253": 0.52,
+    "262": 0.54,
+    "307": 0.35
+  }
+}

@@ -263,16 +263,40 @@ def simulate_one_tournament(
     model,
     feature_cols: list,
     rng: np.random.Generator,
-) -> str:
-    """Run one full WC 2026 simulation. Returns champion team name."""
+) -> tuple[str, dict[str, dict]]:
+    """
+    Run one full WC 2026 simulation.
+
+    Returns (champion, group_stats) where group_stats[team] has
+    points, qualified (incl. best third-place), top_group, group.
+    """
     state = TournamentState()
 
     third_places = []
     qualified = []
+    team_groups = {
+        team: grp for grp, teams in WC2026_GROUPS.items() for team in teams
+    }
+    group_stats: dict[str, dict] = {
+        team: {
+            "points": 0.0,
+            "qualified": False,
+            "top_group": False,
+            "group": team_groups.get(team),
+        }
+        for team in WC2026_ALL_TEAMS
+    }
 
     for group_name, teams in WC2026_GROUPS.items():
         table = simulate_group(teams, model, feature_cols, state, rng)
         ranked = table.reset_index().rename(columns={"index": "team"})
+        group_winner = ranked.iloc[0]["team"]
+        group_stats[group_winner]["top_group"] = True
+        for _, row in ranked.iterrows():
+            team = row["team"]
+            group_stats[team]["points"] = float(row["points"])
+            group_stats[team]["group"] = group_name
+
         qualified.append(ranked.iloc[0]["team"])
         qualified.append(ranked.iloc[1]["team"])
         third_places.append({
@@ -287,6 +311,8 @@ def simulate_one_tournament(
     ranked_third = rank_third_places(third_places)
     qualified += [r["team"] for r in ranked_third[:8]]
     qualified = list(dict.fromkeys(qualified))
+    for team in qualified:
+        group_stats[team]["qualified"] = True
 
     # Seed knockout bracket by FIFA points (higher seed = slight structural edge via ordering)
     qualified.sort(key=lambda t: state.fifa_points.get(t, 0), reverse=True)
@@ -309,7 +335,35 @@ def simulate_one_tournament(
             next_round.append(current[-1])
         current = next_round
 
-    return current[0] if current else qualified[0]
+    champion = current[0] if current else qualified[0]
+    return champion, group_stats
+
+
+def _write_group_simulation_csv(
+    qualify_counts: dict[str, int],
+    top_group_counts: dict[str, int],
+    points_total: dict[str, float],
+    n_simulations: int,
+) -> pd.DataFrame:
+    """Persist group-stage aggregates alongside champion probabilities."""
+    team_groups = {
+        team: grp for grp, teams in WC2026_GROUPS.items() for team in teams
+    }
+    rows = []
+    for team in WC2026_ALL_TEAMS:
+        rows.append({
+            "team": team,
+            "group": team_groups.get(team),
+            "p_qualify": qualify_counts[team] / n_simulations,
+            "p_top_group": top_group_counts[team] / n_simulations,
+            "expected_points": points_total[team] / n_simulations,
+            "year": 2026,
+        })
+    df = pd.DataFrame(rows).sort_values("p_qualify", ascending=False)
+    save_path = OUTPUTS_DIR / "group_simulation_2026.csv"
+    df.to_csv(save_path, index=False)
+    print(f"  [OK] Group-stage simulation -> {save_path}")
+    return df
 
 
 def run_wc2026_simulation(
@@ -328,12 +382,26 @@ def run_wc2026_simulation(
 
     rng = np.random.default_rng(seed)
     win_counts = {team: 0 for team in WC2026_ALL_TEAMS}
+    qualify_counts = {team: 0 for team in WC2026_ALL_TEAMS}
+    top_group_counts = {team: 0 for team in WC2026_ALL_TEAMS}
+    points_total = {team: 0.0 for team in WC2026_ALL_TEAMS}
 
     for i in range(n_simulations):
         if (i + 1) % 500 == 0:
             print(f"  ... {i + 1}/{n_simulations}")
-        champion = to_wc_team(simulate_one_tournament(model, feature_cols, rng))
+        champion, group_stats = simulate_one_tournament(model, feature_cols, rng)
+        champion = to_wc_team(champion)
         win_counts[champion] = win_counts.get(champion, 0) + 1
+        for team, stats in group_stats.items():
+            points_total[team] += stats["points"]
+            if stats["qualified"]:
+                qualify_counts[team] += 1
+            if stats["top_group"]:
+                top_group_counts[team] += 1
+
+    _write_group_simulation_csv(
+        qualify_counts, top_group_counts, points_total, n_simulations,
+    )
 
     results = pd.DataFrame([
         {

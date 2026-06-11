@@ -15,11 +15,47 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.config import MATCH_MODEL_START_YEAR, PROCESSED_DIR, RAW_DIR
-from src.features import calculate_elo_ratings
 from src.historical_data import get_tournament_categories, load_and_normalize_results
 from src.labels import normalize_team_name
 
 PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def calculate_elo_ratings(
+    results_df: pd.DataFrame,
+    k: int = 32,
+    initial_elo: int = 1500,
+) -> dict:
+    """ELO ratings for all teams from international match results."""
+    elo = {}
+    results_df = results_df.sort_values("date").copy()
+
+    for _, row in results_df.iterrows():
+        home = normalize_team_name(row["home_team"])
+        away = normalize_team_name(row["away_team"])
+
+        if home not in elo:
+            elo[home] = initial_elo
+        if away not in elo:
+            elo[away] = initial_elo
+
+        exp_home = 1 / (1 + 10 ** ((elo[away] - elo[home]) / 400))
+        exp_away = 1 - exp_home
+
+        home_goals = row["home_score"]
+        away_goals = row["away_score"]
+
+        if home_goals > away_goals:
+            actual_home, actual_away = 1.0, 0.0
+        elif home_goals == away_goals:
+            actual_home, actual_away = 0.5, 0.5
+        else:
+            actual_home, actual_away = 0.0, 1.0
+
+        elo[home] += k * (actual_home - exp_home)
+        elo[away] += k * (actual_away - exp_away)
+
+    return elo
 
 
 def _team_result(home_score, away_score, perspective: str) -> float:

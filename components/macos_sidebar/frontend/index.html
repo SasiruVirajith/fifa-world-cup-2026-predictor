@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: transparent;
+      color: #1d1d1f;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.dark {
+      color: #f5f5f7;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding: 8px 0 16px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 36px;
+      padding: 4px 0;
+    }
+
+    .label {
+      font-size: 13px;
+      font-weight: 500;
+      color: inherit;
+    }
+
+    /* macOS switch */
+    .switch {
+      position: relative;
+      width: 51px;
+      height: 31px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .switch-track {
+      position: absolute;
+      inset: 0;
+      background: #d1d1d6;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark .switch-track {
+      background: #48484a;
+      box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+    }
+
+    .switch-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 27px;
+      height: 27px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18), 0 1px 1px rgba(0, 0, 0, 0.16);
+      transition: transform 0.2s ease;
+      pointer-events: none;
+    }
+
+    .switch input:checked + .switch-track {
+      background: #34c759;
+    }
+
+    body.dark .switch input:checked + .switch-track {
+      background: #30d158;
+    }
+
+    .switch input:checked ~ .switch-thumb {
+      transform: translateX(20px);
+    }
+
+    /* macOS slider */
+    .slider-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-top: 4px;
+    }
+
+    .slider-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .slider-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #007aff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    body.dark .slider-value {
+      color: #0a84ff;
+    }
+
+    .slider-wrap {
+      --fill-pct: 26%;
+      position: relative;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      margin: 6px 0 4px;
+      padding: 0 11px;
+    }
+
+    .slider-track-bg {
+      position: absolute;
+      left: 11px;
+      right: 11px;
+      top: 11px;
+      height: 6px;
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 0;
+      background: linear-gradient(
+        to right,
+        #007aff 0%,
+        #007aff var(--fill-pct),
+        rgba(120, 120, 128, 0.28) var(--fill-pct),
+        rgba(120, 120, 128, 0.28) 100%
+      );
+    }
+
+    body.dark .slider-track-bg {
+      background: linear-gradient(
+        to right,
+        #0a84ff 0%,
+        #0a84ff var(--fill-pct),
+        rgba(255, 255, 255, 0.18) var(--fill-pct),
+        rgba(255, 255, 255, 0.18) 100%
+      );
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 28px;
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 4px;
+      background: transparent;
+      border: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 0.5px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+      margin-top: -9px;
+    }
+
+    input[type="range"]::-moz-range-track {
+      height: 4px;
+      background: transparent;
+      border: none;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 0.5px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+    }
+
+    input[type="range"]::-moz-range-progress {
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <div class="row">
+      <span class="label">Dark mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-toggle" />
+        <span class="switch-track"></span>
+        <span class="switch-thumb"></span>
+      </label>
+    </div>
+
+    <div class="slider-block">
+      <div class="slider-header">
+        <span class="label">Results to show</span>
+        <span class="slider-value" id="top-n-value">15</span>
+      </div>
+      <div class="slider-wrap" id="slider-wrap">
+        <div class="slider-track-bg"></div>
+        <input type="range" id="top-n-slider" min="3" max="50" value="15" step="1" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const Streamlit = {
+      send(type, data) {
+        window.parent.postMessage(
+          Object.assign({ isStreamlitMessage: true, type }, data || {}),
+          "*"
+        );
+      },
+      setComponentValue(value) {
+        this.send("streamlit:setComponentValue", { value, dataType: "json" });
+      },
+      setFrameHeight(height) {
+        this.send("streamlit:setFrameHeight", { height });
+      },
+      ready() {
+        this.send("streamlit:componentReady", { apiVersion: 1 });
+      },
+    };
+
+    const darkToggle = document.getElementById("dark-toggle");
+    const sliderWrap = document.getElementById("slider-wrap");
+    const topNSlider = document.getElementById("top-n-slider");
+    const topNValue = document.getElementById("top-n-value");
+
+    let syncing = false;
+
+    function updateSliderFill() {
+      const min = Number(topNSlider.min);
+      const max = Number(topNSlider.max);
+      const val = Number(topNSlider.value);
+      const pct = ((val - min) / (max - min)) * 100;
+      topNValue.textContent = val;
+      sliderWrap.style.setProperty("--fill-pct", `${pct}%`);
+    }
+
+    function pushValue() {
+      if (syncing) return;
+      Streamlit.setComponentValue({
+        dark_mode: darkToggle.checked,
+        top_n: Number(topNSlider.value),
+      });
+    }
+
+    darkToggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark", darkToggle.checked);
+      updateSliderFill();
+      pushValue();
+    });
+
+    topNSlider.addEventListener("input", () => {
+      updateSliderFill();
+    });
+
+    topNSlider.addEventListener("change", pushValue);
+
+    function render(args) {
+      syncing = true;
+      const dark = Boolean(args.dark_mode);
+      const topN = Number(args.top_n ?? 15);
+
+      document.body.classList.toggle("dark", dark);
+      darkToggle.checked = dark;
+      topNSlider.value = topN;
+      updateSliderFill();
+      syncing = false;
+    }
+
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      if (!data || !data.isStreamlitMessage) return;
+      if (data.type === "streamlit:render") {
+        render(data.args || {});
+        requestAnimationFrame(() => {
+          updateSliderFill();
+          Streamlit.setFrameHeight(document.body.scrollHeight + 4);
+        });
+      }
+    });
+
+    updateSliderFill();
+
+    window.addEventListener("load", updateSliderFill);
+
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(updateSliderFill).observe(sliderWrap);
+    }
+
+    [50, 200, 500].forEach((ms) => setTimeout(updateSliderFill, ms));
+
+    Streamlit.ready();
+    Streamlit.setFrameHeight(160);
+  </script>
+</body>
+</html>

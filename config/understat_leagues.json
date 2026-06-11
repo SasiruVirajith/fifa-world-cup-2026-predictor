@@ -1,0 +1,10 @@
+{
+  "leagues": {
+    "ENG-Premier League": {"slug": "EPL", "league_id": 1},
+    "ESP-La Liga": {"slug": "La_liga", "league_id": 2},
+    "GER-Bundesliga": {"slug": "Bundesliga", "league_id": 3},
+    "ITA-Serie A": {"slug": "Serie_A", "league_id": 4},
+    "FRA-Ligue 1": {"slug": "Ligue_1", "league_id": 5}
+  },
+  "seasons": [2024, 2025]
+}

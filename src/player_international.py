@@ -10,11 +10,9 @@ import pandas as pd
 
 from src.config import (
     PLAYER_INTL_START,
-    PLAYER_INTL_TRAIN_START,
     RAW_DIR,
     TOURNAMENT_TIER_WEIGHTS,
     WC2026_ALL_TEAMS,
-    WC_START_DATES,
 )
 from src.labels import normalize_player_name, normalize_team_name
 
@@ -128,7 +126,40 @@ def build_international_player_stats(
     agg["intl_goals_per_team_match"] = agg["intl_goals"] / agg["team_intl_matches"].replace(0, pd.NA)
     agg["intl_goals_per_team_match"] = agg["intl_goals_per_team_match"].fillna(0)
     agg["player_norm"] = agg["player"].apply(normalize_player_name)
-    return agg.sort_values("intl_weighted_goals", ascending=False).reset_index(drop=True)
+    return _consolidate_by_player_norm(agg)
+
+
+def _consolidate_by_player_norm(agg: pd.DataFrame) -> pd.DataFrame:
+    """
+    Merge rows that share player_norm + team (e.g. 'Julián Alvarez' vs 'Julián Álvarez').
+    """
+    if agg.empty or "player_norm" not in agg.columns:
+        return agg
+
+    sum_cols = [
+        "intl_goals",
+        "intl_weighted_goals",
+        "intl_penalty_goals",
+        "intl_major_goals",
+        "intl_scoring_matches",
+    ]
+    rows: list[dict] = []
+    for (player_norm, team), grp in agg.groupby(["player_norm", "team"]):
+        if not player_norm:
+            continue
+        best = grp.sort_values("intl_goals", ascending=False).iloc[0]
+        row = {"player": best["player"], "team": team, "player_norm": player_norm}
+        for col in sum_cols:
+            if col in grp.columns:
+                row[col] = grp[col].sum()
+        row["intl_last_goal_date"] = grp["intl_last_goal_date"].max()
+        row["team_intl_matches"] = best.get("team_intl_matches", 0)
+        row["intl_goal_rate"] = row["intl_goals"] / max(row["intl_scoring_matches"], 1)
+        row["intl_goals_per_team_match"] = row["intl_goals"] / max(row["team_intl_matches"], 1)
+        rows.append(row)
+
+    out = pd.DataFrame(rows)
+    return out.sort_values("intl_weighted_goals", ascending=False).reset_index(drop=True)
 
 
 def build_international_team_defense(
@@ -167,10 +198,3 @@ def build_international_team_defense(
             "intl_clean_sheet_pct": clean_sheets / matches if matches else 0.0,
         })
     return pd.DataFrame(records)
-
-
-def international_stats_for_year(year: int, teams: list[str] | None = None) -> pd.DataFrame:
-    """International window ending at WC kickoff for backtest enrichment."""
-    start = PLAYER_INTL_TRAIN_START if year <= 2022 else PLAYER_INTL_START
-    end = WC_START_DATES.get(year, f"{year}-06-11")
-    return build_international_player_stats(teams=teams, start_date=start, end_date=end)

@@ -8,19 +8,12 @@ pandas==2.2.2
 numpy==1.26.4
 
 # Football data sources
-statsbombpy==1.14.0       # StatsBomb open data (WC 2018 + 2022 event data)
-soccerdata==1.6.1         # FBref + Transfermarkt scraping wrapper
+cloudscraper>=1.2.71      # Understat fetch (understat_scraper)
 
 # Machine learning
 scikit-learn==1.4.2
-xgboost==2.0.3
-
-# Explainability
-shap==0.45.1
 
 # Visualisation
-matplotlib==3.8.4
-seaborn==0.13.2
 plotly==5.22.0
 
 # Dashboard

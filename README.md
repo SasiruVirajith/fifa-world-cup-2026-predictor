@@ -1,30 +1,39 @@
 # World Cup Predictor
 
-An ML-powered prediction system for the FIFA World Cup - forecasting **WC 2026 champion probabilities** via full-tournament Monte Carlo simulation, plus award predictions (Golden Boot, Golden Glove, Playmaker) using real football statistics.
+ML-powered **WC 2026** predictor: full-tournament Monte Carlo simulation, player awards (Golden Boot, Golden Glove, Golden Ball), and team surprise/upset vs FIFA ranking.
 
-Built on **25,000+ international matches** (martj42 dataset, 1872–present), Gradient Boosting match outcomes, StatsBomb WC data, and a Streamlit dashboard.
+Built on **25,000+ international matches** (martj42, 1872–present), a Gradient Boosting match model, and a **6-tab Streamlit dashboard**.
 
 ---
 
-## Predictions
+## Streamlit dashboard (6 tabs)
 
-| Prediction | Model type | Key features |
+| Tab | What it shows |
+|---|---|
+| **WC 2026 Winner** | Champion probabilities from full tournament sims |
+| **Golden Boot** | Top scorers  -  intl form + league-difficulty-adjusted club stats × team progression |
+| **Golden Glove** | Best goalkeeper  -  NT #1 + shot-stopping × team defensive path |
+| **Golden Ball** | Player of the tournament  -  attack + creation × knockout depth |
+| **Biggest Upset (team)** | FIFA top-20 nations rated below their ranking in sims |
+| **Biggest Surprise (team)** | FIFA rank 28+ underdogs projected to punch above their weight |
+
+---
+
+## How predictions work
+
+| Output | Method | Key inputs |
 |---|---|---|
-| **WC 2026 champion** | Gradient Boosting + 5000 MC sims | FIFA rank, form, H2H, penalties, achievements, modern strength |
-| Tournament winner (backtest) | XGBoost classifier | ELO rating, squad value, recent form, group difficulty |
-| Golden Boot | XGBoost regressor | xG per 90, shots on target, tournament goals |
-| Golden Glove | XGBoost classifier | Save %, clean sheets, PSxG vs goals allowed |
-| Best Playmaker | Multi-metric ranking | xA, key passes, progressive passes, pass completion |
-| Player of the Tournament | Composite score | Goals+assists, defense, creation, duel win rate |
-| Group Simulator | Monte Carlo (ELO) | Probabilistic group standings (2018/2022 format) |
-| Upset Detector | Logistic classifier | ELO gap, form volatility |
+| WC 2026 champion | GBM match model + Monte Carlo sims | FIFA rank, form, H2H, penalties, achievements |
+| Golden Boot | Composite score (not a separate `.pkl` model) | martj42 intl (2023+), club stats **2024/25 + 2025/26** with **league difficulty** (Saudi/MLS discounted), group/knockout sims |
+| Golden Glove | Composite score | Primary NT GK, save %, clean sheets, team progression |
+| Golden Ball | Composite score | Striker + playmaker form × team progression |
+| Team upset / surprise | Sim vs FIFA expectation | Group sim + champion sim + FIFA rankings |
 
-### WC 2026 tournament format (simulated)
+### WC 2026 format (simulated)
 
-- **48 teams** in 12 groups of 4 (round robin, neutral venues)
-- **Top 2 per group** (24 teams) + **8 best third-place teams** → **Round of 32**
-- Standard knockout bracket through the final
-- Official group draw (playoffs resolved): Mexico/Czechia in A, Bosnia in B, Türkiye in D, Sweden in F, Iraq in I, Congo DR in K, etc.
+- **48 teams**, 12 groups of 4
+- Top 2 per group + 8 best third-place teams → Round of 32 → final
+- Groups configured in `src/config.py` (`WC2026_GROUPS`)
 
 ---
 
@@ -32,22 +41,26 @@ Built on **25,000+ international matches** (martj42 dataset, 1872–present), Gr
 
 ```mermaid
 flowchart LR
-    martj42["martj42 1872-present"] --> historical_data["historical_data.py"]
-    fifa["FIFA rankings"] --> historical_data
-    statsbomb["StatsBomb"] --> data_pipeline["data_pipeline.py"]
-    historical_data --> match_features["match_features.py"]
-    match_features --> match_model["match_model.py"]
-    match_model --> wc2026_sim["WC 2026 simulator"]
-    data_pipeline --> features["features.py"]
-    features --> models_py["models.py"]
-    models_py --> predict_py["predict.py"]
-    wc2026_sim --> streamlit_app["Streamlit app"]
-    predict_py --> streamlit_app
-    simulator["simulator.py"] --> streamlit_app
-    upset_detector["upset_detector.py"] --> streamlit_app
-    player_tournament["player_tournament.py"] --> streamlit_app
-    squad_depth["squad_depth.py"] --> streamlit_app
+    martj42["martj42 + FIFA"] --> historical["historical_data.py"]
+    historical --> match_feat["match_features.py"]
+    match_feat --> match_model["match_model.py"]
+    match_model --> sim["wc2026_simulator.py"]
+    sim --> outputs["outputs/"]
+
+    martj42 --> intl["player_international.py"]
+    club["API-Football + Understat"] --> player_club["player_club.py"]
+    intl --> features["player_features_2026.py"]
+    player_club --> features
+    sim --> team_exp["team_expectations.py"]
+    features --> outputs
+    team_exp --> outputs
+    outputs --> app["app.py"]
 ```
+
+**Two build pipelines:**
+
+1. **Champion**  -  `scripts/build_wc2026.py` → match features, `models/match_outcome.pkl`, champion + **group** sim CSVs (same sim count)
+2. **Player awards**  -  `scripts/build_player_2026.py` → intl/club features, Boot/Glove/Ball scores, team upset/surprise (uses existing `group_simulation_2026.csv`)
 
 ---
 
@@ -55,129 +68,136 @@ flowchart LR
 
 ```
 football-predictor/
+├── app.py                          # Streamlit dashboard (6 tabs)
+├── config/
+│   ├── api_football.json           # leagues, difficulty weights, target teams
+│   └── understat_leagues.json
 ├── data/
-│   ├── raw/              <- downloaded datasets (gitignored)
-│   └── processed/        <- feature CSVs (committed for deploy)
-├── src/
-│   ├── config.py           <- WC2026 groups, martj42 URLs, round variance
-│   ├── historical_data.py  <- download martj42 + FIFA + achievements
-│   ├── match_features.py   <- walk-forward features from 2000+ matches
-│   ├── match_model.py      <- Gradient Boosting match outcome model
-│   ├── wc2026_simulator.py <- full 2026 format Monte Carlo tournament
-│   ├── data_pipeline.py    <- fetch StatsBomb + historical data
-│   ├── features.py         <- multi-year feature engineering
-│   ├── labels.py           <- target variable extraction
-│   ├── statsbomb_features.py
-│   ├── models.py           <- XGBoost award models + SHAP
-│   ├── predict.py          <- inference layer
-│   ├── simulator.py        <- legacy group-stage sim (2018/2022)
-│   ├── upset_detector.py
-│   ├── player_tournament.py
-│   └── squad_depth.py
+│   ├── raw/                        # martj42, FIFA, club cache (mostly gitignored)
+│   └── processed/                  # feature CSVs (committed for deploy)
+│       ├── match_features.csv
+│       ├── team_strength_2026.csv
+│       ├── player_intl_2026.csv
+│       ├── player_club_2026.csv
+│       ├── striker_features.csv
+│       ├── goalkeeper_features.csv
+│       └── playmaker_features.csv
+├── models/
+│   └── match_outcome.pkl           # GBM used by tournament sim
+├── outputs/                        # pre-built results (committed for deploy)
+│   ├── wc2026_champion_probabilities.csv
+│   ├── group_simulation_2026.csv
+│   ├── player_tournament_2026.csv
+│   ├── team_tournament_context_2026.csv
+│   └── build_metadata.json
 ├── scripts/
-│   └── build_wc2026.py     <- one-command full WC 2026 pipeline
-├── models/               <- trained .pkl files
-├── outputs/              <- SHAP plots, rankings, champion probabilities
-├── app.py                <- Streamlit dashboard (9 tabs)
-├── requirements.txt
-├── runtime.txt           <- Python 3.12 for Streamlit Cloud
-└── setup.bat             <- Windows setup script
+│   ├── build_wc2026.py             # champion pipeline
+│   ├── build_player_2026.py        # player awards + team expectations
+│   └── fetch_club_stats.py         # API-Football club snapshot
+└── src/
+    ├── historical_data.py          # martj42 + FIFA download
+    ├── match_features.py           # match-level features + ELO
+    ├── match_model.py              # train match outcome GBM
+    ├── wc2026_simulator.py         # full tournament MC (+ group CSV export)
+    ├── wc2026_group_sim.py         # fallback group-only sim (player-only path)
+    ├── player_international.py     # martj42 intl player stats
+    ├── player_club.py              # club stat loader (API + Understat)
+    ├── player_features_2026.py     # Boot / Glove / Ball scoring
+    ├── team_expectations.py        # upset & surprise teams
+    ├── league_difficulty.py        # domestic league weights
+    ├── predict.py                  # helpers for app.py
+    └── config.py                   # WC 2026 groups, paths, constants
 ```
 
 ---
 
 ## Setup (Windows)
 
-**Requires Python 3.12** (`py -3.12`)
-
-```cmd
-setup.bat
-venv\Scripts\activate
-```
-
-Or manually:
+**Python 3.12** recommended (`py -3.12`). One-time from the project folder:
 
 ```cmd
 py -3.12 -m venv venv
 venv\Scripts\activate
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### WC 2026 champion pipeline (recommended)
+---
 
-Downloads martj42 data, builds match features, trains the match model, and runs 5000 tournament simulations (~10 min):
+## Quick start (no API key)
+
+Uses committed `data/processed/`, `models/`, and `outputs/`:
+
+```cmd
+venv\Scripts\activate
+streamlit run app.py
+```
+
+---
+
+## Full rebuild
+
+### Complete refresh (recommended)
+
+Champion pipeline writes **both** `wc2026_champion_probabilities.csv` and `group_simulation_2026.csv` from the **same** simulation run. Then rebuild player features (which read the group CSV **before** scoring awards):
+
+```cmd
+python scripts/build_wc2026.py --use-cache --simulations 10000
+python scripts/build_player_2026.py --no-fetch-club --use-cache
+```
+
+### Champion pipeline only (~5–10 min)
 
 ```cmd
 python scripts/build_wc2026.py
-streamlit run app.py
+python scripts/build_wc2026.py --use-cache          REM reuse martj42/FIFA if fresh
+python scripts/build_wc2026.py --simulations 1000   REM faster
 ```
 
-Quick run with fewer simulations:
+Writes `outputs/wc2026_champion_probabilities.csv` and `outputs/group_simulation_2026.csv`.
+
+### Player awards + team upset/surprise
+
+Run **after** `build_wc2026.py` so group qualify odds match your latest sim:
 
 ```cmd
-python scripts/build_wc2026.py --simulations 1000
+python scripts/build_player_2026.py --no-fetch-club --use-cache
 ```
 
-### Award models (Golden Boot, etc.)
+**Player-only** (no recent champion run): force a standalone group sim first:
 
 ```cmd
-python src/data_pipeline.py
-python src/features.py
-python src/models.py
-streamlit run app.py
+python scripts/build_player_2026.py --no-fetch-club --use-cache --run-group-sim
 ```
 
-Use `--refresh` to force re-download cached data.
+### Refresh club data (optional, needs API key in `.env`)
+
+```cmd
+copy .env.example .env
+python scripts/fetch_club_stats.py --force
+python scripts/build_player_2026.py --no-fetch-club --use-cache
+```
+
+Club stats blend **2024/25** and **2025/26** (API seasons `2024` + `2025`). Use `--force` when adding a new season so cached JSON is refetched.
+
+**Flags:** `--no-fetch-club` · `--fetch-club-force` · `--use-cache` · `--run-group-sim` · `--skip-sim` (skip fallback group sim if CSV missing; requires prior `build_wc2026.py`)
 
 ---
 
 ## Data sources
 
-- **[martj42 international football](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017)** - 49,000+ results, goalscorers, shootouts, former names (auto-downloaded from GitHub)
-- **FIFA rankings** - fetched from official `api.fifa.com` (men's world ranking)
-- **Team achievements** - built locally from martj42 results + `WC_WINNERS` (WC/continental semi/final/win years)
-- **StatsBomb open data** - event-level WC 2018 + 2022 (via `statsbombpy`) for player award models
-- **FBref** - attempted via `soccerdata`; falls back to StatsBomb-derived features when blocked
+| Source | Role |
+|---|---|
+| [martj42](https://github.com/martj42/international_results) | Intl results + goalscorers (auto-download from GitHub; originally published on [Kaggle](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017)) |
+| FIFA rankings API | Team strength + upset/surprise baseline |
+| API-Football | Club topscorers / squads (Tier B + Big 5 fallback); seasons **2024 + 2025** |
+| Understat | Big 5 xG (optional; often falls back to API); seasons **2024 + 2025** |
 
----
-
-## Model performance (backtested on 2022 WC)
-
-| Prediction | Metric | Score |
-|---|---|---|
-| Tournament winner | Top-3 contains actual winner | Yes (Argentina in top 3) |
-| Tournament winner | 5-fold CV accuracy | 92.3% |
-| Golden Boot | MAE (goals) | 0.23 |
-| Golden Boot | Mbappé prediction | 8.0 vs 9 actual |
-| Golden Glove | Test accuracy | 100% (small sample) |
-
----
-
-## Deploy to Streamlit Cloud
-
-1. Push repo to GitHub (models/ and data/processed/ are committed for reliability)
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect repo, set main file to `app.py`
-4. Python version: 3.12 (see `runtime.txt`)
-
----
-
-## How I built this
-
-- **Match outcome model** trained on 25,000+ international matches from 2000–present (friendlies, qualifiers, continental cups, World Cups)
-- **Walk-forward features** - ELO, FIFA rank diff, last-5 form, head-to-head, penalty record, tournament importance weights
-- **Full WC 2026 simulator** - 5000+ Monte Carlo runs through groups, play-in, pre-R16 knockout, and final
-- **Modern football strength** - recency-weighted WC/continental achievements (built from martj42) + tactical squad tiers
-- **Award models** use StatsBomb player events; SHAP explains winner predictions
-
-### Limitations
-
-- Award models (Golden Boot, etc.) still trained on 2018 + 2022 WC only
-- Playoff placeholders (UEFA/FIFA intercontinental) use average strength of candidate teams
-- FBref scraping may fail due to rate limits - StatsBomb fallback used
+- martj42 / FIFA cache: **7 days** (`CACHE_TTL_DAYS`)
+- Club snapshot: **long cache** (`CLUB_CACHE_TTL_DAYS`)  -  refresh when updating club seasons (`config/api_football.json`, `config/understat_leagues.json`)
 
 ---
 
 ## Built with
 
-Python · pandas · scikit-learn · XGBoost · SHAP · Streamlit · StatsBomb · martj42
+Python · pandas · scikit-learn · Streamlit · plotly · martj42 · API-Football

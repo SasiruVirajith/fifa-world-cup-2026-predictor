@@ -5,28 +5,36 @@ Build 2026-forward player feature tables and award rankings.
 
 Data layers:
   - martj42 international (2023+)
-  - FBref club CSVs in data/raw/club/ (optional)
+  - Understat Big 5 + API-Football Tier B club stats
+  - Intl proxies when club data missing
   - WC 2026 team sim for knockout context
 """
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
 from src.config import (
+    GOLDEN_BOOT_GOALS_CALIBRATION,
     OUTPUTS_DIR,
     PRIMARY_GK_2026,
     PROCESSED_DIR,
-    WC2026_ALL_TEAMS,
 )
 from src.labels import normalize_player_name
-from src.player_club import fetch_club_stats_via_soccerdata, load_club_player_stats
+from src.player_club import (
+    club_data_status,
+    fetch_and_cache_club_stats,
+    load_club_from_cache,
+    load_club_player_stats,
+)
 from src.player_international import (
     build_international_player_stats,
     build_international_team_defense,
-    international_stats_for_year,
 )
+from src.team_expectations import load_team_tournament_context, save_team_expectations
 
 
 def _col_numeric(df: pd.DataFrame, col: str, default: float) -> pd.Series:
@@ -42,19 +50,23 @@ def _normalize(series: pd.Series) -> pd.Series:
     return (series - mn) / (mx - mn)
 
 
-def _load_team_win_probs() -> pd.DataFrame:
-    path = OUTPUTS_DIR / "wc2026_champion_probabilities.csv"
-    if not path.exists():
-        return pd.DataFrame({"team": WC2026_ALL_TEAMS, "team_win_prob": 0.02})
-    df = pd.read_csv(path)
-    prob_col = "champion_probability" if "champion_probability" in df.columns else "probability"
-    if prob_col not in df.columns:
-        cols = [c for c in df.columns if c != "team"]
-        prob_col = cols[0] if cols else None
-    if prob_col is None:
-        return pd.DataFrame({"team": WC2026_ALL_TEAMS, "team_win_prob": 0.02})
-    out = df[["team", prob_col]].rename(columns={prob_col: "team_win_prob"})
-    return out
+def _load_team_context() -> pd.DataFrame:
+    return load_team_tournament_context()
+
+
+def _merge_team_context(df: pd.DataFrame) -> pd.DataFrame:
+    ctx = _load_team_context()
+    keep = [
+        "team",
+        "group",
+        "p_qualify",
+        "team_win_prob",
+        "progression_factor",
+        "expected_tournament_matches",
+        "group_difficulty",
+        "last5_win_rate",
+    ]
+    return df.merge(ctx[keep], on="team", how="left")
 
 
 def _merge_club_shooting(intl: pd.DataFrame, shooting: pd.DataFrame) -> pd.DataFrame:
@@ -71,6 +83,24 @@ def _merge_club_shooting(intl: pd.DataFrame, shooting: pd.DataFrame) -> pd.DataF
         on=["player_norm", "team"],
         how="left",
     )
+
+    # Fallback: API short names ("H. Kane") vs martj42 full names ("Harry Kane")
+    if "goals_per90" in df.columns:
+        missing = df["goals_per90"].isna()
+        if "league_difficulty" in df.columns:
+            missing = missing & df["league_difficulty"].isna()
+        if missing.any():
+            shoot = shooting.copy()
+            shoot["_last"] = shoot["player_norm"].str.split().str[-1]
+            df["_last"] = df["player_norm"].str.split().str[-1]
+            fb = shoot[["_last", "team"] + club_cols].drop_duplicates(subset=["_last", "team"])
+            df = df.merge(fb, on=["_last", "team"], how="left", suffixes=("", "_fb"))
+            for col in club_cols:
+                if col in df.columns and f"{col}_fb" in df.columns:
+                    df[col] = df[col].fillna(df[f"{col}_fb"])
+                    df = df.drop(columns=[f"{col}_fb"])
+            df = df.drop(columns=["_last"], errors="ignore")
+
     if "player_club" not in df.columns and "player" in shooting.columns:
         names = shooting.groupby(["player_norm", "team"])["player"].first().reset_index()
         names = names.rename(columns={"player": "player_club_name"})
@@ -85,44 +115,82 @@ def _fill_striker_proxies(df: pd.DataFrame) -> pd.DataFrame:
     out["shots_per90"] = pd.to_numeric(out.get("shots_per90"), errors="coerce")
     out["goals_per90"] = pd.to_numeric(out.get("goals_per90"), errors="coerce")
     out["shots_on_target_pct"] = pd.to_numeric(out.get("shots_on_target_pct"), errors="coerce")
+    if "league_difficulty" in out.columns:
+        out["league_difficulty"] = pd.to_numeric(out["league_difficulty"], errors="coerce").fillna(0.5)
+    else:
+        out["league_difficulty"] = 0.5
 
+    has_club = out["goals_per90"].notna() | out["xg_per90"].notna()
     rate = out["intl_goal_rate"].fillna(0)
-    out["xg_per90"] = out["xg_per90"].fillna(rate * 0.9)
+    # Only impute club proxies when no club row exists  -  never pad weak-league stats upward
+    out.loc[~has_club, "xg_per90"] = out.loc[~has_club, "xg_per90"].fillna(rate * 0.9)
     out["npxg_per90"] = out["npxg_per90"].fillna(out["xg_per90"])
-    out["shots_per90"] = out["shots_per90"].fillna(rate * 3.2 + out["intl_goals_per_team_match"].fillna(0) * 0.5)
-    out["goals_per90"] = out["goals_per90"].fillna(out["intl_goals_per_team_match"].fillna(0) * 0.85)
+    out.loc[~has_club, "shots_per90"] = out.loc[~has_club, "shots_per90"].fillna(
+        rate * 3.2 + out["intl_goals_per_team_match"].fillna(0) * 0.5
+    )
+    out.loc[~has_club, "goals_per90"] = out.loc[~has_club, "goals_per90"].fillna(
+        out["intl_goals_per_team_match"].fillna(0) * 0.85
+    )
     out["shots_on_target_pct"] = out["shots_on_target_pct"].fillna(0.33)
     return out
 
 
-def build_striker_features_2026() -> pd.DataFrame:
-    intl = build_international_player_stats()
-    shooting, _, _ = load_club_player_stats()
+def build_striker_features_2026(intl: pd.DataFrame | None = None) -> pd.DataFrame:
+    intl = intl if intl is not None else build_international_player_stats()
+    shooting, _, _ = load_club_player_stats(intl_lookup=intl)
     if intl.empty:
         return pd.DataFrame()
 
     df = _merge_club_shooting(intl, shooting)
     df = _fill_striker_proxies(df)
-    df = df.merge(_load_team_win_probs(), on="team", how="left")
-    df["team_win_prob"] = df["team_win_prob"].fillna(0.01)
+    df = _merge_team_context(df)
+    df["progression_factor"] = df["progression_factor"].fillna(0.05)
+    df["expected_tournament_matches"] = df["expected_tournament_matches"].fillna(3.0)
+    df["p_qualify"] = df["p_qualify"].fillna(0.10)
+    df["team_win_prob"] = df["team_win_prob"].fillna(0.001)
 
-    df["boot_score"] = (
-        0.32 * _normalize(df["intl_weighted_goals"])
-        + 0.22 * _normalize(df["xg_per90"].fillna(0))
-        + 0.18 * _normalize(df["goals_per90"].fillna(0))
-        + 0.13 * _normalize(df["shots_per90"].fillna(0))
-        + 0.10 * _normalize(df["intl_major_goals"].fillna(0))
-        + 0.05 * _normalize(df["team_win_prob"].fillna(0))
+    # Club per-90 stats are already difficulty-weighted in player_club consolidation
+    df["adj_xg_per90"] = df["xg_per90"].fillna(0)
+    df["adj_goals_per90"] = df["goals_per90"].fillna(0)
+    df["adj_shots_per90"] = df["shots_per90"].fillna(0)
+
+    # Player scoring ability: intl form + difficulty-adjusted club production
+    # Club stats are difficulty-adjusted; weak-league players get reduced intl boot credit too
+    has_club = df["goals_per90"].notna() | df["xg_per90"].notna()
+    cred = df["league_difficulty"].fillna(0.5)
+    cred = np.where(has_club, cred, 0.85)
+
+    df["player_skill"] = (
+        0.40 * _normalize(df["intl_weighted_goals"]) * cred
+        + 0.22 * _normalize(df["adj_xg_per90"])
+        + 0.18 * _normalize(df["adj_goals_per90"])
+        + 0.10 * _normalize(df["adj_shots_per90"])
+        + 0.10 * _normalize(df["intl_major_goals"].fillna(0)) * cred
     )
-    df["predicted_goals"] = (df["boot_score"] * 7.5).round(2)
+
+    df["boot_score"] = (df["player_skill"] * df["progression_factor"]).clip(lower=0)
+
+    # Tournament scoring rate (goals per match). WC minutes ≈ 90; club per90 maps directly.
+    goals_per_match = (
+        0.55 * df["intl_goals_per_team_match"].fillna(0)
+        + 0.45 * df["adj_goals_per90"].fillna(0)
+    )
+    # expected_tournament_matches already includes knockout depth (3 + expected_knockout).
+    # Do not multiply progression_factor again — that was double-counting team path.
+    df["predicted_goals"] = (
+        goals_per_match
+        * df["expected_tournament_matches"]
+        * GOLDEN_BOOT_GOALS_CALIBRATION
+    ).clip(0, 12).round(2)
     df["year"] = 2026
     df["tournament_goals"] = np.nan
     return df.sort_values("boot_score", ascending=False).reset_index(drop=True)
 
 
-def build_goalkeeper_features_2026() -> pd.DataFrame:
+def build_goalkeeper_features_2026(intl: pd.DataFrame | None = None) -> pd.DataFrame:
     team_def = build_international_team_defense()
-    _, _, gk_club = load_club_player_stats()
+    intl = intl if intl is not None else build_international_player_stats()
+    _, _, gk_club = load_club_player_stats(intl_lookup=intl)
 
     rows = []
     for team, player in PRIMARY_GK_2026.items():
@@ -154,24 +222,24 @@ def build_goalkeeper_features_2026() -> pd.DataFrame:
     )
     df["psxg_minus_ga"] = _col_numeric(df, "psxg_minus_ga", 0.0)
 
-    df = df.merge(_load_team_win_probs(), on="team", how="left")
-    df["team_win_prob"] = df["team_win_prob"].fillna(0.01)
+    df = _merge_team_context(df)
+    df["progression_factor"] = df["progression_factor"].fillna(0.05)
 
-    df["glove_score"] = (
-        0.30 * _normalize(df["save_pct"])
-        + 0.25 * _normalize(-df["ga90"])
+    gk_skill = (
+        0.35 * _normalize(df["save_pct"])
+        + 0.30 * _normalize(-df["ga90"])
         + 0.20 * _normalize(df["clean_sheet_pct"])
         + 0.15 * _normalize(df["psxg_minus_ga"])
-        + 0.10 * _normalize(df["team_win_prob"])
     )
+    df["glove_score"] = (gk_skill * df["progression_factor"]).clip(lower=0)
     df["golden_glove_probability"] = (df["glove_score"] / df["glove_score"].sum()).round(4)
     df["won_golden_glove"] = 0
     return df.sort_values("glove_score", ascending=False).reset_index(drop=True)
 
 
-def build_playmaker_features_2026() -> pd.DataFrame:
-    intl = build_international_player_stats()
-    _, passing, _ = load_club_player_stats()
+def build_playmaker_features_2026(intl: pd.DataFrame | None = None) -> pd.DataFrame:
+    intl = intl if intl is not None else build_international_player_stats()
+    _, passing, _ = load_club_player_stats(intl_lookup=intl)
     if intl.empty:
         return pd.DataFrame()
 
@@ -217,62 +285,36 @@ def build_player_of_tournament_2026(
     else:
         pot["playmaker_score"] = 0.0
 
-    pot = pot.merge(_load_team_win_probs(), on="team", how="left")
-    pot["team_win_prob"] = pot["team_win_prob"].fillna(0.01)
-    pot["pot_score"] = (
-        0.45 * _normalize(pot["attack_score"].fillna(0))
-        + 0.30 * _normalize(pot["playmaker_score"].fillna(0))
-        + 0.15 * _normalize(pot["intl_goals"].fillna(0))
-        + 0.10 * _normalize(pot["team_win_prob"].fillna(0))
+    pot = _merge_team_context(pot)
+    pot["progression_factor"] = pot["progression_factor"].fillna(0.05)
+
+    pot_skill = (
+        0.40 * _normalize(pot["attack_score"].fillna(0))
+        + 0.35 * _normalize(pot["playmaker_score"].fillna(0))
+        + 0.25 * _normalize(pot["intl_goals"].fillna(0))
     )
+    pot["pot_score"] = (pot_skill * pot["progression_factor"]).clip(lower=0)
+    pot["team_win_prob"] = pot["team_win_prob"].fillna(0.001)
+    pot["p_qualify"] = pot["p_qualify"].fillna(0.10)
     pot["goals"] = pot["intl_goals"]
     pot["assists"] = 0
     pot["year"] = 2026
     return pot.sort_values("pot_score", ascending=False).reset_index(drop=True)
 
 
-def _append_year_rows(existing_path, new_df: pd.DataFrame, year: int = 2026) -> pd.DataFrame:
+def _write_year_features(path: Path, new_df: pd.DataFrame, year: int = 2026) -> pd.DataFrame:
+    """Write feature CSV keeping only the target year (2026-only awards path)."""
     if new_df.empty:
         return pd.DataFrame()
-    if existing_path.exists():
-        old = pd.read_csv(existing_path)
-        if "year" in old.columns:
-            old = old[old["year"] != year]
-        combined = pd.concat([old, new_df], ignore_index=True)
-    else:
-        combined = new_df
-    combined.to_csv(existing_path, index=False)
-    return combined
-
-
-def enrich_backtest_with_international(features: pd.DataFrame, year: int) -> pd.DataFrame:
-    """Add international columns to 2018/2022 StatsBomb rows for richer training."""
-    if features.empty or "year" not in features.columns:
-        return features
-    subset = features[features["year"] == year].copy()
-    if subset.empty:
-        return features
-
-    intl = international_stats_for_year(year, teams=subset["team"].unique().tolist())
-    if intl.empty:
-        return features
-
-    intl_cols = [c for c in intl.columns if c not in {"player", "player_norm", "team"}]
-    subset = subset.drop(columns=[c for c in intl_cols if c in subset.columns], errors="ignore")
-    subset["player_norm"] = subset["player"].apply(normalize_player_name)
-    merged = subset.merge(
-        intl.drop(columns=["player"], errors="ignore"),
-        on=["player_norm", "team"],
-        how="left",
-    )
-    merged = merged.drop(columns=["player_norm"], errors="ignore")
-    other = features[features["year"] != year]
-    return pd.concat([other, merged], ignore_index=True)
+    out = new_df.copy()
+    out["year"] = year
+    out.to_csv(path, index=False)
+    return out
 
 
 def build_all_2026_player_features(
-    try_club_scrape: bool = False,
-    enrich_backtest: bool = False,
+    fetch_club: bool = True,
+    fetch_club_force: bool = False,
 ) -> dict:
     """
     Full 2026 player pipeline. Returns dict of output DataFrames.
@@ -281,61 +323,63 @@ def build_all_2026_player_features(
     print("  2026 Player Feature Pipeline")
     print("=" * 60)
 
-    if try_club_scrape:
-        print("\n[1/6] Attempting FBref club scrape...")
-        fetch_club_stats_via_soccerdata()
+    if fetch_club:
+        print("\n[1/7] Club layers (Understat Big 5 + API-Football Tier B)...")
+        fetch_and_cache_club_stats(force=fetch_club_force)
     else:
-        print("\n[1/6] Club layer: using data/raw/club/ CSVs if present")
+        print("\n[1/7] Club layers: loading from cache / processed only...")
+        load_club_from_cache()
 
-    shooting, passing, gk = load_club_player_stats()
-    club_status = "loaded" if not shooting.empty or not passing.empty or not gk.empty else "intl-only (drop FBref CSVs into data/raw/club/)"
+    status = club_data_status()
+    if status["loaded"]:
+        club_status = (
+            f"loaded ({status['player_rows']} players; "
+            f"understat={status['understat_files']}, api={status['api_files']} cache files)"
+        )
+    else:
+        club_status = "intl-only (no club cache  -  set APIFOOTBALL_KEY or run with fetch)"
     print(f"       Club status: {club_status}")
 
-    print("\n[2/6] Building international player stats (martj42 2023+)...")
+    print("\n[2/7] Building international player stats (martj42 2023+)...")
     intl = build_international_player_stats()
     intl_path = PROCESSED_DIR / "player_intl_2026.csv"
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     intl.to_csv(intl_path, index=False)
     print(f"       [OK] {len(intl)} scorers -> {intl_path}")
 
+    shooting, _, _ = load_club_player_stats(intl_lookup=intl)
     if not shooting.empty:
         club_path = PROCESSED_DIR / "player_club_2026.csv"
         shooting.to_csv(club_path, index=False)
         print(f"       [OK] {len(shooting)} club rows -> {club_path}")
 
-    print("\n[3/6] Striker / Golden Boot features...")
-    strikers = build_striker_features_2026()
+    print("\n[3/7] Striker / Golden Boot features...")
+    strikers = build_striker_features_2026(intl=intl)
     striker_path = PROCESSED_DIR / "striker_features.csv"
-    strikers_all = _append_year_rows(striker_path, strikers, year=2026)
-    print(f"       [OK] {len(strikers)} rows for 2026 ({len(strikers_all)} total)")
+    _write_year_features(striker_path, strikers, year=2026)
+    print(f"       [OK] {len(strikers)} rows for 2026")
 
-    print("\n[4/6] Goalkeeper / Golden Glove features...")
-    gk_df = build_goalkeeper_features_2026()
+    print("\n[4/7] Goalkeeper / Golden Glove features...")
+    gk_df = build_goalkeeper_features_2026(intl=intl)
     gk_path = PROCESSED_DIR / "goalkeeper_features.csv"
-    gk_all = _append_year_rows(gk_path, gk_df, year=2026)
-    print(f"       [OK] {len(gk_df)} rows for 2026 ({len(gk_all)} total)")
+    _write_year_features(gk_path, gk_df, year=2026)
+    print(f"       [OK] {len(gk_df)} rows for 2026")
 
-    print("\n[5/6] Playmaker features...")
-    playmakers = build_playmaker_features_2026()
+    print("\n[5/7] Playmaker features (feeds Golden Ball)...")
+    playmakers = build_playmaker_features_2026(intl=intl)
     pm_path = PROCESSED_DIR / "playmaker_features.csv"
-    pm_all = _append_year_rows(pm_path, playmakers, year=2026)
-    playmakers.to_csv(OUTPUTS_DIR / "playmaker_rankings_2026.csv", index=False)
-    # Back-compat: full rankings file prefers 2026 when present
-    playmakers.head(500).to_csv(OUTPUTS_DIR / "playmaker_rankings.csv", index=False)
-    print(f"       [OK] {len(playmakers)} rows for 2026 ({len(pm_all)} total)")
+    _write_year_features(pm_path, playmakers, year=2026)
+    print(f"       [OK] {len(playmakers)} rows for 2026")
 
-    print("\n[6/6] Player of the Tournament composite...")
+    print("\n[6/7] Golden Ball composite...")
     pot = build_player_of_tournament_2026(strikers, playmakers)
     pot_path = OUTPUTS_DIR / "player_tournament_2026.csv"
     pot.to_csv(pot_path, index=False)
     print(f"       [OK] {len(pot)} rows -> {pot_path}")
 
-    if enrich_backtest and striker_path.exists():
-        print("\n[Extra] Enriching 2018/2022 rows with international features...")
-        enriched = pd.read_csv(striker_path)
-        for y in [2018, 2022]:
-            enriched = enrich_backtest_with_international(enriched, y)
-        enriched.to_csv(striker_path, index=False)
+    print("\n[7/7] Team surprise / disappointment vs FIFA ranking...")
+    team_exp = save_team_expectations()
+    print(f"       [OK] {len(team_exp)} teams -> outputs/team_tournament_context_2026.csv")
 
     return {
         "international": intl,
@@ -343,6 +387,7 @@ def build_all_2026_player_features(
         "goalkeepers": gk_df,
         "playmakers": playmakers,
         "pot": pot,
+        "team_expectations": team_exp,
     }
 
 

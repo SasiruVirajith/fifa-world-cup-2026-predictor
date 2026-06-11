@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Refresh martj42 (TTL) and build features
+        run: |
+          python -c "
+          from src.historical_data import download_martj42_dataset, fetch_fifa_rankings, build_team_achievements
+          download_martj42_dataset(force=False)
+          fetch_fifa_rankings(force=False)
+          build_team_achievements()
+          "
+          python src/match_features.py
+
+      - name: Train match model (smoke)
+        run: python src/match_model.py
+
+      - name: Run short simulation smoke test
+        run: python scripts/build_wc2026.py --simulations 50 --use-cache

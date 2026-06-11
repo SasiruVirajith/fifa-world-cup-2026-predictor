@@ -15,7 +15,7 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-# Models and processed data are committed for Streamlit Cloud deploy
+# Models and processed data (committed for portable runs)
 # models/
 # data/processed/
 

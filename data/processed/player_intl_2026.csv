@@ -1,759 +1,751 @@
-player,team,intl_goals,intl_weighted_goals,intl_penalty_goals,intl_major_goals,intl_scoring_matches,intl_last_goal_date,intl_goal_rate,team_intl_matches,intl_goals_per_team_match,player_norm
-Erling Haaland,Norway,29,22.9,2,0,16,2025-11-16,1.8125,36,0.8055555555555556,erling haaland
-Harry Kane,England,22,18.4,7,3,17,2025-11-16,1.2941176470588236,42,0.5238095238095238,harry kane
-Cristiano Ronaldo,Portugal,23,17.55,5,0,16,2025-10-14,1.4375,41,0.5609756097560976,cristiano ronaldo
-Romelu Lukaku,Belgium,18,14.549999999999999,2,0,10,2025-06-09,1.8,40,0.45,romelu lukaku
-Kylian Mbappé,France,17,14.1,7,1,12,2025-11-13,1.4166666666666667,42,0.40476190476190477,kylian mbappe
-Aymen Hussein,Iraq,15,13.65,3,6,12,2026-03-31,1.25,50,0.3,aymen hussein
-Almoez Ali,Qatar,14,12.2,2,2,9,2024-11-14,1.5555555555555556,52,0.2692307692307692,almoez ali
-Ismael Díaz,Panama,12,11.7,2,10,7,2025-10-14,1.7142857142857142,57,0.21052631578947367,ismael diaz
-Son Heung-min,South Korea,13,11.5,4,3,11,2024-11-19,1.1818181818181819,44,0.29545454545454547,son heungmin
-Mehdi Taremi,Iran,13,11.5,3,3,9,2025-06-10,1.4444444444444444,42,0.30952380952380953,mehdi taremi
-Akram Afif,Qatar,12,11.4,5,8,8,2025-03-20,1.5,52,0.23076923076923078,akram afif
-Viktor Gyökeres,Sweden,16,11.35,2,0,10,2026-03-31,1.6,40,0.4,viktor gyokeres
-Yazan Al-Naimat,Jordan,12,10.8,1,4,10,2024-11-19,1.2,53,0.22641509433962265,yazan alnaimat
-Ayase Ueda,Japan,12,10.8,2,4,7,2024-09-10,1.7142857142857142,41,0.2926829268292683,ayase ueda
-Cody Gakpo,Netherlands,13,10.75,5,3,12,2025-11-17,1.0833333333333333,42,0.30952380952380953,cody gakpo
-Marko Arnautović,Austria,13,10.7,4,1,6,2025-11-15,2.1666666666666665,40,0.325,marko arnautovic
-Andrej Kramarić,Croatia,13,10.7,1,1,11,2025-09-08,1.1818181818181819,39,0.3333333333333333,andrej kramaric
-Scott McTominay,Scotland,13,10.45,1,1,11,2025-11-18,1.1818181818181819,39,0.3333333333333333,scott mctominay
-Mohamed Salah,Egypt,14,10.15,4,0,10,2026-01-10,1.4,49,0.2857142857142857,mohamed salah
-Bruno Fernandes,Portugal,12,9.85,2,1,9,2025-11-16,1.3333333333333333,41,0.2926829268292683,bruno fernandes
-Mikel Oyarzabal,Spain,12,9.35,3,1,10,2025-11-18,1.2,43,0.27906976744186046,mikel oyarzabal
-Memphis Depay,Netherlands,11,9.25,3,1,9,2025-11-14,1.2222222222222223,42,0.2619047619047619,memphis depay
-Musa Al-Taamari,Jordan,10,8.95,1,3,6,2025-03-20,1.6666666666666667,53,0.18867924528301888,musa altaamari
-Sardar Azmoun,Iran,10,8.8,0,2,8,2025-03-20,1.25,42,0.23809523809523808,sardar azmoun
-Michael Gregoritsch,Austria,11,8.75,0,1,11,2025-11-18,1.0,40,0.275,michael gregoritsch
-Lautaro Martínez,Argentina,9,8.4,0,5,8,2025-09-04,1.125,40,0.225,lautaro martinez
-Kerem Aktürkoğlu,Türkiye,11,8.25,0,1,8,2026-03-31,1.375,41,0.2682926829268293,kerem akturkoglu
-Marcel Sabitzer,Austria,10,8.15,3,1,9,2025-09-09,1.1111111111111112,40,0.25,marcel sabitzer
-Mikel Merino,Spain,10,8.15,0,1,7,2025-10-14,1.4285714285714286,43,0.23255813953488372,mikel merino
-Luis Díaz,Colombia,9,7.95,1,2,8,2025-06-10,1.125,44,0.20454545454545456,luis diaz
-Lionel Messi,Argentina,9,7.8,0,1,5,2025-09-04,1.8,40,0.225,lionel messi
-Alexander Sørloth,Norway,10,7.75,0,0,9,2025-11-13,1.1111111111111112,36,0.2777777777777778,alexander srloth
-Ali Olwan,Jordan,9,7.6499999999999995,3,0,6,2025-06-05,1.5,53,0.16981132075471697,ali olwan
-Chris Wood,New Zealand,9,7.6499999999999995,0,0,4,2025-03-21,2.25,35,0.2571428571428571,chris wood
-Kevin De Bruyne,Belgium,9,7.3,3,1,6,2025-10-13,1.5,40,0.225,kevin de bruyne
-Lee Kang-in,South Korea,8,7.25,0,3,6,2025-06-10,1.3333333333333333,44,0.18181818181818182,lee kangin
-Edin Džeko,Bosnia and Herzegovina,9,7.1499999999999995,0,0,8,2026-03-26,1.125,35,0.2571428571428571,edin dzeko
-Jesús Ferreira,United States,7,7.0,1,7,3,2023-07-12,2.3333333333333335,56,0.125,jesus ferreira
-Jordan Ayew,Ghana,9,6.95,4,0,6,2025-10-08,1.5,39,0.23076923076923078,jordan ayew
-Zeki Amdouni,Switzerland,9,6.8999999999999995,1,0,8,2024-11-15,1.125,41,0.21951219512195122,zeki amdouni
-Mohamed Amoura,Algeria,8,6.8,2,0,4,2025-10-14,2.0,51,0.1568627450980392,mohamed amoura
-José Fajardo,Panama,7,6.55,0,4,7,2025-11-13,1.0,57,0.12280701754385964,jose fajardo
-Darwin Núñez,Uruguay,7,6.25,1,2,6,2024-06-27,1.1666666666666667,42,0.16666666666666666,darwin nunez
-Duckens Nazon,Haiti,7,6.1,1,1,5,2025-10-09,1.4,36,0.19444444444444445,duckens nazon
-Donyell Malen,Netherlands,7,6.0,0,2,5,2025-11-17,1.4,42,0.16666666666666666,donyell malen
-Tomáš Souček,Czechia,7,5.85,2,1,7,2025-11-17,1.0,40,0.175,tomas soucek
-Ferran Torres,Spain,7,5.85,0,1,6,2025-11-15,1.1666666666666667,43,0.16279069767441862,ferran torres
-Sadio Mané,Senegal,8,5.75,1,0,6,2026-01-14,1.3333333333333333,47,0.1702127659574468,sadio mane
-Christoph Baumgartner,Austria,7,5.6,0,1,6,2025-06-10,1.1666666666666667,40,0.175,christoph baumgartner
-Dani Olmo,Spain,6,5.55,0,3,6,2025-11-18,1.0,43,0.13953488372093023,dani olmo
-Breel Embolo,Switzerland,6,5.4,0,2,5,2025-11-15,1.2,41,0.14634146341463414,breel embolo
-Abbosbek Fayzullaev,Uzbekistan,6,5.4,0,2,5,2025-03-25,1.2,44,0.13636363636363635,abbosbek fayzullaev
-Takumi Minamino,Japan,6,5.4,0,2,4,2024-11-15,1.5,41,0.14634146341463414,takumi minamino
-Raphinha,Brazil,6,5.25,3,1,5,2025-03-20,1.2,39,0.15384615384615385,raphinha
-Firas Al-Buraikan,Saudi Arabia,6,5.25,1,1,4,2025-10-08,1.5,58,0.10344827586206896,firas alburaikan
-Mohammad Mohebi,Iran,6,5.25,0,1,5,2025-03-20,1.2,42,0.14285714285714285,mohammad mohebi
-Bukayo Saka,England,6,5.25,0,1,4,2025-11-13,1.5,42,0.14285714285714285,bukayo saka
-Patrik Schick,Czechia,6,5.25,1,1,5,2026-03-26,1.2,40,0.15,patrik schick
-Florian Wirtz,Germany,7,5.25,0,2,6,2025-09-07,1.1666666666666667,42,0.16666666666666666,florian wirtz
-Kusini Yengi,Australia,6,5.1,1,0,4,2024-11-19,1.5,40,0.15,kusini yengi
-Enner Valencia,Ecuador,6,5.1,2,0,5,2025-09-09,1.2,41,0.14634146341463414,enner valencia
-Bernardo Silva,Portugal,6,5.0,0,1,6,2025-09-09,1.0,41,0.14634146341463414,bernardo silva
-Álvaro Morata,Spain,6,5.0,0,1,4,2024-10-15,1.5,43,0.13953488372093023,alvaro morata
-Ayoub El Kaabi,Morocco,7,4.9,0,0,4,2025-12-29,1.75,53,0.1320754716981132,ayoub el kaabi
-João Félix,Portugal,6,4.85,0,0,5,2025-09-06,1.2,41,0.14634146341463414,joao felix
-Jamal Musiala,Germany,6,4.8,0,3,6,2025-03-23,1.0,42,0.14285714285714285,jamal musiala
-Trézéguet,Egypt,6,4.75,0,0,4,2024-06-06,1.5,49,0.12244897959183673,trezeguet
-Wout Weghorst,Netherlands,6,4.75,1,1,6,2024-11-16,1.0,42,0.14285714285714285,wout weghorst
-Frantzdy Pierrot,Haiti,5,4.7,0,3,5,2025-11-13,1.0,36,0.1388888888888889,frantzdy pierrot
-Joselu,Spain,6,4.6,0,0,5,2024-09-08,1.2,43,0.13953488372093023,joselu
-Mehdi Ghayedi,Iran,5,4.55,0,2,5,2024-11-14,1.0,42,0.11904761904761904,mehdi ghayedi
-Craig Goodwin,Australia,5,4.55,0,2,4,2024-10-10,1.25,40,0.125,craig goodwin
-Jackson Irvine,Australia,5,4.55,0,2,4,2025-03-25,1.25,40,0.125,jackson irvine
-Lamine Yamal,Spain,6,4.5,1,1,5,2025-06-05,1.2,43,0.13953488372093023,lamine yamal
-Hwang Hee-chan,South Korea,5,4.4,1,1,5,2025-03-20,1.0,44,0.11363636363636363,hwang heechan
-Takefusa Kubo,Japan,5,4.4,0,1,5,2025-06-10,1.0,41,0.12195121951219512,takefusa kubo
-Saleh Al-Shehri,Saudi Arabia,5,4.4,2,1,3,2025-06-15,1.6666666666666667,58,0.08620689655172414,saleh alshehri
-Eldor Shomurodov,Uzbekistan,5,4.25,0,0,5,2025-06-10,1.0,44,0.11363636363636363,eldor shomurodov
-Jérémy Doku,Belgium,5,4.25,0,0,3,2025-11-18,1.6666666666666667,40,0.125,jeremy doku
-Lee Jae-sung,South Korea,5,4.25,0,0,5,2025-06-10,1.0,44,0.11363636363636363,lee jaesung
-Daichi Kamada,Japan,5,4.25,0,0,4,2025-06-10,1.25,41,0.12195121951219512,daichi kamada
-Václav Černý,Czechia,5,4.25,0,0,4,2025-09-05,1.25,40,0.125,vaclav cerny
-Thelo Aasgaard,Norway,5,4.25,1,0,2,2025-09-09,2.5,36,0.1388888888888889,thelo aasgaard
-Gervane Kastaneer,Curaçao,5,4.25,0,0,3,2025-06-10,1.6666666666666667,36,0.1388888888888889,gervane kastaneer
-João Cancelo,Portugal,5,4.25,0,0,5,2025-09-09,1.0,41,0.12195121951219512,joao cancelo
-Randal Kolo Muani,France,6,4.25,1,1,5,2025-06-05,1.2,42,0.14285714285714285,randal kolo muani
-Youri Tielemans,Belgium,5,4.15,1,1,4,2025-09-04,1.25,40,0.125,youri tielemans
-Baghdad Bounedjah,Algeria,6,4.05,0,0,4,2025-09-04,1.5,51,0.11764705882352941,baghdad bounedjah
-Nico Williams,Spain,5,4.05,0,2,5,2025-06-05,1.0,43,0.11627906976744186,nico williams
-Gonçalo Ramos,Portugal,5,4.0,0,0,4,2025-11-16,1.25,41,0.12195121951219512,goncalo ramos
-Jonathan David,Canada,4,4.0,1,4,4,2025-06-29,1.0,45,0.08888888888888889,jonathan david
-Konrad Laimer,Austria,5,4.0,0,0,5,2025-10-09,1.0,40,0.125,konrad laimer
-Ivan Perišić,Croatia,5,4.0,1,0,5,2025-11-17,1.0,39,0.1282051282051282,ivan perisic
-Xavi Simons,Netherlands,5,3.9,1,1,5,2025-11-17,1.0,42,0.11904761904761904,xavi simons
-Arda Güler,Türkiye,5,3.9,0,1,5,2025-10-11,1.0,41,0.12195121951219512,arda guler
-Elijah Just,New Zealand,5,3.9,0,0,5,2025-03-24,1.0,35,0.14285714285714285,elijah just
-Hassan Al-Haydos,Qatar,4,3.85,0,3,4,2024-02-03,1.0,52,0.07692307692307693,hassan alhaydos
-John McGinn,Scotland,5,3.75,0,0,5,2024-11-18,1.0,39,0.1282051282051282,john mcginn
-Martin Boyle,Australia,4,3.7,2,2,4,2025-03-20,1.0,40,0.1,martin boyle
-Vinícius Júnior,Brazil,4,3.7,0,2,3,2025-06-10,1.3333333333333333,39,0.10256410256410256,vinicius junior
-Merih Demiral,Türkiye,4,3.7,0,2,2,2025-10-14,2.0,41,0.0975609756097561,merih demiral
-Jhon Córdoba,Colombia,4,3.7,0,2,4,2025-09-09,1.0,44,0.09090909090909091,jhon cordoba
-Ben Waine,New Zealand,6,3.7,1,0,4,2024-11-18,1.5,35,0.17142857142857143,ben waine
-Julio Enciso,Paraguay,4,3.55,1,1,4,2025-06-05,1.0,35,0.11428571428571428,julio enciso
-Mohanad Ali,Iraq,4,3.55,0,1,4,2025-11-18,1.0,50,0.08,mohanad ali
-Ritsu Dōan,Japan,4,3.55,0,1,4,2024-06-11,1.0,41,0.0975609756097561,ritsu doan
-Yoane Wissa,Congo DR,5,3.55,1,0,5,2025-09-09,1.0,47,0.10638297872340426,yoane wissa
-James Rodríguez,Colombia,4,3.55,2,1,4,2025-09-04,1.0,44,0.09090909090909091,james rodriguez
-Ruben Vargas,Switzerland,4,3.55,0,1,4,2024-06-29,1.0,41,0.0975609756097561,ruben vargas
-Hidemasa Morita,Japan,4,3.55,0,1,3,2024-11-15,1.3333333333333333,41,0.0975609756097561,hidemasa morita
-Denzel Dumfries,Netherlands,5,3.5,0,0,5,2025-09-04,1.0,42,0.11904761904761904,denzel dumfries
-Antonio Nusa,Norway,5,3.5,0,0,4,2025-11-16,1.25,36,0.1388888888888889,antonio nusa
-Pavel Šulc,Czechia,5,3.5,0,0,4,2026-03-31,1.25,40,0.125,pavel sulc
-Tijjani Reijnders,Netherlands,5,3.5,0,0,5,2025-11-17,1.0,42,0.11904761904761904,tijjani reijnders
-Dailon Livramento,Cape Verde,4,3.4,0,0,3,2025-10-13,1.3333333333333333,42,0.09523809523809523,dailon livramento
-Julián Alvarez,Argentina,4,3.4,0,0,4,2025-06-05,1.0,40,0.1,julian alvarez
-Oston Urunov,Uzbekistan,4,3.4,0,0,4,2024-09-10,1.0,44,0.09090909090909091,oston urunov
-Ladislav Krejčí,Czechia,4,3.4,0,0,4,2026-03-31,1.0,40,0.1,ladislav krejci
-Antonio Sanabria,Paraguay,4,3.4,0,0,3,2024-11-14,1.3333333333333333,35,0.11428571428571428,antonio sanabria
-Oh Hyeon-gyu,South Korea,4,3.4,0,0,4,2025-06-10,1.0,44,0.09090909090909091,oh hyeongyu
-Nick Woltemade,Germany,4,3.4,0,0,3,2025-11-17,1.3333333333333333,42,0.09523809523809523,nick woltemade
-Granit Xhaka,Switzerland,4,3.4,2,0,4,2025-11-15,1.0,41,0.0975609756097561,granit xhaka
-Pape Matar Sarr,Senegal,4,3.4,0,0,4,2025-09-09,1.0,47,0.0851063829787234,pape matar sarr
-Luis Suárez,Colombia,4,3.4,0,0,1,2025-09-09,4.0,44,0.09090909090909091,luis suarez
-Mohamed Ali Ben Romdhane,Tunisia,4,3.4,2,0,3,2025-10-10,1.3333333333333333,48,0.08333333333333333,mohamed ali ben romdhane
-Brahim Díaz,Morocco,6,3.35,2,0,6,2026-01-09,1.0,53,0.11320754716981132,brahim diaz
-Remo Freuler,Switzerland,4,3.3,0,1,4,2024-10-15,1.0,41,0.0975609756097561,remo freuler
-Alexander Isak,Sweden,5,3.25,0,0,4,2024-11-16,1.25,40,0.125,alexander isak
-Fabián Ruiz,Spain,4,3.2,0,2,3,2024-09-08,1.3333333333333333,43,0.09302325581395349,fabian ruiz
-Habib Diallo,Senegal,5,3.2,0,0,5,2025-12-30,1.0,47,0.10638297872340426,habib diallo
-Kosta Barbarouses,New Zealand,5,3.2,0,0,4,2025-03-24,1.25,35,0.14285714285714285,kosta barbarouses
-Kai Havertz,Germany,4,3.2,3,2,4,2024-11-16,1.0,42,0.09523809523809523,kai havertz
-Kenan Yıldız,Türkiye,4,3.15,0,0,3,2025-10-14,1.3333333333333333,41,0.0975609756097561,kenan yldz
-Leandro Trossard,Belgium,4,3.15,0,0,4,2025-10-13,1.0,40,0.1,leandro trossard
-Ante Budimir,Croatia,4,3.15,1,0,4,2025-06-09,1.0,39,0.10256410256410256,ante budimir
-Mario Pašalić,Croatia,4,3.15,0,0,4,2025-06-06,1.0,39,0.10256410256410256,mario pasalic
-Seko Fofana,Ivory Coast,4,3.05,0,0,4,2024-06-07,1.0,47,0.0851063829787234,seko fofana
-Ismaïla Sarr,Senegal,4,3.05,0,0,3,2025-10-10,1.3333333333333333,47,0.0851063829787234,ismaila sarr
-Cédric Bakambu,Congo DR,4,3.05,0,0,3,2025-12-27,1.3333333333333333,47,0.0851063829787234,cedric bakambu
-Hakan Çalhanoğlu,Türkiye,4,3.05,3,1,4,2025-11-15,1.0,41,0.0975609756097561,hakan calhanoglu
-Ismael Saibari,Morocco,4,3.05,0,0,3,2026-01-09,1.3333333333333333,53,0.07547169811320754,ismael saibari
-Luka Modrić,Croatia,4,3.05,2,1,4,2025-06-09,1.0,39,0.10256410256410256,luka modric
-Tomás Rodríguez,Panama,3,3.0,0,3,3,2025-06-24,1.0,57,0.05263157894736842,tomas rodriguez
-Brandon Vázquez,United States,3,3.0,0,3,3,2023-07-09,1.0,56,0.05357142857142857,brandon vazquez
-Malik Tillman,United States,3,3.0,0,3,2,2025-06-22,1.5,56,0.05357142857142857,malik tillman
-Raúl Jiménez,Mexico,3,3.0,0,3,3,2025-07-06,1.0,60,0.05,raul jimenez
-Tajon Buchanan,Canada,3,3.0,0,3,2,2025-06-24,1.5,45,0.06666666666666667,tajon buchanan
-César Montes,Mexico,3,3.0,0,3,2,2025-06-18,1.5,60,0.05,cesar montes
-Diego Luna,United States,3,3.0,0,3,2,2025-07-02,1.5,56,0.05357142857142857,diego luna
-Tomáš Chorý,Czechia,4,2.9,0,0,3,2025-11-17,1.3333333333333333,40,0.1,tomas chory
-Declan Rice,England,4,2.9,0,0,4,2025-09-06,1.0,42,0.09523809523809523,declan rice
-Joshua Kimmich,Germany,4,2.9,2,0,3,2025-10-10,1.3333333333333333,42,0.09523809523809523,joshua kimmich
-Maxim De Cuyper,Belgium,4,2.9,0,0,4,2025-09-04,1.0,40,0.1,maxim de cuyper
-Adrien Rabiot,France,4,2.9,0,0,3,2025-10-10,1.3333333333333333,42,0.09523809523809523,adrien rabiot
-Michael Olise,France,4,2.9,0,0,4,2025-11-13,1.0,42,0.09523809523809523,michael olise
-Eduardo Guerrero,Panama,3,2.85,1,2,3,2025-06-16,1.0,57,0.05263157894736842,eduardo guerrero
-Mostafa Mohamed,Egypt,5,2.85,1,0,5,2024-01-28,1.0,49,0.10204081632653061,mostafa mohamed
-Azizbek Turgunboev,Uzbekistan,3,2.85,0,2,3,2025-06-10,1.0,44,0.06818181818181818,azizbek turgunboev
-Jacob Shaffelburg,Canada,3,2.85,0,2,3,2024-07-05,1.0,45,0.06666666666666667,jacob shaffelburg
-Keito Nakamura,Japan,3,2.7,0,1,2,2024-06-06,1.5,41,0.07317073170731707,keito nakamura
-Don Deedson Louicius,Haiti,3,2.7,0,1,3,2025-11-18,1.0,36,0.08333333333333333,don deedson louicius
-Xherdan Shaqiri,Switzerland,3,2.7,1,1,3,2024-06-19,1.0,41,0.07317073170731707,xherdan shaqiri
-Federico Valverde,Uruguay,3,2.7,0,1,3,2024-11-19,1.0,42,0.07142857142857142,federico valverde
-Igor Sergeev,Uzbekistan,3,2.7,0,1,3,2025-06-10,1.0,44,0.06818181818181818,igor sergeev
-Harry Souttar,Australia,3,2.7,0,1,3,2024-01-28,1.0,40,0.075,harry souttar
-Dan Ndoye,Switzerland,3,2.7,0,1,3,2025-11-15,1.0,41,0.07317073170731707,dan ndoye
-Omar Alderete,Paraguay,3,2.7,0,1,3,2025-03-20,1.0,35,0.08571428571428572,omar alderete
-Oswin Appollis,South Africa,4,2.7,1,0,4,2025-12-29,1.0,51,0.0784313725490196,oswin appollis
-Franck Kessié,Ivory Coast,4,2.7,1,0,4,2025-10-14,1.0,47,0.0851063829787234,franck kessie
-Lyle Foster,South Africa,4,2.7,0,0,4,2025-12-29,1.0,51,0.0784313725490196,lyle foster
-Cenk Tosun,Türkiye,3,2.7,0,1,2,2024-06-26,1.5,41,0.07317073170731707,cenk tosun
-Danley Jean Jacques,Haiti,3,2.7,0,1,3,2025-10-09,1.0,36,0.08333333333333333,danley jean jacques
-Nicolas Jackson,Senegal,4,2.7,1,0,3,2025-12-23,1.3333333333333333,47,0.0851063829787234,nicolas jackson
-Sébastien Haller,Ivory Coast,4,2.7,1,0,4,2025-03-24,1.0,47,0.0851063829787234,sebastien haller
-Mohammed Kudus,Ghana,4,2.7,0,0,3,2025-10-12,1.3333333333333333,39,0.10256410256410256,mohammed kudus
-Jude Bellingham,England,3,2.6,0,2,3,2024-10-10,1.0,42,0.07142857142857142,jude bellingham
-Niclas Füllkrug,Germany,3,2.6,0,2,3,2024-09-07,1.0,42,0.07142857142857142,niclas fullkrug
-Nicolás Otamendi,Argentina,3,2.55,0,0,3,2024-10-10,1.0,40,0.075,nicolas otamendi
-Nicolás de la Cruz,Uruguay,3,2.55,0,0,2,2023-10-17,1.5,42,0.07142857142857142,nicolas de la cruz
-Nishan Velupillay,Australia,3,2.55,0,0,3,2025-03-25,1.0,40,0.075,nishan velupillay
-Olivier Giroud,France,3,2.55,0,0,2,2023-11-18,1.5,42,0.07142857142857142,olivier giroud
-Koki Ogawa,Japan,3,2.55,0,0,2,2024-09-10,1.5,41,0.07317073170731707,koki ogawa
-Serge Gnabry,Germany,3,2.55,0,0,3,2025-11-17,1.0,42,0.07142857142857142,serge gnabry
-Jamie Maclaren,Australia,3,2.55,0,0,1,2023-11-16,3.0,40,0.075,jamie maclaren
-Rangelo Janga,Curaçao,3,2.55,1,0,1,2024-06-05,3.0,36,0.08333333333333333,rangelo janga
-Renato Steffen,Switzerland,3,2.55,0,0,1,2023-03-25,3.0,41,0.07317073170731707,renato steffen
-Rodrigo Aguirre,Uruguay,3,2.55,0,0,3,2025-09-04,1.0,42,0.07142857142857142,rodrigo aguirre
-Rodrygo,Brazil,3,2.55,0,0,2,2024-09-06,1.5,39,0.07692307692307693,rodrygo
-Anthony Elanga,Sweden,3,2.55,0,0,3,2026-03-31,1.0,40,0.075,anthony elanga
-Otabek Shukurov,Uzbekistan,3,2.55,1,0,2,2024-10-15,1.5,44,0.06818181818181818,otabek shukurov
-José Luis Rodríguez,Panama,3,2.55,0,0,3,2025-11-18,1.0,57,0.05263157894736842,jose luis rodriguez
-Musab Al-Juwayr,Saudi Arabia,3,2.55,0,0,3,2025-06-05,1.0,58,0.05172413793103448,musab aljuwayr
-Eberechi Eze,England,3,2.55,0,0,3,2025-11-13,1.0,42,0.07142857142857142,eberechi eze
-Ahmed Al-Rawi,Qatar,3,2.55,0,0,3,2025-03-20,1.0,52,0.057692307692307696,ahmed alrawi
-Kenji Gorré,Curaçao,3,2.55,0,0,3,2025-10-14,1.0,36,0.08333333333333333,kenji gorre
-Kōki Ogawa,Japan,3,2.55,0,0,2,2024-11-19,1.5,41,0.07317073170731707,koki ogawa
-Juninho Bacuna,Curaçao,3,2.55,0,0,3,2025-11-13,1.0,36,0.08333333333333333,juninho bacuna
-Thiago Almada,Argentina,3,2.55,0,0,3,2025-06-10,1.0,40,0.075,thiago almada
-Virgil van Dijk,Netherlands,3,2.55,1,0,3,2025-10-12,1.0,42,0.07142857142857142,virgil van dijk
-Ali Al-Hamadi,Iraq,3,2.55,0,0,3,2026-03-31,1.0,50,0.06,ali alhamadi
-Marcus Rashford,England,3,2.55,1,0,3,2025-09-09,1.0,42,0.07142857142857142,marcus rashford
-Charles De Ketelaere,Belgium,3,2.55,0,0,2,2025-11-18,1.5,40,0.075,charles de ketelaere
-Haris Tabaković,Bosnia and Herzegovina,3,2.55,0,0,3,2026-03-31,1.0,35,0.08571428571428572,haris tabakovic
-Calvin Stengs,Netherlands,3,2.55,0,0,1,2023-11-21,3.0,42,0.07142857142857142,calvin stengs
-João Neves,Portugal,3,2.55,0,0,1,2025-11-16,3.0,41,0.07317073170731707,joao neves
-Elias Saad,Tunisia,3,2.55,0,0,2,2025-10-10,1.5,48,0.0625,elias saad
-Thomas Partey,Ghana,3,2.55,0,0,2,2025-10-08,1.5,39,0.07692307692307693,thomas partey
-Francisco Conceição,Portugal,3,2.45,0,1,3,2025-11-16,1.0,41,0.07317073170731707,francisco conceicao
-Romano Schmid,Austria,3,2.45,0,1,3,2025-10-09,1.0,40,0.075,romano schmid
-Tim Kleindienst,Germany,4,2.4,0,0,3,2025-03-23,1.3333333333333333,42,0.09523809523809523,tim kleindienst
-Omar Marmoush,Egypt,4,2.35,1,0,4,2026-01-10,1.0,49,0.08163265306122448,omar marmoush
-Pape Gueye,Senegal,4,2.35,0,0,3,2026-01-03,1.3333333333333333,47,0.0851063829787234,pape gueye
-Riyad Mahrez,Algeria,4,2.35,1,0,3,2025-12-28,1.3333333333333333,51,0.0784313725490196,riyad mahrez
-Amad Diallo,Ivory Coast,4,2.35,0,0,4,2026-01-06,1.0,47,0.0851063829787234,amad diallo
-Ryan Christie,Scotland,3,2.3,0,0,3,2025-11-15,1.0,39,0.07692307692307693,ryan christie
-Leroy Sané,Germany,3,2.3,0,0,2,2025-11-17,1.5,42,0.07142857142857142,leroy sane
-Stefan Posch,Austria,3,2.3,0,0,2,2025-10-09,1.5,40,0.075,stefan posch
-Bruno Petković,Croatia,3,2.3,0,0,2,2023-09-08,1.5,39,0.07692307692307693,bruno petkovic
-Pedri,Spain,3,2.3,0,0,2,2025-09-07,1.5,43,0.06976744186046512,pedri
-Youssef En-Nesyri,Morocco,3,2.2,0,0,3,2025-10-14,1.0,53,0.05660377358490566,youssef ennesyri
-Evann Guessand,Ivory Coast,3,2.2,0,0,3,2025-12-31,1.0,47,0.06382978723404255,evann guessand
-Jamiro Monteiro,Cape Verde,3,2.2,0,0,3,2024-06-08,1.0,42,0.07142857142857142,jamiro monteiro
-Yan Diomande,Ivory Coast,3,2.2,0,0,3,2026-01-06,1.0,47,0.06382978723404255,yan diomande
-Théo Bongonda,Congo DR,3,2.2,0,0,3,2025-12-23,1.0,47,0.06382978723404255,theo bongonda
-Meschak Elia,Congo DR,3,2.2,0,0,3,2025-11-16,1.0,47,0.06382978723404255,meschak elia
-Hakim Ziyech,Morocco,3,2.2,1,0,3,2024-06-07,1.0,53,0.05660377358490566,hakim ziyech
-Simon Adingra,Ivory Coast,3,2.2,0,0,3,2025-10-10,1.0,47,0.06382978723404255,simon adingra
-Azzedine Ounahi,Morocco,3,2.2,0,0,3,2025-09-05,1.0,53,0.05660377358490566,azzedine ounahi
-Alexander Djiku,Ghana,3,2.2,0,0,3,2025-10-08,1.0,39,0.07692307692307693,alexander djiku
-Ousmane Dembélé,France,3,2.05,0,0,3,2025-03-23,1.0,42,0.07142857142857142,ousmane dembele
-Philipp Lienhart,Austria,3,2.05,0,0,3,2024-10-13,1.0,40,0.075,philipp lienhart
-İrfan Kahveci,Türkiye,3,2.05,0,0,3,2024-10-14,1.0,41,0.07317073170731707,irfan kahveci
-Dejan Kulusevski,Sweden,3,2.05,0,0,2,2024-11-19,1.5,40,0.075,dejan kulusevski
-Ermedin Demirović,Bosnia and Herzegovina,3,2.05,0,0,3,2025-03-24,1.0,35,0.08571428571428572,ermedin demirovic
-Bradley Barcola,France,3,2.05,0,0,3,2025-09-09,1.0,42,0.07142857142857142,bradley barcola
-Alireza Jahanbakhsh,Iran,2,2.0,2,2,2,2024-02-07,1.0,42,0.047619047619047616,alireza jahanbakhsh
-Chris Richards,United States,2,2.0,0,2,2,2025-07-06,1.0,56,0.03571428571428571,chris richards
-Henry Martín,Mexico,2,2.0,0,2,2,2023-07-12,1.0,60,0.03333333333333333,henry martin
-Yoel Bárcenas,Panama,2,2.0,0,2,2,2023-07-08,1.0,57,0.03508771929824561,yoel barcenas
-Santiago Giménez,Mexico,2,2.0,0,2,2,2023-07-16,1.0,60,0.03333333333333333,santiago gimenez
-Luis Romo,Mexico,2,2.0,0,2,1,2023-06-25,2.0,60,0.03333333333333333,luis romo
-Luis Chávez,Mexico,2,2.0,0,2,2,2023-07-12,1.0,60,0.03333333333333333,luis chavez
-Maximiliano Araújo,Uruguay,2,2.0,0,2,2,2024-06-27,1.0,42,0.047619047619047616,maximiliano araujo
-Rodrigo Bentancur,Uruguay,2,2.0,0,2,2,2024-07-13,1.0,42,0.047619047619047616,rodrigo bentancur
-Michael Amir Murillo,Panama,2,2.0,0,2,2,2024-06-23,1.0,57,0.03508771929824561,michael amir murillo
-Folarin Balogun,United States,2,2.0,0,2,2,2024-06-27,1.0,56,0.03571428571428571,folarin balogun
-Daniel Muñoz,Colombia,2,2.0,0,2,2,2024-07-02,1.0,44,0.045454545454545456,daniel munoz
-Orbelín Pineda,Mexico,2,2.0,1,2,2,2023-07-08,1.0,60,0.03333333333333333,orbelin pineda
-Mahmoud Al-Mardi,Jordan,2,2.0,0,2,1,2024-01-15,2.0,53,0.03773584905660377,mahmoud almardi
-Patrick Agyemang,United States,2,2.0,0,2,2,2025-06-22,1.0,56,0.03571428571428571,patrick agyemang
-Edson Álvarez,Mexico,2,2.0,0,2,2,2025-07-06,1.0,60,0.03333333333333333,edson alvarez
-Julián Álvarez,Argentina,2,2.0,0,2,2,2024-07-09,1.0,40,0.05,julian alvarez
-Nathan Saliba,Canada,2,2.0,0,2,2,2025-06-21,1.0,45,0.044444444444444446,nathan saliba
-Jefferson Lerma,Colombia,2,2.0,0,2,2,2024-07-10,1.0,44,0.045454545454545456,jefferson lerma
-Djordje Mihailovic,United States,2,2.0,0,2,1,2023-06-28,2.0,56,0.03571428571428571,djordje mihailovic
-Tameem Al-Abdullah,Qatar,2,1.85,0,1,2,2023-11-16,1.0,52,0.038461538461538464,tameem alabdullah
-Iliman Ndiaye,Senegal,3,1.85,0,0,3,2026-01-09,1.0,47,0.06382978723404255,iliman ndiaye
-Alan Minda,Ecuador,2,1.85,0,1,2,2024-11-14,1.0,41,0.04878048780487805,alan minda
-Fidel Escobar,Panama,2,1.85,0,1,2,2025-06-07,1.0,57,0.03508771929824561,fidel escobar
-Elias Achouri,Tunisia,3,1.85,1,0,2,2025-12-23,1.5,48,0.0625,elias achouri
-Jeremy Antonisse,Curaçao,2,1.85,0,1,2,2025-06-21,1.0,36,0.05555555555555555,jeremy antonisse
-Lucas Paquetá,Brazil,2,1.85,1,1,2,2025-09-04,1.0,39,0.05128205128205128,lucas paqueta
-Cristian Martínez,Panama,2,1.85,0,1,2,2025-06-16,1.0,57,0.03508771929824561,cristian martinez
-Sherzod Nasrullaev,Uzbekistan,2,1.85,0,1,2,2024-06-06,1.0,44,0.045454545454545456,sherzod nasrullaev
-Yazan Al-Arab,Jordan,2,1.85,0,1,2,2025-03-20,1.0,53,0.03773584905660377,yazan alarab
-Evidence Makgopa,South Africa,3,1.85,0,0,3,2026-01-04,1.0,51,0.058823529411764705,evidence makgopa
-César Blackman,Panama,2,1.85,0,1,2,2025-11-18,1.0,57,0.03508771929824561,cesar blackman
-César Yanis,Panama,2,1.85,0,1,2,2025-06-10,1.0,57,0.03508771929824561,cesar yanis
-Themba Zwane,South Africa,3,1.85,0,0,2,2024-06-07,1.5,51,0.058823529411764705,themba zwane
-Lamine Camara,Senegal,3,1.85,0,0,2,2024-01-15,1.5,47,0.06382978723404255,lamine camara
-Jean-Philippe Krasso,Ivory Coast,3,1.85,1,0,3,2025-12-31,1.0,47,0.06382978723404255,jeanphilippe krasso
-Abdullah Radif,Saudi Arabia,2,1.85,0,1,2,2024-01-30,1.0,58,0.034482758620689655,abdullah radif
-Kendry Páez,Ecuador,2,1.85,1,1,2,2024-06-26,1.0,41,0.04878048780487805,kendry paez
-Kevin Rodríguez,Ecuador,2,1.85,0,1,2,2024-07-04,1.0,41,0.04878048780487805,kevin rodriguez
-Davinson Sánchez,Colombia,2,1.85,0,1,2,2024-10-15,1.0,44,0.045454545454545456,davinson sanchez
-Abdulrahman Ghareeb,Saudi Arabia,2,1.85,0,1,2,2024-01-16,1.0,58,0.034482758620689655,abdulrahman ghareeb
-Mert Müldür,Türkiye,2,1.85,0,1,2,2025-09-04,1.0,41,0.04878048780487805,mert muldur
-Osama Rashid,Iraq,2,1.85,0,1,2,2024-01-15,1.0,50,0.04,osama rashid
-Cho Gue-sung,South Korea,2,1.85,0,1,2,2024-01-30,1.0,44,0.045454545454545456,cho guesung
-Cherif Ndiaye,Senegal,3,1.85,1,0,3,2025-12-30,1.0,47,0.06382978723404255,cherif ndiaye
-Mathías Olivera,Uruguay,2,1.85,0,1,2,2024-07-01,1.0,42,0.047619047619047616,mathias olivera
-Yusuf Abdurisag,Qatar,2,1.85,0,1,2,2023-11-21,1.0,52,0.038461538461538464,yusuf abdurisag
-Ryan Mendes,Cape Verde,3,1.85,1,0,3,2024-01-29,1.0,42,0.07142857142857142,ryan mendes
-Deniz Undav,Germany,3,1.7999999999999998,0,0,2,2024-10-11,1.5,42,0.07142857142857142,deniz undav
-Thapelo Morena,South Africa,2,1.7,0,0,1,2024-06-11,2.0,51,0.0392156862745098,thapelo morena
-Rade Krunić,Bosnia and Herzegovina,2,1.7,0,0,1,2023-03-23,2.0,35,0.05714285714285714,rade krunic
-Nathan Aké,Netherlands,2,1.7,0,0,1,2023-03-27,2.0,42,0.047619047619047616,nathan ake
-Diogo Jota,Portugal,2,1.7,0,0,1,2023-09-11,2.0,41,0.04878048780487805,diogo jota
-Rafael Santos Borré,Colombia,2,1.7,1,0,2,2023-11-21,1.0,44,0.045454545454545456,rafael santos borre
-Manuel Akanji,Switzerland,2,1.7,0,0,2,2025-09-05,1.0,41,0.04878048780487805,manuel akanji
-Karim Konaté,Ivory Coast,2,1.7,1,0,1,2023-11-17,2.0,47,0.0425531914893617,karim konate
-Ramin Rezaeian,Iran,2,1.7,0,0,2,2023-11-21,1.0,42,0.047619047619047616,ramin rezaeian
-Mostafa Meshaal,Qatar,2,1.7,0,0,2,2023-11-21,1.0,52,0.038461538461538464,mostafa meshaal
-Kenny McLean,Scotland,2,1.7,0,0,2,2025-11-18,1.0,39,0.05128205128205128,kenny mclean
-Ali Jasim,Iraq,2,1.7,0,0,2,2024-06-11,1.0,50,0.04,ali jasim
-Diney,Cape Verde,2,1.7,0,0,2,2025-09-04,1.0,42,0.047619047619047616,diney
-Nicolás González,Argentina,2,1.7,0,0,2,2024-09-10,1.0,40,0.05,nicolas gonzalez
-Jørgen Strand Larsen,Norway,2,1.7,0,0,2,2025-11-16,1.0,36,0.05555555555555555,jrgen strand larsen
-Neymar,Brazil,2,1.7,0,0,1,2023-09-08,2.0,39,0.05128205128205128,neymar
-Tahith Chong,Curaçao,2,1.7,0,0,1,2025-09-09,2.0,36,0.05555555555555555,tahith chong
-Dodi Lukebakio,Belgium,2,1.7,0,0,1,2023-10-13,2.0,40,0.05,dodi lukebakio
-Bae Jun-ho,South Korea,2,1.7,0,0,2,2024-11-14,1.0,44,0.045454545454545456,bae junho
-Thomas Meunier,Belgium,2,1.7,0,0,2,2025-10-13,1.0,40,0.05,thomas meunier
-Nikola Vlašić,Croatia,2,1.7,0,0,2,2025-11-17,1.0,39,0.05128205128205128,nikola vlasic
-Juan Fernando Quintero,Colombia,2,1.7,0,0,2,2025-09-04,1.0,44,0.045454545454545456,juan fernando quintero
-Alexis Mac Allister,Argentina,2,1.7,0,0,2,2025-03-25,1.0,40,0.05,alexis mac allister
-Noor Al-Rawabdeh,Jordan,2,1.7,0,0,2,2024-09-10,1.0,53,0.03773584905660377,noor alrawabdeh
-Oh Se-hun,South Korea,2,1.7,0,0,2,2024-11-14,1.0,44,0.045454545454545456,oh sehun
-Emil Forsberg,Sweden,2,1.7,0,0,2,2023-11-19,1.0,40,0.05,emil forsberg
-Jordi Paulina,Curaçao,2,1.7,1,0,1,2025-11-13,2.0,36,0.05555555555555555,jordi paulina
-Mohammed Salisu,Ghana,2,1.7,0,0,2,2025-10-08,1.0,39,0.05128205128205128,mohammed salisu
-Khojimat Erkinov,Uzbekistan,2,1.7,0,0,2,2025-03-25,1.0,44,0.045454545454545456,khojimat erkinov
-Ricardo Horta,Portugal,2,1.7,0,0,2,2023-11-19,1.0,41,0.04878048780487805,ricardo horta
-Mohamed El Amine Amoura,Algeria,2,1.7,0,0,1,2025-03-21,2.0,51,0.0392156862745098,mohamed el amine amoura
-Marcus Thuram,France,2,1.7,0,0,2,2023-11-18,1.0,42,0.047619047619047616,marcus thuram
-Salem Al-Dawsari,Saudi Arabia,2,1.7,0,0,2,2025-03-20,1.0,58,0.034482758620689655,salem aldawsari
-Lyndon Dykes,Scotland,2,1.7,0,0,2,2025-10-09,1.0,39,0.05128205128205128,lyndon dykes
-Luiz Henrique,Brazil,2,1.7,0,0,2,2024-10-15,1.0,39,0.05128205128205128,luiz henrique
-Che Adams,Scotland,2,1.7,0,0,2,2025-10-12,1.0,39,0.05128205128205128,che adams
-Sarpreet Singh,New Zealand,2,1.7,0,0,2,2025-03-21,1.0,35,0.05714285714285714,sarpreet singh
-Joo Min-kyu,South Korea,2,1.7,0,0,2,2024-09-10,1.0,44,0.045454545454545456,joo minkyu
-Martin Ødegaard,Norway,2,1.7,0,0,2,2025-09-09,1.0,36,0.05555555555555555,martin degaard
-Lucas Mendes,Qatar,2,1.7,0,0,2,2025-03-25,1.0,52,0.038461538461538464,lucas mendes
-Louicius Don Deedson,Haiti,2,1.7,0,0,2,2025-06-10,1.0,36,0.05555555555555555,louicius don deedson
-Mateo Kovačić,Croatia,2,1.7,0,0,1,2023-03-28,2.0,39,0.05128205128205128,mateo kovacic
-Lewis Miller,Australia,2,1.7,0,0,2,2025-03-20,1.0,40,0.05,lewis miller
-Ruben Providence,Haiti,2,1.7,0,0,2,2025-11-18,1.0,36,0.05555555555555555,ruben providence
-Matías Galarza,Paraguay,2,1.7,0,0,2,2025-09-09,1.0,35,0.05714285714285714,matias galarza
-Lawrence Shankland,Scotland,2,1.7,0,0,2,2025-11-18,1.0,39,0.05128205128205128,lawrence shankland
-Silvan Widmer,Switzerland,2,1.7,0,0,2,2025-09-05,1.0,41,0.04878048780487805,silvan widmer
-Aron Dønnum,Norway,2,1.7,0,0,2,2025-03-22,1.0,36,0.05555555555555555,aron dnnum
-Cecilio Waterman,Panama,2,1.7,0,0,1,2025-11-13,2.0,57,0.03508771929824561,cecilio waterman
-David Douděra,Czechia,2,1.7,0,0,2,2025-11-17,1.0,40,0.05,david doudera
-Amir Al-Ammari,Iraq,2,1.7,1,0,2,2025-11-18,1.0,50,0.04,amir alammari
-Kristijan Jakić,Croatia,2,1.7,0,0,2,2025-11-17,1.0,39,0.05128205128205128,kristijan jakic
-Mitchell Duke,Australia,2,1.7,0,0,1,2023-11-16,2.0,40,0.05,mitchell duke
-Callum McCowatt,New Zealand,2,1.7,0,0,2,2024-11-18,1.0,35,0.05714285714285714,callum mccowatt
-Kingsley Coman,France,2,1.7,0,0,1,2023-11-18,2.0,42,0.047619047619047616,kingsley coman
-Mao Hosoya,Japan,2,1.7,0,0,2,2025-06-10,1.0,41,0.04878048780487805,mao hosoya
-Enzo Fernández,Argentina,2,1.7,0,0,2,2025-03-25,1.0,40,0.05,enzo fernandez
-Félix Torres,Ecuador,2,1.7,0,0,1,2023-09-12,2.0,41,0.04878048780487805,felix torres
-Willy Semedo,Cape Verde,2,1.7,0,0,2,2025-10-13,1.0,42,0.047619047619047616,willy semedo
-Gonzalo Plata,Ecuador,2,1.7,0,0,1,2024-11-14,2.0,41,0.04878048780487805,gonzalo plata
-Viktor Claesson,Sweden,2,1.7,0,0,2,2023-11-19,1.0,40,0.05,viktor claesson
-Adam Karabec,Czechia,2,1.7,0,0,2,2025-11-17,1.0,40,0.05,adam karabec
-Hazem Mastouri,Tunisia,2,1.7,0,0,2,2025-09-04,1.0,48,0.041666666666666664,hazem mastouri
-Hassan Kadesh,Saudi Arabia,2,1.7,0,0,1,2024-09-10,2.0,58,0.034482758620689655,hassan kadesh
-Hamed Traorè,Ivory Coast,2,1.7,0,0,1,2023-11-17,2.0,47,0.0425531914893617,hamed traore
-Ahmed Alaaeldin,Qatar,2,1.7,1,0,2,2025-03-20,1.0,52,0.038461538461538464,ahmed alaaeldin
-Gonçalo Inácio,Portugal,2,1.7,0,0,1,2023-09-11,2.0,41,0.04878048780487805,goncalo inacio
-Jean-Philippe Mateta,France,2,1.7,0,0,2,2025-11-16,1.0,42,0.047619047619047616,jeanphilippe mateta
-Hamza Igamane,Morocco,2,1.7,0,0,2,2025-09-08,1.0,53,0.03773584905660377,hamza igamane
-Fiston Mayele,Congo DR,2,1.7,0,0,2,2025-03-25,1.0,47,0.0425531914893617,fiston mayele
-Yukinari Sugawara,Japan,2,1.7,0,0,2,2024-11-15,1.0,41,0.04878048780487805,yukinari sugawara
-Yunus Akgün,Türkiye,2,1.7,0,0,2,2025-10-14,1.0,41,0.04878048780487805,yunus akgun
-Iñaki Williams,Ghana,2,1.7,0,0,2,2025-03-21,1.0,39,0.05128205128205128,inaki williams
-Giorgian de Arrascaeta,Uruguay,2,1.7,0,0,2,2025-09-04,1.0,42,0.047619047619047616,giorgian de arrascaeta
-Hans Vanaken,Belgium,2,1.7,0,0,2,2025-11-18,1.0,40,0.05,hans vanaken
-Ferjani Sassi,Tunisia,2,1.7,0,0,2,2025-10-13,1.0,48,0.041666666666666664,ferjani sassi
-Youssouf Fofana,France,2,1.7,0,0,2,2023-11-21,1.0,42,0.047619047619047616,youssouf fofana
-Hossein Kanaanizadegan,Iran,2,1.7,0,0,1,2024-03-21,2.0,42,0.047619047619047616,hossein kanaanizadegan
-Youssef Msakni,Tunisia,2,1.7,1,0,2,2023-11-21,1.0,48,0.041666666666666664,youssef msakni
-Abdulrahman Al-Aboud,Saudi Arabia,2,1.7,0,0,2,2025-06-10,1.0,58,0.034482758620689655,abdulrahman alaboud
-Ahmed Sayed,Egypt,2,1.7,0,0,2,2025-03-25,1.0,49,0.04081632653061224,ahmed sayed
-Franjo Ivanović,Croatia,2,1.7,0,0,1,2025-06-06,2.0,39,0.05128205128205128,franjo ivanovic
-Ibrahim Al-Hassan,Qatar,2,1.7,0,0,2,2024-10-10,1.0,52,0.038461538461538464,ibrahim alhassan
-Ibrahim Bayesh,Iraq,2,1.7,0,0,2,2025-03-20,1.0,50,0.04,ibrahim bayesh
-Tyler Bindon,New Zealand,2,1.7,0,0,2,2025-03-21,1.0,35,0.05714285714285714,tyler bindon
-Youssef Amyn,Iraq,2,1.7,0,0,2,2024-11-19,1.0,50,0.04,youssef amyn
-Ibrahim Sangaré,Ivory Coast,2,1.7,1,0,2,2025-10-10,1.0,47,0.0425531914893617,ibrahim sangare
-Johan Manzambi,Switzerland,2,1.7,0,0,2,2025-11-15,1.0,41,0.04878048780487805,johan manzambi
-Gavi,Spain,2,1.7,0,0,2,2023-10-15,1.0,43,0.046511627906976744,gavi
-Husniddin Aliqulov,Uzbekistan,2,1.7,0,0,2,2024-09-10,1.0,44,0.045454545454545456,husniddin aliqulov
-Jhon Durán,Colombia,2,1.7,0,0,2,2025-03-25,1.0,44,0.045454545454545456,jhon duran
-Eric Davis,Panama,2,1.7,1,0,2,2025-11-18,1.0,57,0.03508771929824561,eric davis
-Ernest Nuamah,Ghana,2,1.7,0,0,2,2025-03-21,1.0,39,0.05128205128205128,ernest nuamah
-Zidane Iqbal,Iraq,2,1.7,0,0,2,2025-10-11,1.0,50,0.04,zidane iqbal
-Ollie Watkins,England,2,1.6,0,1,2,2024-11-14,1.0,42,0.047619047619047616,ollie watkins
-Adam Hložek,Czechia,2,1.45,0,0,2,2025-06-06,1.0,40,0.05,adam hlozek
-Orkun Kökçü,Türkiye,2,1.45,0,0,2,2025-03-20,1.0,41,0.04878048780487805,orkun kokcu
-Felix Horn Myhre,Norway,2,1.45,0,0,2,2025-09-09,1.0,36,0.05555555555555555,felix horn myhre
-Martin Zubimendi,Spain,2,1.45,0,0,2,2025-11-15,1.0,43,0.046511627906976744,martin zubimendi
-Yasin Ayari,Sweden,2,1.45,0,0,2,2025-09-05,1.0,40,0.05,yasin ayari
-Anthony Gordon,England,2,1.45,0,0,2,2025-10-14,1.0,42,0.047619047619047616,anthony gordon
-Christopher Nkunku,France,2,1.45,0,0,2,2025-10-13,1.0,42,0.047619047619047616,christopher nkunku
-Abdülkerim Bardakcı,Türkiye,2,1.45,0,0,2,2025-03-23,1.0,41,0.04878048780487805,abdulkerim bardakc
-Lukáš Červ,Czechia,2,1.45,0,0,2,2025-09-05,1.0,40,0.05,lukas cerv
-Joško Gvardiol,Croatia,2,1.45,0,0,2,2025-11-14,1.0,39,0.05128205128205128,josko gvardiol
-İrfan Can Kahveci,Türkiye,2,1.45,0,0,2,2025-10-11,1.0,41,0.04878048780487805,irfan can kahveci
-Trent Alexander-Arnold,England,2,1.45,0,0,2,2024-10-13,1.0,42,0.047619047619047616,trent alexanderarnold
-Álex Baena,Spain,2,1.45,0,0,2,2024-10-15,1.0,43,0.046511627906976744,alex baena
-Teun Koopmeiners,Netherlands,2,1.45,0,0,2,2024-11-16,1.0,42,0.047619047619047616,teun koopmeiners
-Rafael Leão,Portugal,2,1.45,0,0,2,2024-11-15,1.0,41,0.04878048780487805,rafael leao
-Noa Lang,Netherlands,2,1.45,0,0,2,2025-06-10,1.0,42,0.047619047619047616,noa lang
-Ali Abdi,Tunisia,2,1.35,2,0,2,2025-12-27,1.0,48,0.041666666666666664,ali abdi
-Hamza Rafia,Tunisia,2,1.35,0,0,2,2024-01-20,1.0,48,0.041666666666666664,hamza rafia
-Farès Chaïbi,Algeria,2,1.35,0,0,2,2025-12-31,1.0,51,0.0392156862745098,fares chaibi
-Chancel Mbemba,Congo DR,2,1.35,0,0,2,2025-11-13,1.0,47,0.0425531914893617,chancel mbemba
-Nathanaël Mbuku,Congo DR,2,1.35,0,0,2,2025-12-30,1.0,47,0.0425531914893617,nathanael mbuku
-Firas Chaouat,Tunisia,2,1.35,0,0,2,2026-01-03,1.0,48,0.041666666666666664,firas chaouat
-Ismaël Gharbi,Tunisia,2,1.35,1,0,2,2025-12-30,1.0,48,0.041666666666666664,ismael gharbi
-Percy Tau,South Africa,2,1.35,1,0,2,2024-01-21,1.0,51,0.0392156862745098,percy tau
-Oumar Diakité,Ivory Coast,2,1.35,0,0,2,2025-10-10,1.0,47,0.0425531914893617,oumar diakite
-Francisco Trincão,Portugal,2,1.2,0,0,1,2025-03-23,2.0,41,0.04878048780487805,francisco trincao
-Jack Grealish,England,2,1.2,0,0,2,2024-10-13,1.0,42,0.047619047619047616,jack grealish
-Sebastian Nanasi,Sweden,2,1.2,0,0,1,2024-10-14,2.0,40,0.05,sebastian nanasi
-Yeremy Pino,Spain,2,1.2,0,0,2,2024-11-18,1.0,43,0.046511627906976744,yeremy pino
-Gerardo Arteaga,Mexico,1,1.0,0,1,1,2024-06-22,1.0,60,0.016666666666666666,gerardo arteaga
-Nizar Al-Rashdan,Jordan,1,1.0,0,1,1,2024-01-29,1.0,53,0.018867924528301886,nizar alrashdan
-Bazoumana Touré,Ivory Coast,2,1.0,0,0,2,2026-01-06,1.0,47,0.0425531914893617,bazoumana toure
-Gaël Kakuta,Congo DR,2,1.0,1,0,1,2025-12-30,2.0,47,0.0425531914893617,gael kakuta
-Érick Sánchez,Mexico,1,1.0,0,1,1,2023-07-08,1.0,60,0.016666666666666666,erick sanchez
-Christian Pulisic,United States,1,1.0,0,1,1,2024-06-23,1.0,56,0.017857142857142856,christian pulisic
-Odiljon Hamrobekov,Uzbekistan,1,1.0,0,1,1,2024-02-03,1.0,44,0.022727272727272728,odiljon hamrobekov
-İlkay Gündoğan,Germany,1,1.0,0,1,1,2024-06-19,1.0,42,0.023809523809523808,ilkay gundogan
-Niko Sigur,Canada,1,1.0,0,1,1,2025-06-17,1.0,45,0.022222222222222223,niko sigur
-Hwang In-beom,South Korea,1,1.0,0,1,1,2024-01-15,1.0,44,0.022727272727272728,hwang inbeom
-Hazem Shehata,Qatar,1,1.0,0,1,1,2023-07-02,1.0,52,0.019230769230769232,hazem shehata
-Mohamed Kanno,Saudi Arabia,1,1.0,0,1,1,2024-01-21,1.0,58,0.017241379310344827,mohamed kanno
-Brenden Aaronson,United States,1,1.0,0,1,1,2025-06-15,1.0,56,0.017857142857142856,brenden aaronson
-Gernot Trauner,Austria,1,1.0,0,1,1,2024-06-21,1.0,40,0.025,gernot trauner
-Haji Wright,United States,1,1.0,0,1,1,2025-06-15,1.0,56,0.017857142857142856,haji wright
-Cade Cowell,United States,1,1.0,0,1,1,2023-07-02,1.0,56,0.017857142857142856,cade cowell
-Lukáš Provod,Czechia,1,1.0,0,1,1,2024-06-18,1.0,40,0.025,lukas provod
-Bryan Reynolds,United States,1,1.0,0,1,1,2023-06-28,1.0,56,0.017857142857142856,bryan reynolds
-Roberto Alvarado,Mexico,1,1.0,0,1,1,2023-07-12,1.0,60,0.016666666666666666,roberto alvarado
-Miguel Borja,Colombia,1,1.0,1,1,1,2024-07-06,1.0,44,0.022727272727272728,miguel borja
-Michel Aebischer,Switzerland,1,1.0,0,1,1,2024-06-15,1.0,41,0.024390243902439025,michel aebischer
-Rodri,Spain,1,1.0,0,1,1,2024-06-30,1.0,43,0.023255813953488372,rodri
-Rebin Sulaka,Iraq,1,1.0,0,1,1,2024-01-24,1.0,50,0.02,rebin sulaka
-Saad Natiq,Iraq,1,1.0,0,1,1,2024-01-29,1.0,50,0.02,saad natiq
-Ramón Sosa,Paraguay,1,1.0,0,1,1,2024-07-02,1.0,35,0.02857142857142857,ramon sosa
-Maximilian Arfsten,United States,1,1.0,0,1,1,2025-06-29,1.0,56,0.017857142857142856,maximilian arfsten
-Max Mata,New Zealand,2,1.0,0,0,2,2024-06-30,1.0,35,0.05714285714285714,max mata
-Matías Viña,Uruguay,1,1.0,0,1,1,2024-06-23,1.0,42,0.023809523809523808,matias vina
-Gianluca Busio,United States,1,1.0,0,1,1,2023-07-02,1.0,56,0.017857142857142856,gianluca busio
-Abdoulaye Seck,Senegal,2,1.0,0,0,2,2025-12-30,1.0,47,0.0425531914893617,abdoulaye seck
-Promise David,Canada,1,1.0,0,1,1,2025-06-17,1.0,45,0.022222222222222223,promise david
-Richard Ríos,Colombia,1,1.0,0,1,1,2024-07-06,1.0,44,0.022727272727272728,richard rios
-Jonathan Osorio,Canada,1,1.0,0,1,1,2023-07-04,1.0,45,0.022222222222222223,jonathan osorio
-Junior Hoilett,Canada,1,1.0,1,1,1,2023-07-04,1.0,45,0.022222222222222223,junior hoilett
-Liam Millar,Canada,1,1.0,0,1,1,2023-07-04,1.0,45,0.022222222222222223,liam millar
-Tani Oluwaseyi,Canada,1,1.0,0,1,1,2025-06-17,1.0,45,0.022222222222222223,tani oluwaseyi
-Alexis Vega,Mexico,1,1.0,0,1,1,2025-06-28,1.0,60,0.016666666666666666,alexis vega
-Teboho Mokoena,South Africa,2,1.0,1,0,2,2024-02-07,1.0,51,0.0392156862745098,teboho mokoena
-Facundo Pellistri,Uruguay,1,1.0,0,1,1,2024-06-27,1.0,42,0.023809523809523808,facundo pellistri
-Jayden Nelson,Canada,1,1.0,0,1,1,2023-07-04,1.0,45,0.022222222222222223,jayden nelson
-Ismaël Koné,Canada,1,1.0,0,1,1,2024-07-13,1.0,45,0.022222222222222223,ismael kone
-Dani Carvajal,Spain,1,1.0,0,1,1,2024-06-15,1.0,43,0.023255813953488372,dani carvajal
-Steven Vitória,Canada,1,1.0,1,1,1,2023-07-09,1.0,45,0.022222222222222223,steven vitoria
-Jeremy Sarmiento,Ecuador,1,1.0,0,1,1,2024-06-22,1.0,41,0.024390243902439025,jeremy sarmiento
-Karim Ansarifard,Iran,1,1.0,0,1,1,2024-01-14,1.0,42,0.023809523809523808,karim ansarifard
-Stefan de Vrij,Netherlands,1,1.0,0,1,1,2024-07-06,1.0,42,0.023809523809523808,stefan de vrij
-Iván Anderson,Panama,1,1.0,0,1,1,2023-07-12,1.0,57,0.017543859649122806,ivan anderson
-Ali Al-Bulaihi,Saudi Arabia,1,1.0,0,1,1,2024-01-16,1.0,58,0.017241379310344827,ali albulaihi
-Kwadwo Duah,Switzerland,1,1.0,0,1,1,2024-06-15,1.0,41,0.024390243902439025,kwadwo duah
-Jeong Woo-yeong,South Korea,1,1.0,0,1,1,2024-01-25,1.0,44,0.022727272727272728,jeong wooyeong
-Sávio,Brazil,1,1.0,0,1,1,2024-06-28,1.0,39,0.02564102564102564,savio
-Shojae Khalilzadeh,Iran,1,1.0,0,1,1,2024-01-14,1.0,42,0.023809523809523808,shojae khalilzadeh
-Lisandro Martínez,Argentina,1,1.0,0,1,1,2024-07-04,1.0,40,0.025,lisandro martinez
-Lucas Cavallini,Canada,1,1.0,0,1,1,2023-06-27,1.0,45,0.022222222222222223,lucas cavallini
-Cole Palmer,England,1,1.0,0,1,1,2024-07-14,1.0,42,0.023809523809523808,cole palmer
-Samet Akaydin,Türkiye,1,1.0,0,1,1,2024-07-06,1.0,41,0.024390243902439025,samet akaydin
-Luis Suárez,Uruguay,1,1.0,0,1,1,2024-07-13,1.0,42,0.023809523809523808,luis suarez
-Jordan Bos,Australia,1,1.0,0,1,1,2024-01-13,1.0,40,0.025,jordan bos
-Ibrahim Maza,Algeria,2,1.0,0,0,2,2025-12-31,1.0,51,0.0392156862745098,ibrahim maza
-Emre Can,Germany,1,1.0,0,1,1,2024-06-14,1.0,42,0.023809523809523808,emre can
-Wataru Endō,Japan,1,1.0,0,1,1,2024-01-19,1.0,41,0.024390243902439025,wataru endo
-Faisal Al-Ghamdi,Saudi Arabia,1,1.0,0,1,1,2024-01-21,1.0,58,0.017241379310344827,faisal alghamdi
-Jassem Gaber,Qatar,1,1.0,0,1,1,2024-02-07,1.0,52,0.019230769230769232,jassem gaber
-Wataru Endo,Japan,1,0.85,0,0,1,2024-09-05,1.0,41,0.024390243902439025,wataru endo
-Warren Zaïre-Emery,France,1,0.85,0,0,1,2023-11-18,1.0,42,0.023809523809523808,warren zaireemery
-Vladimír Coufal,Czechia,1,0.85,0,0,1,2025-11-17,1.0,40,0.025,vladimir coufal
-Telmo Arcanjo,Cape Verde,1,0.85,0,0,1,2025-10-08,1.0,42,0.023809523809523808,telmo arcanjo
-Axel Tuanzebe,Congo DR,1,0.85,0,0,1,2026-03-31,1.0,47,0.02127659574468085,axel tuanzebe
-Thalente Mbatha,South Africa,1,0.85,0,0,1,2025-10-14,1.0,51,0.0196078431372549,thalente mbatha
-Aurélien Tchouaméni,France,1,0.85,0,0,1,2023-09-07,1.0,42,0.023809523809523808,aurelien tchouameni
-Aziz Behich,Australia,1,0.85,0,0,1,2025-06-05,1.0,40,0.025,aziz behich
-Agustín Canobbio,Uruguay,1,0.85,0,0,1,2023-09-12,1.0,42,0.023809523809523808,agustin canobbio
-Quinten Timber,Netherlands,1,0.85,0,0,1,2025-09-07,1.0,42,0.023809523809523808,quinten timber
-Ramiz Zerrouki,Algeria,1,0.85,0,0,1,2023-11-19,1.0,51,0.0196078431372549,ramiz zerrouki
-Quilindschy Hartman,Netherlands,1,0.85,0,0,1,2023-10-13,1.0,42,0.023809523809523808,quilindschy hartman
-Reece James,England,1,0.85,0,0,1,2025-03-24,1.0,42,0.023809523809523808,reece james
-Samed Baždar,Bosnia and Herzegovina,1,0.85,0,0,1,2025-09-06,1.0,35,0.02857142857142857,samed bazdar
-Ahmed Al Ganehi,Qatar,1,0.85,0,0,1,2025-03-20,1.0,52,0.019230769230769232,ahmed al ganehi
-Tyrese Noslin,Curaçao,1,0.85,0,0,1,2025-09-09,1.0,36,0.027777777777777776,tyrese noslin
-Benjamin Pavard,France,1,0.85,0,0,1,2023-03-27,1.0,42,0.023809523809523808,benjamin pavard
-Benjamin Nygren,Sweden,1,0.85,0,0,1,2025-11-15,1.0,40,0.025,benjamin nygren
-Otávio,Portugal,1,0.85,0,0,1,2023-03-26,1.0,41,0.024390243902439025,otavio
-Toni Fruk,Croatia,1,0.85,0,0,1,2025-10-12,1.0,39,0.02564102564102564,toni fruk
-Tomáš Čvančara,Czechia,1,0.85,0,0,1,2023-03-24,1.0,40,0.025,tomas cvancara
-Ben Gannon-Doak,Scotland,1,0.85,0,0,1,2025-11-15,1.0,39,0.02564102564102564,ben gannondoak
-Ajdin Hrustic,Australia,1,0.85,0,0,1,2024-06-06,1.0,40,0.025,ajdin hrustic
-Akam Hashim,Iraq,1,0.85,0,0,1,2025-03-20,1.0,50,0.02,akam hashim
-Tim Payne,New Zealand,1,0.85,0,0,1,2025-03-21,1.0,35,0.02857142857142857,tim payne
-Park Jin-seob,South Korea,1,0.85,0,0,1,2024-03-26,1.0,44,0.022727272727272728,park jinseob
-Alexis Saelemaekers,Belgium,1,0.85,0,0,1,2025-11-18,1.0,40,0.025,alexis saelemaekers
-Aïssa Mandi,Algeria,1,0.85,0,0,1,2025-03-25,1.0,51,0.0196078431372549,aissa mandi
-Bashar Resan,Iraq,1,0.85,0,0,1,2023-11-16,1.0,50,0.02,bashar resan
-Umut Nayir,Türkiye,1,0.85,0,0,1,2023-06-19,1.0,41,0.024390243902439025,umut nayir
-Paulo Dybala,Argentina,1,0.85,0,0,1,2024-09-05,1.0,40,0.025,paulo dybala
-Vakoun Issouf Bayo,Ivory Coast,1,0.85,0,0,1,2025-09-05,1.0,47,0.02127659574468085,vakoun issouf bayo
-Barış Alper Yılmaz,Türkiye,1,0.85,0,0,1,2023-10-12,1.0,41,0.024390243902439025,bars alper ylmaz
-Pedro Miguel,Qatar,1,0.85,0,0,1,2025-10-14,1.0,52,0.019230769230769232,pedro miguel
-Assan Ouédraogo,Germany,1,0.85,0,0,1,2025-11-17,1.0,42,0.023809523809523808,assan ouedraogo
-Ángel Mena,Ecuador,1,0.85,0,0,1,2023-11-21,1.0,41,0.024390243902439025,angel mena
-Theo Bongonda,Congo DR,1,0.85,0,0,1,2025-10-14,1.0,47,0.02127659574468085,theo bongonda
-Petar Musa,Croatia,1,0.85,0,0,1,2025-11-14,1.0,39,0.02564102564102564,petar musa
-Renato Gojković,Bosnia and Herzegovina,1,0.85,0,0,1,2023-11-16,1.0,35,0.02857142857142857,renato gojkovic
-Ridle Baku,Germany,1,0.85,0,0,1,2025-11-17,1.0,42,0.023809523809523808,ridle baku
-Ali Lajami,Saudi Arabia,1,0.85,0,0,1,2024-06-11,1.0,58,0.017241379310344827,ali lajami
-Adam Taggart,Australia,1,0.85,0,0,1,2024-06-11,1.0,40,0.025,adam taggart
-Rubén Vargas,Switzerland,1,0.85,0,0,1,2025-11-18,1.0,41,0.024390243902439025,ruben vargas
-Yannick Semedo,Cape Verde,1,0.85,0,0,1,2025-03-20,1.0,42,0.023809523809523808,yannick semedo
-Rustam Ashurmatov,Uzbekistan,1,0.85,0,0,1,2024-03-21,1.0,44,0.022727272727272728,rustam ashurmatov
-Antoine Griezmann,France,1,0.85,0,0,1,2023-03-24,1.0,42,0.023809523809523808,antoine griezmann
-Ryan Porteous,Scotland,1,0.85,0,0,1,2023-09-08,1.0,39,0.02564102564102564,ryan porteous
-Yuki Soma,Japan,1,0.85,1,0,1,2024-06-11,1.0,41,0.024390243902439025,yuki soma
-Sidny Lopes Cabral,Cape Verde,1,0.85,0,0,1,2025-10-08,1.0,42,0.023809523809523808,sidny lopes cabral
-Ryōya Morishita,Japan,1,0.85,0,0,1,2025-06-10,1.0,41,0.024390243902439025,ryoya morishita
-Shūto Machino,Japan,1,0.85,0,0,1,2025-06-10,1.0,41,0.024390243902439025,shuto machino
-Ró-Ró,Qatar,1,0.85,0,0,1,2025-06-05,1.0,52,0.019230769230769232,roro
-Rúben Neves,Portugal,1,0.85,0,0,1,2025-10-11,1.0,41,0.024390243902439025,ruben neves
-Yassine Meriah,Tunisia,1,0.85,0,0,1,2023-11-17,1.0,48,0.020833333333333332,yassine meriah
-Amirhossein Hosseinzadeh,Iran,1,0.85,0,0,1,2025-06-10,1.0,42,0.023809523809523808,amirhossein hosseinzadeh
-Seifeddine Jaziri,Tunisia,1,0.85,0,0,1,2025-03-24,1.0,48,0.020833333333333332,seifeddine jaziri
-Saed Al-Rosan,Jordan,1,0.85,0,0,1,2024-03-26,1.0,53,0.018867924528301886,saed alrosan
-Said Benrahma,Algeria,1,0.85,0,0,1,2024-06-10,1.0,51,0.0196078431372549,said benrahma
-Sajjad Jassim,Iraq,1,0.85,0,0,1,2025-06-10,1.0,50,0.02,sajjad jassim
-Andreas Pereira,Brazil,1,0.85,0,0,1,2024-10-15,1.0,39,0.02564102564102564,andreas pereira
-Yerry Mina,Colombia,1,0.85,0,0,1,2025-09-09,1.0,44,0.022727272727272728,yerry mina
-Yerson Mosquera,Colombia,1,0.85,0,0,1,2024-09-10,1.0,44,0.022727272727272728,yerson mosquera
-Saleh Hardani,Iran,1,0.85,0,0,1,2024-11-19,1.0,42,0.023809523809523808,saleh hardani
-Andrés Gómez,Colombia,1,0.85,0,0,1,2024-11-15,1.0,44,0.022727272727272728,andres gomez
-Yousef Aymen,Qatar,1,0.85,0,0,1,2024-06-11,1.0,52,0.019230769230769232,yousef aymen
-Antoine Semenyo,Ghana,1,0.85,0,0,1,2025-03-21,1.0,39,0.02564102564102564,antoine semenyo
-Roshon van Eijma,Curaçao,1,0.85,0,0,1,2025-11-13,1.0,36,0.027777777777777776,roshon van eijma
-Amine Gouiri,Algeria,1,0.85,0,0,1,2025-03-21,1.0,51,0.0196078431372549,amine gouiri
-Robin Le Normand,Spain,1,0.85,0,0,1,2023-11-19,1.0,43,0.023255813953488372,robin le normand
-Renato Veiga,Portugal,1,0.85,0,0,1,2025-11-16,1.0,41,0.024390243902439025,renato veiga
-Xander Severina,Curaçao,1,0.85,0,0,1,2024-06-08,1.0,36,0.027777777777777776,xander severina
-Zeki Çelik,Türkiye,1,0.85,0,0,1,2025-10-11,1.0,41,0.024390243902439025,zeki celik
-Abdul Fatawu,Ghana,1,0.85,0,0,1,2024-06-10,1.0,39,0.02564102564102564,abdul fatawu
-Amar Dedić,Bosnia and Herzegovina,1,0.85,0,0,1,2023-03-23,1.0,35,0.02857142857142857,amar dedic
-Zaid Tahseen,Iraq,1,0.85,0,0,1,2024-03-26,1.0,50,0.02,zaid tahseen
-Salih Özcan,Türkiye,1,0.85,0,0,1,2025-11-18,1.0,41,0.024390243902439025,salih ozcan
-Arthur Theate,Belgium,1,0.85,0,0,1,2025-09-04,1.0,40,0.025,arthur theate
-Robin Hranáč,Czechia,1,0.85,0,0,1,2025-11-17,1.0,40,0.025,robin hranac
-Stuart Armstrong,Scotland,1,0.85,0,0,1,2023-11-19,1.0,39,0.02564102564102564,stuart armstrong
-Robin Quaison,Sweden,1,0.85,0,0,1,2023-09-09,1.0,40,0.025,robin quaison
-Sontje Hansen,Curaçao,1,0.85,0,0,1,2025-11-13,1.0,36,0.027777777777777776,sontje hansen
-Stopira,Cape Verde,1,0.85,0,0,1,2025-10-13,1.0,42,0.023809523809523808,stopira
-Yéremy Pino,Spain,1,0.85,0,0,1,2025-10-11,1.0,43,0.023255813953488372,yeremy pino
-Yusuf Yazıcı,Türkiye,1,0.85,1,0,1,2023-11-21,1.0,41,0.024390243902439025,yusuf yazc
-Yannick Carrasco,Belgium,1,0.85,0,0,1,2023-09-09,1.0,40,0.025,yannick carrasco
-Armin Gigović,Bosnia and Herzegovina,1,0.85,0,0,1,2025-03-21,1.0,35,0.02857142857142857,armin gigovic
-Ar'jany Martha,Curaçao,1,0.85,0,0,1,2025-11-13,1.0,36,0.027777777777777776,arjany martha
-Ao Tanaka,Japan,1,0.85,0,0,1,2024-03-21,1.0,41,0.024390243902439025,ao tanaka
-Amar Rahmanović,Bosnia and Herzegovina,1,0.85,0,0,1,2023-10-13,1.0,35,0.02857142857142857,amar rahmanovic
-Soufiane Rahimi,Morocco,1,0.85,0,0,1,2024-06-11,1.0,53,0.018867924528301886,soufiane rahimi
-Ronald Araújo,Uruguay,1,0.85,0,0,1,2023-11-16,1.0,42,0.023809523809523808,ronald araujo
-Saleh Abu Al-Shamat,Saudi Arabia,1,0.85,0,0,1,2025-10-08,1.0,58,0.017241379310344827,saleh abu alshamat
-Micky van de Ven,Netherlands,1,0.85,0,0,1,2025-06-10,1.0,42,0.023809523809523808,micky van de ven
-Omid Noorafkan,Iran,1,0.85,0,0,1,2024-03-21,1.0,42,0.023809523809523808,omid noorafkan
-Luka Sučić,Croatia,1,0.85,0,0,1,2025-10-12,1.0,39,0.02564102564102564,luka sucic
-Deniz Gül,Türkiye,1,0.85,0,0,1,2025-11-18,1.0,41,0.024390243902439025,deniz gul
-Kerim Alajbegović,Bosnia and Herzegovina,1,0.85,0,0,1,2025-09-06,1.0,35,0.02857142857142857,kerim alajbegovic
-Diego Gómez,Paraguay,1,0.85,0,0,1,2024-09-10,1.0,35,0.02857142857142857,diego gomez
-Abdallah Nasib,Jordan,1,0.85,0,0,1,2025-03-20,1.0,53,0.018867924528301886,abdallah nasib
-Keanu Baccus,Australia,1,0.85,0,0,1,2024-03-21,1.0,40,0.025,keanu baccus
-Kaoru Mitoma,Japan,1,0.85,0,0,1,2024-09-05,1.0,41,0.024390243902439025,kaoru mitoma
-Kamaldeen Sulemana,Ghana,1,0.85,0,0,1,2025-10-08,1.0,39,0.02564102564102564,kamaldeen sulemana
-Kalvin Phillips,England,1,0.85,0,0,1,2023-06-19,1.0,42,0.023809523809523808,kalvin phillips
-Kalidou Koulibaly,Senegal,1,0.85,0,0,1,2025-09-05,1.0,47,0.02127659574468085,kalidou koulibaly
-Júnior Alonso,Paraguay,1,0.85,0,0,1,2025-03-25,1.0,35,0.02857142857142857,junior alonso
-Junya Itō,Japan,1,0.85,0,0,1,2024-09-05,1.0,41,0.024390243902439025,junya ito
-Jung Seung-hyun,South Korea,1,0.85,0,0,1,2023-11-21,1.0,44,0.022727272727272728,jung seunghyun
-Duke Lacroix,Haiti,1,0.85,0,0,1,2024-06-09,1.0,36,0.027777777777777776,duke lacroix
-Julian Ryerson,Norway,1,0.85,0,0,1,2025-03-22,1.0,36,0.027777777777777776,julian ryerson
-Eliesse Ben Seghir,Morocco,1,0.85,0,0,1,2024-06-07,1.0,53,0.018867924528301886,eliesse ben seghir
-Jovani Welch,Panama,1,0.85,0,0,1,2024-06-09,1.0,57,0.017543859649122806,jovani welch
-Jovane Cabral,Cape Verde,1,0.85,0,0,1,2025-09-04,1.0,42,0.023809523809523808,jovane cabral
-Kevin Felida,Curaçao,1,0.85,0,0,1,2025-06-10,1.0,36,0.027777777777777776,kevin felida
-Khojiakbar Alijonov,Uzbekistan,1,0.85,0,0,1,2025-03-20,1.0,44,0.022727272727272728,khojiakbar alijonov
-Khuliso Mudau,South Africa,1,0.85,0,0,1,2023-11-18,1.0,51,0.0196078431372549,khuliso mudau
-Daizen Maeda,Japan,1,0.85,0,0,1,2024-09-05,1.0,41,0.024390243902439025,daizen maeda
-Connor Metcalfe,Australia,1,0.85,0,0,1,2025-06-10,1.0,40,0.025,connor metcalfe
-Luis Sinisterra,Colombia,1,0.85,0,0,1,2024-10-15,1.0,44,0.022727272727272728,luis sinisterra
-Lovro Majer,Croatia,1,0.85,0,0,1,2023-11-18,1.0,39,0.02564102564102564,lovro majer
-Livano Comenencia,Curaçao,1,0.85,0,0,1,2025-10-10,1.0,36,0.027777777777777776,livano comenencia
-Lewis Ferguson,Scotland,1,0.85,0,0,1,2025-10-09,1.0,39,0.02564102564102564,lewis ferguson
-Cyle Larin,Canada,1,0.85,0,0,1,2024-03-23,1.0,45,0.022222222222222223,cyle larin
-Leandro Bacuna,Curaçao,1,0.85,1,0,1,2025-11-13,1.0,36,0.027777777777777776,leandro bacuna
-Benjamin Tahirović,Bosnia and Herzegovina,1,0.85,0,0,1,2025-09-06,1.0,35,0.02857142857142857,benjamin tahirovic
-Kieran Tierney,Scotland,1,0.85,0,0,1,2025-11-18,1.0,39,0.02564102564102564,kieran tierney
-Kyle Walker,England,1,0.85,0,0,1,2023-09-09,1.0,42,0.023809523809523808,kyle walker
-Kye Rowles,Australia,1,0.85,0,0,1,2024-03-21,1.0,40,0.025,kye rowles
-David Raum,Germany,1,0.85,0,0,1,2025-10-10,1.0,42,0.023809523809523808,david raum
-Kristoffer Ajer,Norway,1,0.85,0,0,1,2025-03-25,1.0,36,0.027777777777777776,kristoffer ajer
-Dayot Upamecano,France,1,0.85,0,0,1,2023-03-24,1.0,42,0.023809523809523808,dayot upamecano
-Ko Itakura,Japan,1,0.85,0,0,1,2024-11-19,1.0,41,0.024390243902439025,ko itakura
-Kim Jin-gyu,South Korea,1,0.85,0,0,1,2025-06-05,1.0,44,0.022727272727272728,kim jingyu
-Emil Holm,Sweden,1,0.85,0,0,1,2023-09-12,1.0,40,0.025,emil holm
-Emmanuel Agbadou,Ivory Coast,1,0.85,0,0,1,2025-10-10,1.0,47,0.02127659574468085,emmanuel agbadou
-Jonathan Clauss,France,1,0.85,0,0,1,2023-11-18,1.0,42,0.023809523809523808,jonathan clauss
-Hannibal Mejbri,Tunisia,1,0.85,0,0,1,2025-10-13,1.0,48,0.020833333333333332,hannibal mejbri
-Hwang Ui-jo,South Korea,1,0.85,1,0,1,2023-11-16,1.0,44,0.022727272727272728,hwang uijo
-Hussein Ali,Iraq,1,0.85,0,0,1,2024-06-11,1.0,50,0.02,hussein ali
-Hugo Ekitike,France,1,0.85,0,0,1,2025-11-13,1.0,42,0.023809523809523808,hugo ekitike
-Houssem Aouar,Algeria,1,0.85,0,0,1,2024-06-10,1.0,51,0.0196078431372549,houssem aouar
-Firas Ben Larbi,Tunisia,1,0.85,0,0,1,2023-11-17,1.0,48,0.020833333333333332,firas ben larbi
-Florian Kainz,Austria,1,0.85,0,0,1,2023-03-27,1.0,40,0.025,florian kainz
-Haris Hajradinović,Bosnia and Herzegovina,1,0.85,0,0,1,2025-03-24,1.0,35,0.02857142857142857,haris hajradinovic
-Florian Thauvin,France,1,0.85,0,0,1,2025-10-10,1.0,42,0.023809523809523808,florian thauvin
-Ibrahim Sadeh,Jordan,1,0.85,0,0,1,2024-06-06,1.0,53,0.018867924528301886,ibrahim sadeh
-Francis de Vries,New Zealand,1,0.85,0,0,1,2024-11-18,1.0,35,0.02857142857142857,francis de vries
-Gustav Lundgren,Sweden,1,0.85,0,0,1,2025-11-18,1.0,40,0.025,gustav lundgren
-Gustaf Lagerbielke,Sweden,1,0.85,0,0,1,2026-03-31,1.0,40,0.025,gustaf lagerbielke
-Giuliano Simeone,Argentina,1,0.85,0,0,1,2025-03-25,1.0,40,0.025,giuliano simeone
-Fredrik Aursnes,Norway,1,0.85,0,0,1,2023-10-12,1.0,36,0.027777777777777776,fredrik aursnes
-Gerson,Brazil,1,0.85,0,0,1,2024-11-19,1.0,39,0.02564102564102564,gerson
-Gabriel Martinelli,Brazil,1,0.85,0,0,1,2023-11-16,1.0,39,0.02564102564102564,gabriel martinelli
-Ibrahim Adel,Egypt,1,0.85,0,0,1,2025-10-08,1.0,49,0.02040816326530612,ibrahim adel
-Igor Jesus,Brazil,1,0.85,0,0,1,2024-10-10,1.0,39,0.02564102564102564,igor jesus
-John Iredale,Australia,1,0.85,0,0,1,2024-03-26,1.0,40,0.025,john iredale
-Jan Vertonghen,Belgium,1,0.85,0,0,1,2023-09-12,1.0,40,0.025,jan vertonghen
-Johan Bakayoko,Belgium,1,0.85,0,0,1,2023-06-20,1.0,40,0.025,johan bakayoko
-Esmir Bajraktarević,Bosnia and Herzegovina,1,0.85,0,0,1,2025-11-15,1.0,35,0.02857142857142857,esmir bajraktarevic
-Jesper Karlsson,Sweden,1,0.85,0,0,1,2023-03-27,1.0,40,0.025,jesper karlsson
-Jearl Margaritha,Curaçao,1,0.85,0,0,1,2025-06-10,1.0,36,0.027777777777777776,jearl margaritha
-Jean-Kévin Duverne,Haiti,1,0.85,0,0,1,2024-06-06,1.0,36,0.027777777777777776,jeankevin duverne
-Jayden Adams,South Africa,1,0.85,0,0,1,2025-03-25,1.0,51,0.0196078431372549,jayden adams
-Jaouen Hadjam,Algeria,1,0.85,0,0,1,2025-03-25,1.0,51,0.0196078431372549,jaouen hadjam
-Jan Kuchta,Czechia,1,0.85,0,0,1,2023-03-24,1.0,40,0.025,jan kuchta
-Iqraam Rayners,South Africa,1,0.85,0,0,1,2024-06-11,1.0,51,0.0196078431372549,iqraam rayners
-Jan Kliment,Czechia,1,0.85,0,0,1,2025-03-25,1.0,40,0.025,jan kliment
-Estêvão Willian,Brazil,1,0.85,0,0,1,2025-09-04,1.0,39,0.02564102564102564,estevao willian
-Ezri Konsa,England,1,0.85,0,0,1,2025-09-09,1.0,42,0.023809523809523808,ezri konsa
-Jaloliddin Masharipov,Uzbekistan,1,0.85,0,0,1,2024-09-05,1.0,44,0.022727272727272728,jaloliddin masharipov
-Federico Viñas,Uruguay,1,0.85,0,0,1,2025-09-04,1.0,42,0.023809523809523808,federico vinas
-Ferdi Kadıoğlu,Türkiye,1,0.85,0,0,1,2026-03-26,1.0,41,0.024390243902439025,ferdi kadoglu
-Islam Slimani,Algeria,1,0.85,0,0,1,2023-11-16,1.0,51,0.0196078431372549,islam slimani
-Luka Ivanušec,Croatia,1,0.85,0,0,1,2023-09-08,1.0,39,0.02564102564102564,luka ivanusec
-David Møller Wolfe,Norway,1,0.85,0,0,1,2025-03-25,1.0,36,0.027777777777777776,david mller wolfe
-Cedric Itten,Switzerland,1,0.85,0,0,1,2023-09-12,1.0,41,0.024390243902439025,cedric itten
-Nico Elvedi,Switzerland,1,0.85,0,0,1,2025-09-08,1.0,41,0.024390243902439025,nico elvedi
-Cengiz Ünder,Türkiye,1,0.85,0,0,1,2023-06-16,1.0,41,0.024390243902439025,cengiz under
-Nicolas Raskin,Belgium,1,0.85,0,0,1,2025-09-07,1.0,40,0.025,nicolas raskin
-Cedric Bakambu,Congo DR,1,0.85,0,0,1,2025-10-10,1.0,47,0.02127659574468085,cedric bakambu
-Michael Boxall,New Zealand,1,0.85,0,0,1,2025-03-24,1.0,35,0.02857142857142857,michael boxall
-Carlos Harvey,Panama,1,0.85,0,0,1,2025-09-08,1.0,57,0.017543859649122806,carlos harvey
-Brandon Borrello,Australia,1,0.85,0,0,1,2023-11-16,1.0,40,0.025,brandon borrello
-Gabriel Magalhães,Brazil,1,0.85,0,0,1,2023-10-12,1.0,39,0.02564102564102564,gabriel magalhaes
-Miguel Almirón,Paraguay,1,0.85,0,0,1,2024-11-19,1.0,35,0.02857142857142857,miguel almiron
-Callum Wilson,England,1,0.85,1,0,1,2023-06-16,1.0,42,0.023809523809523808,callum wilson
-Miroslav Stevanović,Bosnia and Herzegovina,1,0.85,0,0,1,2023-10-13,1.0,35,0.02857142857142857,miroslav stevanovic
-Mitch Duke,Australia,1,0.85,0,0,1,2025-06-10,1.0,40,0.025,mitch duke
-Brandon Mechele,Belgium,1,0.85,0,0,1,2025-11-18,1.0,40,0.025,brandon mechele
-Callum McGregor,Scotland,1,0.85,0,0,1,2023-06-20,1.0,39,0.02564102564102564,callum mcgregor
-Charles Pickel,Congo DR,1,0.85,0,0,1,2025-03-25,1.0,47,0.02127659574468085,charles pickel
-Mohamed Elyounoussi,Norway,1,0.85,0,0,1,2023-11-19,1.0,36,0.027777777777777776,mohamed elyounoussi
-Mohamed Hamdy,Egypt,1,0.85,0,0,1,2025-10-12,1.0,49,0.02040816326530612,mohamed hamdy
-Mohammad Abu Zrayq,Jordan,1,0.85,0,0,1,2024-03-26,1.0,53,0.018867924528301886,mohammad abu zrayq
-Nestory Irankunda,Australia,1,0.85,1,0,1,2024-06-11,1.0,40,0.025,nestory irankunda
-Mohammad Mehdi Mohebi,Iran,1,0.85,0,0,1,2025-06-10,1.0,42,0.023809523809523808,mohammad mehdi mohebi
-Maghnes Akliouche,France,1,0.85,0,0,1,2025-11-16,1.0,42,0.023809523809523808,maghnes akliouche
-Nayef Aguerd,Morocco,1,0.85,0,0,1,2025-03-25,1.0,53,0.018867924528301886,nayef aguerd
-Nadiem Amiri,Germany,1,0.85,0,0,1,2025-09-07,1.0,42,0.023809523809523808,nadiem amiri
-Mohau Nkota,South Africa,1,0.85,0,0,1,2025-09-05,1.0,51,0.0196078431372549,mohau nkota
-Mondy Prunier,Haiti,1,0.85,0,0,1,2025-06-07,1.0,36,0.027777777777777776,mondy prunier
-Myles Lewis-Skelly,England,1,0.85,0,0,1,2025-03-21,1.0,42,0.023809523809523808,myles lewisskelly
-Bruno Guimarães,Brazil,1,0.85,0,0,1,2025-09-04,1.0,39,0.02564102564102564,bruno guimaraes
-Chadi Riad,Morocco,1,0.85,0,0,1,2024-06-11,1.0,53,0.018867924528301886,chadi riad
-Bryan Labissiere,Haiti,1,0.85,0,0,1,2024-06-09,1.0,36,0.027777777777777776,bryan labissiere
-Nicolás Tagliafico,Argentina,1,0.85,0,0,1,2023-09-12,1.0,40,0.025,nicolas tagliafico
-Martin Erlić,Croatia,1,0.85,0,0,1,2025-10-12,1.0,39,0.02564102564102564,martin erlic
-Malick Fofana,Belgium,1,0.85,0,0,1,2025-09-04,1.0,40,0.025,malick fofana
-Bertuğ Yıldırım,Türkiye,1,0.85,0,0,1,2023-09-08,1.0,41,0.024390243902439025,bertug yldrm
-Bilal El Khannouss,Morocco,1,0.85,0,0,1,2025-03-21,1.0,53,0.018867924528301886,bilal el khannouss
-Manuel Ugarte,Uruguay,1,0.85,0,0,1,2024-11-15,1.0,42,0.023809523809523808,manuel ugarte
-Marc Cucurella,Spain,1,0.85,0,0,1,2025-09-04,1.0,43,0.023255813953488372,marc cucurella
-Ola Solbakken,Norway,1,0.85,0,0,1,2023-06-20,1.0,36,0.027777777777777776,ola solbakken
-Marc Guéhi,England,1,0.85,0,0,1,2025-09-09,1.0,42,0.023809523809523808,marc guehi
-Oihan Sancet,Spain,1,0.85,0,0,1,2023-10-12,1.0,43,0.023255813953488372,oihan sancet
-Christian Kouamé,Ivory Coast,1,0.85,0,0,1,2023-11-20,1.0,47,0.02127659574468085,christian kouame
-Marko Stamenić,New Zealand,1,0.85,0,0,1,2024-11-18,1.0,35,0.02857142857142857,marko stamenic
-Boualem Khoukhi,Qatar,1,0.85,0,0,1,2025-10-14,1.0,52,0.019230769230769232,boualem khoukhi
-Marten de Roon,Netherlands,1,0.85,0,0,1,2023-09-07,1.0,42,0.023809523809523808,marten de roon
-Noni Madueke,England,1,0.85,0,0,1,2025-09-09,1.0,42,0.023809523809523808,noni madueke
-Marquinhos,Brazil,1,0.85,0,0,1,2023-09-12,1.0,39,0.02564102564102564,marquinhos
-Matheus Cunha,Brazil,1,0.85,0,0,1,2025-03-25,1.0,39,0.02564102564102564,matheus cunha
-Nihad Mujakić,Bosnia and Herzegovina,1,0.85,0,0,1,2025-09-06,1.0,35,0.02857142857142857,nihad mujakic
-Nikolaus Wurmbrand,Austria,1,0.85,0,0,1,2025-10-09,1.0,40,0.025,nikolaus wurmbrand
-Mateus Uribe,Colombia,1,0.85,0,0,1,2023-10-12,1.0,44,0.022727272727272728,mateus uribe
-Nikola Katić,Bosnia and Herzegovina,1,0.85,0,0,1,2025-10-09,1.0,35,0.02857142857142857,nikola katic
-Mats Wieffer,Netherlands,1,0.85,0,0,1,2023-11-21,1.0,42,0.023809523809523808,mats wieffer
-Matthew Garbett,New Zealand,1,0.85,0,0,1,2024-11-15,1.0,35,0.02857142857142857,matthew garbett
-Bryan Gil,Spain,1,0.6,0,0,1,2024-11-18,1.0,43,0.023255813953488372,bryan gil
-Pedro Neto,Portugal,1,0.6,0,0,1,2024-11-15,1.0,41,0.024390243902439025,pedro neto
-Jarrod Bowen,England,1,0.6,0,0,1,2024-11-17,1.0,42,0.023809523809523808,jarrod bowen
-Jamie Leweling,Germany,1,0.6,0,0,1,2024-10-14,1.0,42,0.023809523809523808,jamie leweling
-Georginio Wijnaldum,Netherlands,1,0.6,0,0,1,2023-06-18,1.0,42,0.023809523809523808,georginio wijnaldum
-Ian Maatsen,Netherlands,1,0.6,0,0,1,2025-03-23,1.0,42,0.023809523809523808,ian maatsen
-Igor Matanović,Croatia,1,0.6,0,0,1,2024-10-12,1.0,39,0.02564102564102564,igor matanovic
-Borna Sosa,Croatia,1,0.6,0,0,1,2024-10-15,1.0,39,0.02564102564102564,borna sosa
-Billy Gilmour,Scotland,1,0.6,0,0,1,2024-09-05,1.0,39,0.02564102564102564,billy gilmour
-Felix Nmecha,Germany,1,0.6,0,0,1,2024-11-19,1.0,42,0.023809523809523808,felix nmecha
-Nuno Mendes,Portugal,1,0.6,0,0,1,2025-06-08,1.0,41,0.024390243902439025,nuno mendes
-Brian Brobbey,Netherlands,1,0.6,0,0,1,2024-11-19,1.0,42,0.023809523809523808,brian brobbey
-Petar Sučić,Croatia,1,0.6,0,0,1,2024-10-15,1.0,39,0.02564102564102564,petar sucic
-Lukáš Kalvach,Czechia,1,0.6,0,0,1,2024-09-07,1.0,40,0.025,lukas kalvach
-Bryan Zaragoza,Spain,1,0.6,1,0,1,2024-11-18,1.0,43,0.023255813953488372,bryan zaragoza
-Ken Sema,Sweden,1,0.6,0,0,1,2024-10-11,1.0,40,0.025,ken sema
-Martín Zubimendi,Spain,1,0.6,0,0,1,2025-06-08,1.0,43,0.023255813953488372,martin zubimendi
-Martin Baturina,Croatia,1,0.6,0,0,1,2024-10-15,1.0,39,0.02564102564102564,martin baturina
-Matthias Seidl,Austria,1,0.6,0,0,1,2024-10-10,1.0,40,0.025,matthias seidl
-Mattéo Guendouzi,France,1,0.6,0,0,1,2024-10-10,1.0,42,0.023809523809523808,matteo guendouzi
-Taylor Harwood-Bellis,England,1,0.6,0,0,1,2024-11-17,1.0,42,0.023809523809523808,taylor harwoodbellis
-Diogo Dalot,Portugal,1,0.6,0,0,1,2024-09-05,1.0,41,0.024390243902439025,diogo dalot
-Leon Goretzka,Germany,1,0.6,0,0,1,2025-03-20,1.0,42,0.023809523809523808,leon goretzka
-Curtis Jones,England,1,0.6,0,0,1,2024-11-14,1.0,42,0.023809523809523808,curtis jones
-Andi Zeqiri,Switzerland,1,0.6,1,0,1,2024-11-18,1.0,41,0.024390243902439025,andi zeqiri
-Eduardo Camavinga,France,1,0.6,0,0,1,2024-10-10,1.0,42,0.023809523809523808,eduardo camavinga
-Joël Monteiro,Switzerland,1,0.6,0,0,1,2024-11-18,1.0,41,0.024390243902439025,joel monteiro
-Aleksandar Pavlović,Germany,1,0.6,0,0,1,2024-09-07,1.0,42,0.023809523809523808,aleksandar pavlovic
-Joshua Zirkzee,Netherlands,1,0.6,0,0,1,2024-09-07,1.0,42,0.023809523809523808,joshua zirkzee
-Loïs Openda,Belgium,1,0.6,0,0,1,2024-10-14,1.0,40,0.025,lois openda
-Conor Gallagher,England,1,0.6,0,0,1,2024-11-17,1.0,42,0.023809523809523808,conor gallagher
-Rayan Cherki,France,1,0.6,0,0,1,2025-06-05,1.0,42,0.023809523809523808,rayan cherki
-Jens Petter Hauge,Norway,1,0.6,0,0,1,2024-11-14,1.0,36,0.027777777777777776,jens petter hauge
-Aymeric Laporte,Spain,1,0.6,0,0,1,2024-10-15,1.0,43,0.023255813953488372,aymeric laporte
-Andy Robertson,Scotland,1,0.6,0,0,1,2024-11-18,1.0,39,0.02564102564102564,andy robertson
-Ayoze Pérez,Spain,1,0.6,0,0,1,2024-11-15,1.0,43,0.023255813953488372,ayoze perez
-Steven Bergwijn,Netherlands,1,0.6,0,0,1,2023-06-18,1.0,42,0.023809523809523808,steven bergwijn
-Zineddine Belaïd,Algeria,1,0.5,0,0,1,2025-12-31,1.0,51,0.0196078431372549,zineddine belaid
-Gilson Tavares,Cape Verde,1,0.5,0,0,1,2024-01-22,1.0,42,0.023809523809523808,gilson tavares
-Ben Old,New Zealand,1,0.5,0,0,1,2024-06-21,1.0,35,0.02857142857142857,ben old
-Garry Rodrigues,Cape Verde,1,0.5,0,0,1,2024-01-14,1.0,42,0.023809523809523808,garry rodrigues
-Guéla Doué,Ivory Coast,1,0.5,0,0,1,2026-01-10,1.0,47,0.02127659574468085,guela doue
-Bebé,Cape Verde,1,0.5,0,0,1,2024-01-19,1.0,42,0.023809523809523808,bebe
-Silas Katompa Mvumpa,Congo DR,1,0.5,0,0,1,2024-01-21,1.0,47,0.02127659574468085,silas katompa mvumpa
-Adil Boulbina,Algeria,1,0.5,0,0,1,2026-01-06,1.0,51,0.0196078431372549,adil boulbina
-Marwan Attia,Egypt,1,0.5,0,0,1,2026-01-05,1.0,49,0.02040816326530612,marwan attia
-Finn Surman,New Zealand,1,0.5,0,0,1,2024-06-27,1.0,35,0.02857142857142857,finn surman
-Kevin Pina,Cape Verde,1,0.5,0,0,1,2024-01-19,1.0,42,0.023809523809523808,kevin pina
-Montassar Talbi,Tunisia,1,0.5,0,0,1,2025-12-27,1.0,48,0.020833333333333332,montassar talbi
-Ibrahim Mbaye,Senegal,1,0.5,0,0,1,2026-01-03,1.0,47,0.02127659574468085,ibrahim mbaye
-Thapelo Maseko,South Africa,1,0.5,0,0,1,2024-01-21,1.0,51,0.0196078431372549,thapelo maseko
-Cameron Howieson,New Zealand,1,0.5,0,0,1,2024-06-30,1.0,35,0.02857142857142857,cameron howieson
-Arthur Masuaku,Congo DR,1,0.5,0,0,1,2024-02-02,1.0,47,0.02127659574468085,arthur masuaku
-Yasser Ibrahim,Egypt,1,0.5,0,0,1,2026-01-05,1.0,49,0.02040816326530612,yasser ibrahim
-Ellyes Skhiri,Tunisia,1,0.5,0,0,1,2025-12-23,1.0,48,0.020833333333333332,ellyes skhiri
-Tshepang Moremi,South Africa,1,0.5,0,0,1,2025-12-29,1.0,51,0.0196078431372549,tshepang moremi
-Achraf Hakimi,Morocco,1,0.5,0,0,1,2024-01-21,1.0,53,0.018867924528301886,achraf hakimi
-Bryan Teixeira,Cape Verde,1,0.5,0,0,1,2024-01-22,1.0,42,0.023809523809523808,bryan teixeira
-Jesse Randall,New Zealand,1,0.5,0,0,1,2024-06-30,1.0,35,0.02857142857142857,jesse randall
-Ramy Rabia,Egypt,1,0.5,0,0,1,2026-01-10,1.0,49,0.02040816326530612,ramy rabia
-Romain Saïss,Morocco,1,0.5,0,0,1,2024-01-17,1.0,53,0.018867924528301886,romain saiss
+player,team,player_norm,intl_goals,intl_weighted_goals,intl_penalty_goals,intl_major_goals,intl_scoring_matches,intl_last_goal_date,team_intl_matches,intl_goal_rate,intl_goals_per_team_match
+Erling Haaland,Norway,erling haaland,29,22.9,2,0,16,2025-11-16,37,1.8125,0.7837837837837838
+Harry Kane,England,harry kane,22,18.4,7,3,17,2025-11-16,44,1.2941176470588236,0.5
+Cristiano Ronaldo,Portugal,cristiano ronaldo,23,17.55,5,0,16,2025-10-14,43,1.4375,0.5348837209302325
+Romelu Lukaku,Belgium,romelu lukaku,18,14.549999999999999,2,0,10,2025-06-09,41,1.8,0.43902439024390244
+Kylian Mbappé,France,kylian mbappe,17,14.1,7,1,12,2025-11-13,43,1.4166666666666667,0.3953488372093023
+Aymen Hussein,Iraq,aymen hussein,15,13.65,3,6,12,2026-03-31,51,1.25,0.29411764705882354
+Almoez Ali,Qatar,almoez ali,14,12.2,2,2,9,2024-11-14,53,1.5555555555555556,0.2641509433962264
+Ismael Díaz,Panama,ismael diaz,12,11.7,2,10,7,2025-10-14,58,1.7142857142857142,0.20689655172413793
+Mehdi Taremi,Iran,mehdi taremi,13,11.5,3,3,9,2025-06-10,42,1.4444444444444444,0.30952380952380953
+Son Heung-min,South Korea,son heungmin,13,11.5,4,3,11,2024-11-19,44,1.1818181818181819,0.29545454545454547
+Akram Afif,Qatar,akram afif,12,11.4,5,8,8,2025-03-20,53,1.5,0.22641509433962265
+Viktor Gyökeres,Sweden,viktor gyokeres,16,11.35,2,0,10,2026-03-31,40,1.6,0.4
+Yazan Al-Naimat,Jordan,yazan alnaimat,12,10.8,1,4,10,2024-11-19,54,1.2,0.2222222222222222
+Ayase Ueda,Japan,ayase ueda,12,10.8,2,4,7,2024-09-10,41,1.7142857142857142,0.2926829268292683
+Cody Gakpo,Netherlands,cody gakpo,13,10.75,5,3,12,2025-11-17,43,1.0833333333333333,0.3023255813953488
+Andrej Kramarić,Croatia,andrej kramaric,13,10.7,1,1,11,2025-09-08,40,1.1818181818181819,0.325
+Marko Arnautović,Austria,marko arnautovic,13,10.7,4,1,6,2025-11-15,40,2.1666666666666665,0.325
+Scott McTominay,Scotland,scott mctominay,13,10.45,1,1,11,2025-11-18,40,1.1818181818181819,0.325
+Mohamed Salah,Egypt,mohamed salah,14,10.15,4,0,10,2026-01-10,50,1.4,0.28
+Bruno Fernandes,Portugal,bruno fernandes,12,9.85,2,1,9,2025-11-16,43,1.3333333333333333,0.27906976744186046
+Mikel Oyarzabal,Spain,mikel oyarzabal,12,9.35,3,1,10,2025-11-18,44,1.2,0.2727272727272727
+Memphis Depay,Netherlands,memphis depay,11,9.25,3,1,9,2025-11-14,43,1.2222222222222223,0.2558139534883721
+Musa Al-Taamari,Jordan,musa altaamari,10,8.95,1,3,6,2025-03-20,54,1.6666666666666667,0.18518518518518517
+Sardar Azmoun,Iran,sardar azmoun,10,8.8,0,2,8,2025-03-20,42,1.25,0.23809523809523808
+Michael Gregoritsch,Austria,michael gregoritsch,11,8.75,0,1,11,2025-11-18,40,1.0,0.275
+Lautaro Martínez,Argentina,lautaro martinez,9,8.4,0,5,8,2025-09-04,42,1.125,0.21428571428571427
+Kerem Aktürkoğlu,Türkiye,kerem akturkoglu,11,8.25,0,1,8,2026-03-31,42,1.375,0.2619047619047619
+Mikel Merino,Spain,mikel merino,10,8.15,0,1,7,2025-10-14,44,1.4285714285714286,0.22727272727272727
+Marcel Sabitzer,Austria,marcel sabitzer,10,8.15,3,1,9,2025-09-09,40,1.1111111111111112,0.25
+Luis Díaz,Colombia,luis diaz,9,7.95,1,2,8,2025-06-10,45,1.125,0.2
+Lionel Messi,Argentina,lionel messi,9,7.8,0,1,5,2025-09-04,42,1.8,0.21428571428571427
+Alexander Sørloth,Norway,alexander srloth,10,7.75,0,0,9,2025-11-13,37,1.1111111111111112,0.2702702702702703
+Ali Olwan,Jordan,ali olwan,9,7.6499999999999995,3,0,6,2025-06-05,54,1.5,0.16666666666666666
+Chris Wood,New Zealand,chris wood,9,7.6499999999999995,0,0,4,2025-03-21,36,2.25,0.25
+Kevin De Bruyne,Belgium,kevin de bruyne,9,7.3,3,1,6,2025-10-13,41,1.5,0.21951219512195122
+Lee Kang-in,South Korea,lee kangin,8,7.25,0,3,6,2025-06-10,44,1.3333333333333333,0.18181818181818182
+Edin Džeko,Bosnia and Herzegovina,edin dzeko,9,7.1499999999999995,0,0,8,2026-03-26,36,1.125,0.25
+Jesús Ferreira,United States,jesus ferreira,7,7.0,1,7,3,2023-07-12,57,2.3333333333333335,0.12280701754385964
+Jordan Ayew,Ghana,jordan ayew,9,6.95,4,0,6,2025-10-08,39,1.5,0.23076923076923078
+Zeki Amdouni,Switzerland,zeki amdouni,9,6.8999999999999995,1,0,8,2024-11-15,42,1.125,0.21428571428571427
+Mohamed Amoura,Algeria,mohamed amoura,8,6.8,2,0,4,2025-10-14,52,2.0,0.15384615384615385
+José Fajardo,Panama,jose fajardo,7,6.55,0,4,7,2025-11-13,58,1.0,0.1206896551724138
+Darwin Núñez,Uruguay,darwin nunez,7,6.25,1,2,6,2024-06-27,42,1.1666666666666667,0.16666666666666666
+Duckens Nazon,Haiti,duckens nazon,7,6.1,1,1,5,2025-10-09,37,1.4,0.1891891891891892
+Donyell Malen,Netherlands,donyell malen,7,6.0,0,2,5,2025-11-17,43,1.4,0.16279069767441862
+Tomáš Souček,Czechia,tomas soucek,7,5.85,2,1,7,2025-11-17,40,1.0,0.175
+Ferran Torres,Spain,ferran torres,7,5.85,0,1,6,2025-11-15,44,1.1666666666666667,0.1590909090909091
+Sadio Mané,Senegal,sadio mane,8,5.75,1,0,6,2026-01-14,48,1.3333333333333333,0.16666666666666666
+Christoph Baumgartner,Austria,christoph baumgartner,7,5.6,0,1,6,2025-06-10,40,1.1666666666666667,0.175
+Dani Olmo,Spain,dani olmo,6,5.55,0,3,6,2025-11-18,44,1.0,0.13636363636363635
+Abbosbek Fayzullaev,Uzbekistan,abbosbek fayzullaev,6,5.4,0,2,5,2025-03-25,45,1.2,0.13333333333333333
+Breel Embolo,Switzerland,breel embolo,6,5.4,0,2,5,2025-11-15,42,1.2,0.14285714285714285
+Julián Alvarez,Argentina,julian alvarez,6,5.4,0,2,6,2025-06-05,42,1.0,0.14285714285714285
+Takumi Minamino,Japan,takumi minamino,6,5.4,0,2,4,2024-11-15,41,1.5,0.14634146341463414
+Bukayo Saka,England,bukayo saka,6,5.25,0,1,4,2025-11-13,44,1.5,0.13636363636363635
+Patrik Schick,Czechia,patrik schick,6,5.25,1,1,5,2026-03-26,40,1.2,0.15
+Mohammad Mohebi,Iran,mohammad mohebi,6,5.25,0,1,5,2025-03-20,42,1.2,0.14285714285714285
+Florian Wirtz,Germany,florian wirtz,7,5.25,0,2,6,2025-09-07,43,1.1666666666666667,0.16279069767441862
+Firas Al-Buraikan,Saudi Arabia,firas alburaikan,6,5.25,1,1,4,2025-10-08,60,1.5,0.1
+Raphinha,Brazil,raphinha,6,5.25,3,1,5,2025-03-20,40,1.2,0.15
+Kusini Yengi,Australia,kusini yengi,6,5.1,1,0,4,2024-11-19,41,1.5,0.14634146341463414
+Enner Valencia,Ecuador,enner valencia,6,5.1,2,0,5,2025-09-09,42,1.2,0.14285714285714285
+Koki Ogawa,Japan,koki ogawa,6,5.1,0,0,4,2024-11-19,41,1.5,0.14634146341463414
+Álvaro Morata,Spain,alvaro morata,6,5.0,0,1,4,2024-10-15,44,1.5,0.13636363636363635
+Bernardo Silva,Portugal,bernardo silva,6,5.0,0,1,6,2025-09-09,43,1.0,0.13953488372093023
+Ayoub El Kaabi,Morocco,ayoub el kaabi,7,4.9,0,0,4,2025-12-29,54,1.75,0.12962962962962962
+João Félix,Portugal,joao felix,6,4.85,0,0,5,2025-09-06,43,1.2,0.13953488372093023
+Jamal Musiala,Germany,jamal musiala,6,4.8,0,3,6,2025-03-23,43,1.0,0.13953488372093023
+Trézéguet,Egypt,trezeguet,6,4.75,0,0,4,2024-06-06,50,1.5,0.12
+Wout Weghorst,Netherlands,wout weghorst,6,4.75,1,1,6,2024-11-16,43,1.0,0.13953488372093023
+Frantzdy Pierrot,Haiti,frantzdy pierrot,5,4.7,0,3,5,2025-11-13,37,1.0,0.13513513513513514
+Joselu,Spain,joselu,6,4.6,0,0,5,2024-09-08,44,1.2,0.13636363636363635
+Jackson Irvine,Australia,jackson irvine,5,4.55,0,2,4,2025-03-25,41,1.25,0.12195121951219512
+Craig Goodwin,Australia,craig goodwin,5,4.55,0,2,4,2024-10-10,41,1.25,0.12195121951219512
+Mehdi Ghayedi,Iran,mehdi ghayedi,5,4.55,0,2,5,2024-11-14,42,1.0,0.11904761904761904
+Lamine Yamal,Spain,lamine yamal,6,4.5,1,1,5,2025-06-05,44,1.2,0.13636363636363635
+Hwang Hee-chan,South Korea,hwang heechan,5,4.4,1,1,5,2025-03-20,44,1.0,0.11363636363636363
+Takefusa Kubo,Japan,takefusa kubo,5,4.4,0,1,5,2025-06-10,41,1.0,0.12195121951219512
+Saleh Al-Shehri,Saudi Arabia,saleh alshehri,5,4.4,2,1,3,2025-06-15,60,1.6666666666666667,0.08333333333333333
+Ruben Vargas,Switzerland,ruben vargas,5,4.3999999999999995,0,1,5,2025-11-18,42,1.0,0.11904761904761904
+João Cancelo,Portugal,joao cancelo,5,4.25,0,0,5,2025-09-09,43,1.0,0.11627906976744186
+Gervane Kastaneer,Curaçao,gervane kastaneer,5,4.25,0,0,3,2025-06-10,37,1.6666666666666667,0.13513513513513514
+Thelo Aasgaard,Norway,thelo aasgaard,5,4.25,1,0,2,2025-09-09,37,2.5,0.13513513513513514
+Lee Jae-sung,South Korea,lee jaesung,5,4.25,0,0,5,2025-06-10,44,1.0,0.11363636363636363
+Jérémy Doku,Belgium,jeremy doku,5,4.25,0,0,3,2025-11-18,41,1.6666666666666667,0.12195121951219512
+Václav Černý,Czechia,vaclav cerny,5,4.25,0,0,4,2025-09-05,40,1.25,0.125
+Daichi Kamada,Japan,daichi kamada,5,4.25,0,0,4,2025-06-10,41,1.25,0.12195121951219512
+Eldor Shomurodov,Uzbekistan,eldor shomurodov,5,4.25,0,0,5,2025-06-10,45,1.0,0.1111111111111111
+Randal Kolo Muani,France,randal kolo muani,6,4.25,1,1,5,2025-06-05,43,1.2,0.13953488372093023
+Youri Tielemans,Belgium,youri tielemans,5,4.15,1,1,4,2025-09-04,41,1.25,0.12195121951219512
+Nico Williams,Spain,nico williams,5,4.05,0,2,5,2025-06-05,44,1.0,0.11363636363636363
+Baghdad Bounedjah,Algeria,baghdad bounedjah,6,4.05,0,0,4,2025-09-04,52,1.5,0.11538461538461539
+Jonathan David,Canada,jonathan david,4,4.0,1,4,4,2025-06-29,46,1.0,0.08695652173913043
+Ivan Perišić,Croatia,ivan perisic,5,4.0,1,0,5,2025-11-17,40,1.0,0.125
+Gonçalo Ramos,Portugal,goncalo ramos,5,4.0,0,0,4,2025-11-16,43,1.25,0.11627906976744186
+Konrad Laimer,Austria,konrad laimer,5,4.0,0,0,5,2025-10-09,40,1.0,0.125
+Cédric Bakambu,Congo DR,cedric bakambu,5,3.9,0,0,4,2025-12-27,48,1.25,0.10416666666666667
+Elijah Just,New Zealand,elijah just,5,3.9,0,0,5,2025-03-24,36,1.0,0.1388888888888889
+Xavi Simons,Netherlands,xavi simons,5,3.9,1,1,5,2025-11-17,43,1.0,0.11627906976744186
+Arda Güler,Türkiye,arda guler,5,3.9,0,1,5,2025-10-11,42,1.0,0.11904761904761904
+Hassan Al-Haydos,Qatar,hassan alhaydos,4,3.85,0,3,4,2024-02-03,53,1.0,0.07547169811320754
+John McGinn,Scotland,john mcginn,5,3.75,0,0,5,2024-11-18,40,1.0,0.125
+Vinícius Júnior,Brazil,vinicius junior,4,3.7,0,2,3,2025-06-10,40,1.3333333333333333,0.1
+Jhon Córdoba,Colombia,jhon cordoba,4,3.7,0,2,4,2025-09-09,45,1.0,0.08888888888888889
+Merih Demiral,Türkiye,merih demiral,4,3.7,0,2,2,2025-10-14,42,2.0,0.09523809523809523
+Martin Boyle,Australia,martin boyle,4,3.7,2,2,4,2025-03-20,41,1.0,0.0975609756097561
+Ben Waine,New Zealand,ben waine,6,3.7,1,0,4,2024-11-18,36,1.5,0.16666666666666666
+Hidemasa Morita,Japan,hidemasa morita,4,3.55,0,1,3,2024-11-15,41,1.3333333333333333,0.0975609756097561
+Ritsu Dōan,Japan,ritsu doan,4,3.55,0,1,4,2024-06-11,41,1.0,0.0975609756097561
+Julio Enciso,Paraguay,julio enciso,4,3.55,1,1,4,2025-06-05,36,1.0,0.1111111111111111
+Yoane Wissa,Congo DR,yoane wissa,5,3.55,1,0,5,2025-09-09,48,1.0,0.10416666666666667
+James Rodríguez,Colombia,james rodriguez,4,3.55,2,1,4,2025-09-04,45,1.0,0.08888888888888889
+Mohanad Ali,Iraq,mohanad ali,4,3.55,0,1,4,2025-11-18,51,1.0,0.0784313725490196
+Tijjani Reijnders,Netherlands,tijjani reijnders,5,3.5,0,0,5,2025-11-17,43,1.0,0.11627906976744186
+Pavel Šulc,Czechia,pavel sulc,5,3.5,0,0,4,2026-03-31,40,1.25,0.125
+Antonio Nusa,Norway,antonio nusa,5,3.5,0,0,4,2025-11-16,37,1.25,0.13513513513513514
+Denzel Dumfries,Netherlands,denzel dumfries,5,3.5,0,0,5,2025-09-04,43,1.0,0.11627906976744186
+Luis Suárez,Colombia,luis suarez,4,3.4,0,0,1,2025-09-09,45,4.0,0.08888888888888889
+Dailon Livramento,Cape Verde,dailon livramento,4,3.4,0,0,3,2025-10-13,43,1.3333333333333333,0.09302325581395349
+Nick Woltemade,Germany,nick woltemade,4,3.4,0,0,3,2025-11-17,43,1.3333333333333333,0.09302325581395349
+Antonio Sanabria,Paraguay,antonio sanabria,4,3.4,0,0,3,2024-11-14,36,1.3333333333333333,0.1111111111111111
+Ladislav Krejčí,Czechia,ladislav krejci,4,3.4,0,0,4,2026-03-31,40,1.0,0.1
+Oh Hyeon-gyu,South Korea,oh hyeongyu,4,3.4,0,0,4,2025-06-10,44,1.0,0.09090909090909091
+Oston Urunov,Uzbekistan,oston urunov,4,3.4,0,0,4,2024-09-10,45,1.0,0.08888888888888889
+Pape Matar Sarr,Senegal,pape matar sarr,4,3.4,0,0,4,2025-09-09,48,1.0,0.08333333333333333
+Granit Xhaka,Switzerland,granit xhaka,4,3.4,2,0,4,2025-11-15,42,1.0,0.09523809523809523
+Mohamed Ali Ben Romdhane,Tunisia,mohamed ali ben romdhane,4,3.4,2,0,3,2025-10-10,49,1.3333333333333333,0.08163265306122448
+Brahim Díaz,Morocco,brahim diaz,6,3.35,2,0,6,2026-01-09,54,1.0,0.1111111111111111
+Remo Freuler,Switzerland,remo freuler,4,3.3,0,1,4,2024-10-15,42,1.0,0.09523809523809523
+Alexander Isak,Sweden,alexander isak,5,3.25,0,0,4,2024-11-16,40,1.25,0.125
+Kosta Barbarouses,New Zealand,kosta barbarouses,5,3.2,0,0,4,2025-03-24,36,1.25,0.1388888888888889
+Fabián Ruiz,Spain,fabian ruiz,4,3.2,0,2,3,2024-09-08,44,1.3333333333333333,0.09090909090909091
+Habib Diallo,Senegal,habib diallo,5,3.2,0,0,5,2025-12-30,48,1.0,0.10416666666666667
+Kai Havertz,Germany,kai havertz,4,3.2,3,2,4,2024-11-16,43,1.0,0.09302325581395349
+Mario Pašalić,Croatia,mario pasalic,4,3.15,0,0,4,2025-06-06,40,1.0,0.1
+Leandro Trossard,Belgium,leandro trossard,4,3.15,0,0,4,2025-10-13,41,1.0,0.0975609756097561
+Kenan Yıldız,Türkiye,kenan yldz,4,3.15,0,0,3,2025-10-14,42,1.3333333333333333,0.09523809523809523
+Ante Budimir,Croatia,ante budimir,4,3.15,1,0,4,2025-06-09,40,1.0,0.1
+Théo Bongonda,Congo DR,theo bongonda,4,3.0500000000000003,0,0,4,2025-12-23,48,1.0,0.08333333333333333
+Hakan Çalhanoğlu,Türkiye,hakan calhanoglu,4,3.05,3,1,4,2025-11-15,42,1.0,0.09523809523809523
+Luka Modrić,Croatia,luka modric,4,3.05,2,1,4,2025-06-09,40,1.0,0.1
+Seko Fofana,Ivory Coast,seko fofana,4,3.05,0,0,4,2024-06-07,47,1.0,0.0851063829787234
+Ismael Saibari,Morocco,ismael saibari,4,3.05,0,0,3,2026-01-09,54,1.3333333333333333,0.07407407407407407
+Ismaïla Sarr,Senegal,ismaila sarr,4,3.05,0,0,3,2025-10-10,48,1.3333333333333333,0.08333333333333333
+Raúl Jiménez,Mexico,raul jimenez,3,3.0,0,3,3,2025-07-06,60,1.0,0.05
+César Montes,Mexico,cesar montes,3,3.0,0,3,2,2025-06-18,60,1.5,0.05
+Brandon Vázquez,United States,brandon vazquez,3,3.0,0,3,3,2023-07-09,57,1.0,0.05263157894736842
+Tajon Buchanan,Canada,tajon buchanan,3,3.0,0,3,2,2025-06-24,46,1.5,0.06521739130434782
+Tomás Rodríguez,Panama,tomas rodriguez,3,3.0,0,3,3,2025-06-24,58,1.0,0.05172413793103448
+Malik Tillman,United States,malik tillman,3,3.0,0,3,2,2025-06-22,57,1.5,0.05263157894736842
+Diego Luna,United States,diego luna,3,3.0,0,3,2,2025-07-02,57,1.5,0.05263157894736842
+Declan Rice,England,declan rice,4,2.9,0,0,4,2025-09-06,44,1.0,0.09090909090909091
+Joshua Kimmich,Germany,joshua kimmich,4,2.9,2,0,3,2025-10-10,43,1.3333333333333333,0.09302325581395349
+Maxim De Cuyper,Belgium,maxim de cuyper,4,2.9,0,0,4,2025-09-04,41,1.0,0.0975609756097561
+Michael Olise,France,michael olise,4,2.9,0,0,4,2025-11-13,43,1.0,0.09302325581395349
+Adrien Rabiot,France,adrien rabiot,4,2.9,0,0,3,2025-10-10,43,1.3333333333333333,0.09302325581395349
+Tomáš Chorý,Czechia,tomas chory,4,2.9,0,0,3,2025-11-17,40,1.3333333333333333,0.1
+Jacob Shaffelburg,Canada,jacob shaffelburg,3,2.85,0,2,3,2024-07-05,46,1.0,0.06521739130434782
+Eduardo Guerrero,Panama,eduardo guerrero,3,2.85,1,2,3,2025-06-16,58,1.0,0.05172413793103448
+Mostafa Mohamed,Egypt,mostafa mohamed,5,2.85,1,0,5,2024-01-28,50,1.0,0.1
+Azizbek Turgunboev,Uzbekistan,azizbek turgunboev,3,2.85,0,2,3,2025-06-10,45,1.0,0.06666666666666667
+Xherdan Shaqiri,Switzerland,xherdan shaqiri,3,2.7,1,1,3,2024-06-19,42,1.0,0.07142857142857142
+Igor Sergeev,Uzbekistan,igor sergeev,3,2.7,0,1,3,2025-06-10,45,1.0,0.06666666666666667
+Don Deedson Louicius,Haiti,don deedson louicius,3,2.7,0,1,3,2025-11-18,37,1.0,0.08108108108108109
+Harry Souttar,Australia,harry souttar,3,2.7,0,1,3,2024-01-28,41,1.0,0.07317073170731707
+Keito Nakamura,Japan,keito nakamura,3,2.7,0,1,2,2024-06-06,41,1.5,0.07317073170731707
+Franck Kessié,Ivory Coast,franck kessie,4,2.7,1,0,4,2025-10-14,47,1.0,0.0851063829787234
+Sébastien Haller,Ivory Coast,sebastien haller,4,2.7,1,0,4,2025-03-24,47,1.0,0.0851063829787234
+Cenk Tosun,Türkiye,cenk tosun,3,2.7,0,1,2,2024-06-26,42,1.5,0.07142857142857142
+Federico Valverde,Uruguay,federico valverde,3,2.7,0,1,3,2024-11-19,42,1.0,0.07142857142857142
+Lyle Foster,South Africa,lyle foster,4,2.7,0,0,4,2025-12-29,52,1.0,0.07692307692307693
+Omar Alderete,Paraguay,omar alderete,3,2.7,0,1,3,2025-03-20,36,1.0,0.08333333333333333
+Dan Ndoye,Switzerland,dan ndoye,3,2.7,0,1,3,2025-11-15,42,1.0,0.07142857142857142
+Mohammed Kudus,Ghana,mohammed kudus,4,2.7,0,0,3,2025-10-12,39,1.3333333333333333,0.10256410256410256
+Danley Jean Jacques,Haiti,danley jean jacques,3,2.7,0,1,3,2025-10-09,37,1.0,0.08108108108108109
+Oswin Appollis,South Africa,oswin appollis,4,2.7,1,0,4,2025-12-29,52,1.0,0.07692307692307693
+Nicolas Jackson,Senegal,nicolas jackson,4,2.7,1,0,3,2025-12-23,48,1.3333333333333333,0.08333333333333333
+Niclas Füllkrug,Germany,niclas fullkrug,3,2.6,0,2,3,2024-09-07,43,1.0,0.06976744186046512
+Jude Bellingham,England,jude bellingham,3,2.6,0,2,3,2024-10-10,44,1.0,0.06818181818181818
+Musab Al-Juwayr,Saudi Arabia,musab aljuwayr,3,2.55,0,0,3,2025-06-05,60,1.0,0.05
+Ali Al-Hamadi,Iraq,ali alhamadi,3,2.55,0,0,3,2026-03-31,51,1.0,0.058823529411764705
+Thomas Partey,Ghana,thomas partey,3,2.55,0,0,2,2025-10-08,39,1.5,0.07692307692307693
+Haris Tabaković,Bosnia and Herzegovina,haris tabakovic,3,2.55,0,0,3,2026-03-31,36,1.0,0.08333333333333333
+Thiago Almada,Argentina,thiago almada,3,2.55,0,0,3,2025-06-10,42,1.0,0.07142857142857142
+Nicolás de la Cruz,Uruguay,nicolas de la cruz,3,2.55,0,0,2,2023-10-17,42,1.5,0.07142857142857142
+Olivier Giroud,France,olivier giroud,3,2.55,0,0,2,2023-11-18,43,1.5,0.06976744186046512
+Virgil van Dijk,Netherlands,virgil van dijk,3,2.55,1,0,3,2025-10-12,43,1.0,0.06976744186046512
+Nishan Velupillay,Australia,nishan velupillay,3,2.55,0,0,3,2025-03-25,41,1.0,0.07317073170731707
+Kenji Gorré,Curaçao,kenji gorre,3,2.55,0,0,3,2025-10-14,37,1.0,0.08108108108108109
+Otabek Shukurov,Uzbekistan,otabek shukurov,3,2.55,1,0,2,2024-10-15,45,1.5,0.06666666666666667
+Rodrygo,Brazil,rodrygo,3,2.55,0,0,2,2024-09-06,40,1.5,0.075
+Marcus Rashford,England,marcus rashford,3,2.55,1,0,3,2025-09-09,44,1.0,0.06818181818181818
+Jamie Maclaren,Australia,jamie maclaren,3,2.55,0,0,1,2023-11-16,41,3.0,0.07317073170731707
+Ahmed Al-Rawi,Qatar,ahmed alrawi,3,2.55,0,0,3,2025-03-20,53,1.0,0.05660377358490566
+Serge Gnabry,Germany,serge gnabry,3,2.55,0,0,3,2025-11-17,43,1.0,0.06976744186046512
+João Neves,Portugal,joao neves,3,2.55,0,0,1,2025-11-16,43,3.0,0.06976744186046512
+José Luis Rodríguez,Panama,jose luis rodriguez,3,2.55,0,0,3,2025-11-18,58,1.0,0.05172413793103448
+Rangelo Janga,Curaçao,rangelo janga,3,2.55,1,0,1,2024-06-05,37,3.0,0.08108108108108109
+Juninho Bacuna,Curaçao,juninho bacuna,3,2.55,0,0,3,2025-11-13,37,1.0,0.08108108108108109
+Renato Steffen,Switzerland,renato steffen,3,2.55,0,0,1,2023-03-25,42,3.0,0.07142857142857142
+Rodrigo Aguirre,Uruguay,rodrigo aguirre,3,2.55,0,0,3,2025-09-04,42,1.0,0.07142857142857142
+Anthony Elanga,Sweden,anthony elanga,3,2.55,0,0,3,2026-03-31,40,1.0,0.075
+Nicolás Otamendi,Argentina,nicolas otamendi,3,2.55,0,0,3,2024-10-10,42,1.0,0.07142857142857142
+Calvin Stengs,Netherlands,calvin stengs,3,2.55,0,0,1,2023-11-21,43,3.0,0.06976744186046512
+Charles De Ketelaere,Belgium,charles de ketelaere,3,2.55,0,0,2,2025-11-18,41,1.5,0.07317073170731707
+Eberechi Eze,England,eberechi eze,3,2.55,0,0,3,2025-11-13,44,1.0,0.06818181818181818
+Elias Saad,Tunisia,elias saad,3,2.55,0,0,2,2025-10-10,49,1.5,0.061224489795918366
+Francisco Conceição,Portugal,francisco conceicao,3,2.45,0,1,3,2025-11-16,43,1.0,0.06976744186046512
+Romano Schmid,Austria,romano schmid,3,2.45,0,1,3,2025-10-09,40,1.0,0.075
+Tim Kleindienst,Germany,tim kleindienst,4,2.4,0,0,3,2025-03-23,43,1.3333333333333333,0.09302325581395349
+Omar Marmoush,Egypt,omar marmoush,4,2.35,1,0,4,2026-01-10,50,1.0,0.08
+Riyad Mahrez,Algeria,riyad mahrez,4,2.35,1,0,3,2025-12-28,52,1.3333333333333333,0.07692307692307693
+Amad Diallo,Ivory Coast,amad diallo,4,2.35,0,0,4,2026-01-06,47,1.0,0.0851063829787234
+Pape Gueye,Senegal,pape gueye,4,2.35,0,0,3,2026-01-03,48,1.3333333333333333,0.08333333333333333
+Stefan Posch,Austria,stefan posch,3,2.3,0,0,2,2025-10-09,40,1.5,0.075
+Leroy Sané,Germany,leroy sane,3,2.3,0,0,2,2025-11-17,43,1.5,0.06976744186046512
+Bruno Petković,Croatia,bruno petkovic,3,2.3,0,0,2,2023-09-08,40,1.5,0.075
+Ryan Christie,Scotland,ryan christie,3,2.3,0,0,3,2025-11-15,40,1.0,0.075
+Pedri,Spain,pedri,3,2.3,0,0,2,2025-09-07,44,1.5,0.06818181818181818
+Evann Guessand,Ivory Coast,evann guessand,3,2.2,0,0,3,2025-12-31,47,1.0,0.06382978723404255
+Simon Adingra,Ivory Coast,simon adingra,3,2.2,0,0,3,2025-10-10,47,1.0,0.06382978723404255
+Jamiro Monteiro,Cape Verde,jamiro monteiro,3,2.2,0,0,3,2024-06-08,43,1.0,0.06976744186046512
+Alexander Djiku,Ghana,alexander djiku,3,2.2,0,0,3,2025-10-08,39,1.0,0.07692307692307693
+Youssef En-Nesyri,Morocco,youssef ennesyri,3,2.2,0,0,3,2025-10-14,54,1.0,0.05555555555555555
+Azzedine Ounahi,Morocco,azzedine ounahi,3,2.2,0,0,3,2025-09-05,54,1.0,0.05555555555555555
+Hakim Ziyech,Morocco,hakim ziyech,3,2.2,1,0,3,2024-06-07,54,1.0,0.05555555555555555
+Yan Diomande,Ivory Coast,yan diomande,3,2.2,0,0,3,2026-01-06,47,1.0,0.06382978723404255
+Meschak Elia,Congo DR,meschak elia,3,2.2,0,0,3,2025-11-16,48,1.0,0.0625
+Bradley Barcola,France,bradley barcola,3,2.05,0,0,3,2025-09-09,43,1.0,0.06976744186046512
+Yeremy Pino,Spain,yeremy pino,3,2.05,0,0,3,2025-10-11,44,1.0,0.06818181818181818
+Dejan Kulusevski,Sweden,dejan kulusevski,3,2.05,0,0,2,2024-11-19,40,1.5,0.075
+İrfan Kahveci,Türkiye,irfan kahveci,3,2.05,0,0,3,2024-10-14,42,1.0,0.07142857142857142
+Ousmane Dembélé,France,ousmane dembele,3,2.05,0,0,3,2025-03-23,43,1.0,0.06976744186046512
+Philipp Lienhart,Austria,philipp lienhart,3,2.05,0,0,3,2024-10-13,40,1.0,0.075
+Martin Zubimendi,Spain,martin zubimendi,3,2.05,0,0,3,2025-11-15,44,1.0,0.06818181818181818
+Ermedin Demirović,Bosnia and Herzegovina,ermedin demirovic,3,2.05,0,0,3,2025-03-24,36,1.0,0.08333333333333333
+Luis Romo,Mexico,luis romo,2,2.0,0,2,1,2023-06-25,60,2.0,0.03333333333333333
+Luis Chávez,Mexico,luis chavez,2,2.0,0,2,2,2023-07-12,60,1.0,0.03333333333333333
+Daniel Muñoz,Colombia,daniel munoz,2,2.0,0,2,2,2024-07-02,45,1.0,0.044444444444444446
+Alireza Jahanbakhsh,Iran,alireza jahanbakhsh,2,2.0,2,2,2,2024-02-07,42,1.0,0.047619047619047616
+Yoel Bárcenas,Panama,yoel barcenas,2,2.0,0,2,2,2023-07-08,58,1.0,0.034482758620689655
+Nathan Saliba,Canada,nathan saliba,2,2.0,0,2,2,2025-06-21,46,1.0,0.043478260869565216
+Santiago Giménez,Mexico,santiago gimenez,2,2.0,0,2,2,2023-07-16,60,1.0,0.03333333333333333
+Djordje Mihailovic,United States,djordje mihailovic,2,2.0,0,2,1,2023-06-28,57,2.0,0.03508771929824561
+Orbelín Pineda,Mexico,orbelin pineda,2,2.0,1,2,2,2023-07-08,60,1.0,0.03333333333333333
+Henry Martín,Mexico,henry martin,2,2.0,0,2,2,2023-07-12,60,1.0,0.03333333333333333
+Jefferson Lerma,Colombia,jefferson lerma,2,2.0,0,2,2,2024-07-10,45,1.0,0.044444444444444446
+Mahmoud Al-Mardi,Jordan,mahmoud almardi,2,2.0,0,2,1,2024-01-15,54,2.0,0.037037037037037035
+Michael Amir Murillo,Panama,michael amir murillo,2,2.0,0,2,2,2024-06-23,58,1.0,0.034482758620689655
+Rodrigo Bentancur,Uruguay,rodrigo bentancur,2,2.0,0,2,2,2024-07-13,42,1.0,0.047619047619047616
+Folarin Balogun,United States,folarin balogun,2,2.0,0,2,2,2024-06-27,57,1.0,0.03508771929824561
+Maximiliano Araújo,Uruguay,maximiliano araujo,2,2.0,0,2,2,2024-06-27,42,1.0,0.047619047619047616
+Patrick Agyemang,United States,patrick agyemang,2,2.0,0,2,2,2025-06-22,57,1.0,0.03508771929824561
+Chris Richards,United States,chris richards,2,2.0,0,2,2,2025-07-06,57,1.0,0.03508771929824561
+Edson Álvarez,Mexico,edson alvarez,2,2.0,0,2,2,2025-07-06,60,1.0,0.03333333333333333
+Sherzod Nasrullaev,Uzbekistan,sherzod nasrullaev,2,1.85,0,1,2,2024-06-06,45,1.0,0.044444444444444446
+Jean-Philippe Krasso,Ivory Coast,jeanphilippe krasso,3,1.85,1,0,3,2025-12-31,47,1.0,0.06382978723404255
+Jeremy Antonisse,Curaçao,jeremy antonisse,2,1.85,0,1,2,2025-06-21,37,1.0,0.05405405405405406
+Elias Achouri,Tunisia,elias achouri,3,1.85,1,0,2,2025-12-23,49,1.5,0.061224489795918366
+Iliman Ndiaye,Senegal,iliman ndiaye,3,1.85,0,0,3,2026-01-09,48,1.0,0.0625
+Lamine Camara,Senegal,lamine camara,3,1.85,0,0,2,2024-01-15,48,1.5,0.0625
+Ryan Mendes,Cape Verde,ryan mendes,3,1.85,1,0,3,2024-01-29,43,1.0,0.06976744186046512
+Alan Minda,Ecuador,alan minda,2,1.85,0,1,2,2024-11-14,42,1.0,0.047619047619047616
+Kendry Páez,Ecuador,kendry paez,2,1.85,1,1,2,2024-06-26,42,1.0,0.047619047619047616
+Kevin Rodríguez,Ecuador,kevin rodriguez,2,1.85,0,1,2,2024-07-04,42,1.0,0.047619047619047616
+Abdullah Radif,Saudi Arabia,abdullah radif,2,1.85,0,1,2,2024-01-30,60,1.0,0.03333333333333333
+Davinson Sánchez,Colombia,davinson sanchez,2,1.85,0,1,2,2024-10-15,45,1.0,0.044444444444444446
+Lucas Paquetá,Brazil,lucas paqueta,2,1.85,1,1,2,2025-09-04,40,1.0,0.05
+César Blackman,Panama,cesar blackman,2,1.85,0,1,2,2025-11-18,58,1.0,0.034482758620689655
+Mathías Olivera,Uruguay,mathias olivera,2,1.85,0,1,2,2024-07-01,42,1.0,0.047619047619047616
+César Yanis,Panama,cesar yanis,2,1.85,0,1,2,2025-06-10,58,1.0,0.034482758620689655
+Yusuf Abdurisag,Qatar,yusuf abdurisag,2,1.85,0,1,2,2023-11-21,53,1.0,0.03773584905660377
+Mert Müldür,Türkiye,mert muldur,2,1.85,0,1,2,2025-09-04,42,1.0,0.047619047619047616
+Cristian Martínez,Panama,cristian martinez,2,1.85,0,1,2,2025-06-16,58,1.0,0.034482758620689655
+Osama Rashid,Iraq,osama rashid,2,1.85,0,1,2,2024-01-15,51,1.0,0.0392156862745098
+Cherif Ndiaye,Senegal,cherif ndiaye,3,1.85,1,0,3,2025-12-30,48,1.0,0.0625
+Tameem Al-Abdullah,Qatar,tameem alabdullah,2,1.85,0,1,2,2023-11-16,53,1.0,0.03773584905660377
+Cho Gue-sung,South Korea,cho guesung,2,1.85,0,1,2,2024-01-30,44,1.0,0.045454545454545456
+Themba Zwane,South Africa,themba zwane,3,1.85,0,0,2,2024-06-07,52,1.5,0.057692307692307696
+Wataru Endo,Japan,wataru endo,2,1.85,0,1,2,2024-09-05,41,1.0,0.04878048780487805
+Evidence Makgopa,South Africa,evidence makgopa,3,1.85,0,0,3,2026-01-04,52,1.0,0.057692307692307696
+Abdulrahman Ghareeb,Saudi Arabia,abdulrahman ghareeb,2,1.85,0,1,2,2024-01-16,60,1.0,0.03333333333333333
+Fidel Escobar,Panama,fidel escobar,2,1.85,0,1,2,2025-06-07,58,1.0,0.034482758620689655
+Yazan Al-Arab,Jordan,yazan alarab,2,1.85,0,1,2,2025-03-20,54,1.0,0.037037037037037035
+Deniz Undav,Germany,deniz undav,3,1.7999999999999998,0,0,2,2024-10-11,43,1.5,0.06976744186046512
+Gonzalo Plata,Ecuador,gonzalo plata,2,1.7,0,0,1,2024-11-14,42,2.0,0.047619047619047616
+Mohammed Salisu,Ghana,mohammed salisu,2,1.7,0,0,2,2025-10-08,39,1.0,0.05128205128205128
+Noor Al-Rawabdeh,Jordan,noor alrawabdeh,2,1.7,0,0,2,2024-09-10,54,1.0,0.037037037037037035
+Rafael Santos Borré,Colombia,rafael santos borre,2,1.7,1,0,2,2023-11-21,45,1.0,0.044444444444444446
+Diogo Jota,Portugal,diogo jota,2,1.7,0,0,1,2023-09-11,43,2.0,0.046511627906976744
+Willy Semedo,Cape Verde,willy semedo,2,1.7,0,0,2,2025-10-13,43,1.0,0.046511627906976744
+David Douděra,Czechia,david doudera,2,1.7,0,0,2,2025-11-17,40,1.0,0.05
+Eric Davis,Panama,eric davis,2,1.7,1,0,2,2025-11-18,58,1.0,0.034482758620689655
+Ali Jasim,Iraq,ali jasim,2,1.7,0,0,2,2024-06-11,51,1.0,0.0392156862745098
+Gonçalo Inácio,Portugal,goncalo inacio,2,1.7,0,0,1,2023-09-11,43,2.0,0.046511627906976744
+Oh Se-hun,South Korea,oh sehun,2,1.7,0,0,2,2024-11-14,44,1.0,0.045454545454545456
+Franjo Ivanović,Croatia,franjo ivanovic,2,1.7,0,0,1,2025-06-06,40,2.0,0.05
+Dodi Lukebakio,Belgium,dodi lukebakio,2,1.7,0,0,1,2023-10-13,41,2.0,0.04878048780487805
+Juan Fernando Quintero,Colombia,juan fernando quintero,2,1.7,0,0,2,2025-09-04,45,1.0,0.044444444444444446
+Jørgen Strand Larsen,Norway,jrgen strand larsen,2,1.7,0,0,2,2025-11-16,37,1.0,0.05405405405405406
+Ruben Providence,Haiti,ruben providence,2,1.7,0,0,2,2025-11-18,37,1.0,0.05405405405405406
+Félix Torres,Ecuador,felix torres,2,1.7,0,0,1,2023-09-12,42,2.0,0.047619047619047616
+Lyndon Dykes,Scotland,lyndon dykes,2,1.7,0,0,2,2025-10-09,40,1.0,0.05
+Mostafa Meshaal,Qatar,mostafa meshaal,2,1.7,0,0,2,2023-11-21,53,1.0,0.03773584905660377
+Jordi Paulina,Curaçao,jordi paulina,2,1.7,1,0,1,2025-11-13,37,2.0,0.05405405405405406
+Rade Krunić,Bosnia and Herzegovina,rade krunic,2,1.7,0,0,1,2023-03-23,36,2.0,0.05555555555555555
+Salem Al-Dawsari,Saudi Arabia,salem aldawsari,2,1.7,0,0,2,2025-03-20,60,1.0,0.03333333333333333
+Joo Min-kyu,South Korea,joo minkyu,2,1.7,0,0,2,2024-09-10,44,1.0,0.045454545454545456
+Viktor Claesson,Sweden,viktor claesson,2,1.7,0,0,2,2023-11-19,40,1.0,0.05
+Che Adams,Scotland,che adams,2,1.7,0,0,2,2025-10-12,40,1.0,0.05
+Johan Manzambi,Switzerland,johan manzambi,2,1.7,0,0,2,2025-11-15,42,1.0,0.047619047619047616
+Manuel Akanji,Switzerland,manuel akanji,2,1.7,0,0,2,2025-09-05,42,1.0,0.047619047619047616
+Luiz Henrique,Brazil,luiz henrique,2,1.7,0,0,2,2024-10-15,40,1.0,0.05
+Diney,Cape Verde,diney,2,1.7,0,0,2,2025-09-04,43,1.0,0.046511627906976744
+Karim Konaté,Ivory Coast,karim konate,2,1.7,1,0,1,2023-11-17,47,2.0,0.0425531914893617
+Mitchell Duke,Australia,mitchell duke,2,1.7,0,0,1,2023-11-16,41,2.0,0.04878048780487805
+Tyler Bindon,New Zealand,tyler bindon,2,1.7,0,0,2,2025-03-21,36,1.0,0.05555555555555555
+Lawrence Shankland,Scotland,lawrence shankland,2,1.7,0,0,2,2025-11-18,40,1.0,0.05
+Youssef Msakni,Tunisia,youssef msakni,2,1.7,1,0,2,2023-11-21,49,1.0,0.04081632653061224
+Lewis Miller,Australia,lewis miller,2,1.7,0,0,2,2025-03-20,41,1.0,0.04878048780487805
+Gavi,Spain,gavi,2,1.7,0,0,2,2023-10-15,44,1.0,0.045454545454545456
+Ricardo Horta,Portugal,ricardo horta,2,1.7,0,0,2,2023-11-19,43,1.0,0.046511627906976744
+Husniddin Aliqulov,Uzbekistan,husniddin aliqulov,2,1.7,0,0,2,2024-09-10,45,1.0,0.044444444444444446
+Youssouf Fofana,France,youssouf fofana,2,1.7,0,0,2,2023-11-21,43,1.0,0.046511627906976744
+Alexis Mac Allister,Argentina,alexis mac allister,2,1.7,0,0,2,2025-03-25,42,1.0,0.047619047619047616
+Kristijan Jakić,Croatia,kristijan jakic,2,1.7,0,0,2,2025-11-17,40,1.0,0.05
+Louicius Don Deedson,Haiti,louicius don deedson,2,1.7,0,0,2,2025-06-10,37,1.0,0.05405405405405406
+Kingsley Coman,France,kingsley coman,2,1.7,0,0,1,2023-11-18,43,2.0,0.046511627906976744
+Ramin Rezaeian,Iran,ramin rezaeian,2,1.7,0,0,2,2023-11-21,42,1.0,0.047619047619047616
+Ernest Nuamah,Ghana,ernest nuamah,2,1.7,0,0,2,2025-03-21,39,1.0,0.05128205128205128
+Khojimat Erkinov,Uzbekistan,khojimat erkinov,2,1.7,0,0,2,2025-03-25,45,1.0,0.044444444444444446
+Lucas Mendes,Qatar,lucas mendes,2,1.7,0,0,2,2025-03-25,53,1.0,0.03773584905660377
+Adam Karabec,Czechia,adam karabec,2,1.7,0,0,2,2025-11-17,40,1.0,0.05
+Amir Al-Ammari,Iraq,amir alammari,2,1.7,1,0,2,2025-11-18,51,1.0,0.0392156862745098
+Mohamed El Amine Amoura,Algeria,mohamed el amine amoura,2,1.7,0,0,1,2025-03-21,52,2.0,0.038461538461538464
+Bae Jun-ho,South Korea,bae junho,2,1.7,0,0,2,2024-11-14,44,1.0,0.045454545454545456
+Kenny McLean,Scotland,kenny mclean,2,1.7,0,0,2,2025-11-18,40,1.0,0.05
+Youssef Amyn,Iraq,youssef amyn,2,1.7,0,0,2,2024-11-19,51,1.0,0.0392156862745098
+Giorgian de Arrascaeta,Uruguay,giorgian de arrascaeta,2,1.7,0,0,2,2025-09-04,42,1.0,0.047619047619047616
+Enzo Fernández,Argentina,enzo fernandez,2,1.7,0,0,2,2025-03-25,42,1.0,0.047619047619047616
+Sarpreet Singh,New Zealand,sarpreet singh,2,1.7,0,0,2,2025-03-21,36,1.0,0.05555555555555555
+Aron Dønnum,Norway,aron dnnum,2,1.7,0,0,2,2025-03-22,37,1.0,0.05405405405405406
+Hassan Kadesh,Saudi Arabia,hassan kadesh,2,1.7,0,0,1,2024-09-10,60,2.0,0.03333333333333333
+Hans Vanaken,Belgium,hans vanaken,2,1.7,0,0,2,2025-11-18,41,1.0,0.04878048780487805
+Marcus Thuram,France,marcus thuram,2,1.7,0,0,2,2023-11-18,43,1.0,0.046511627906976744
+Abdulrahman Al-Aboud,Saudi Arabia,abdulrahman alaboud,2,1.7,0,0,2,2025-06-10,60,1.0,0.03333333333333333
+Yukinari Sugawara,Japan,yukinari sugawara,2,1.7,0,0,2,2024-11-15,41,1.0,0.04878048780487805
+Matías Galarza,Paraguay,matias galarza,2,1.7,0,0,2,2025-09-09,36,1.0,0.05555555555555555
+Hazem Mastouri,Tunisia,hazem mastouri,2,1.7,0,0,2,2025-09-04,49,1.0,0.04081632653061224
+Ibrahim Sangaré,Ivory Coast,ibrahim sangare,2,1.7,1,0,2,2025-10-10,47,1.0,0.0425531914893617
+Silvan Widmer,Switzerland,silvan widmer,2,1.7,0,0,2,2025-09-05,42,1.0,0.047619047619047616
+Cecilio Waterman,Panama,cecilio waterman,2,1.7,0,0,1,2025-11-13,58,2.0,0.034482758620689655
+Iñaki Williams,Ghana,inaki williams,2,1.7,0,0,2,2025-03-21,39,1.0,0.05128205128205128
+Ferjani Sassi,Tunisia,ferjani sassi,2,1.7,0,0,2,2025-10-13,49,1.0,0.04081632653061224
+Yunus Akgün,Türkiye,yunus akgun,2,1.7,0,0,2,2025-10-14,42,1.0,0.047619047619047616
+Thomas Meunier,Belgium,thomas meunier,2,1.7,0,0,2,2025-10-13,41,1.0,0.04878048780487805
+Emil Forsberg,Sweden,emil forsberg,2,1.7,0,0,2,2023-11-19,40,1.0,0.05
+Hossein Kanaanizadegan,Iran,hossein kanaanizadegan,2,1.7,0,0,1,2024-03-21,42,2.0,0.047619047619047616
+Neymar,Brazil,neymar,2,1.7,0,0,1,2023-09-08,40,2.0,0.05
+Callum McCowatt,New Zealand,callum mccowatt,2,1.7,0,0,2,2024-11-18,36,1.0,0.05555555555555555
+Martin Ødegaard,Norway,martin degaard,2,1.7,0,0,2,2025-09-09,37,1.0,0.05405405405405406
+Zidane Iqbal,Iraq,zidane iqbal,2,1.7,0,0,2,2025-10-11,51,1.0,0.0392156862745098
+Fiston Mayele,Congo DR,fiston mayele,2,1.7,0,0,2,2025-03-25,48,1.0,0.041666666666666664
+Mao Hosoya,Japan,mao hosoya,2,1.7,0,0,2,2025-06-10,41,1.0,0.04878048780487805
+Jhon Durán,Colombia,jhon duran,2,1.7,0,0,2,2025-03-25,45,1.0,0.044444444444444446
+Nikola Vlašić,Croatia,nikola vlasic,2,1.7,0,0,2,2025-11-17,40,1.0,0.05
+Nathan Aké,Netherlands,nathan ake,2,1.7,0,0,1,2023-03-27,43,2.0,0.046511627906976744
+Tahith Chong,Curaçao,tahith chong,2,1.7,0,0,1,2025-09-09,37,2.0,0.05405405405405406
+Thapelo Morena,South Africa,thapelo morena,2,1.7,0,0,1,2024-06-11,52,2.0,0.038461538461538464
+Ahmed Alaaeldin,Qatar,ahmed alaaeldin,2,1.7,1,0,2,2025-03-20,53,1.0,0.03773584905660377
+Mateo Kovačić,Croatia,mateo kovacic,2,1.7,0,0,1,2023-03-28,40,2.0,0.05
+Nicolás González,Argentina,nicolas gonzalez,2,1.7,0,0,2,2024-09-10,42,1.0,0.047619047619047616
+Hamed Traorè,Ivory Coast,hamed traore,2,1.7,0,0,1,2023-11-17,47,2.0,0.0425531914893617
+Hamza Igamane,Morocco,hamza igamane,2,1.7,0,0,2,2025-09-08,54,1.0,0.037037037037037035
+Ibrahim Al-Hassan,Qatar,ibrahim alhassan,2,1.7,0,0,2,2024-10-10,53,1.0,0.03773584905660377
+Ibrahim Bayesh,Iraq,ibrahim bayesh,2,1.7,0,0,2,2025-03-20,51,1.0,0.0392156862745098
+Jean-Philippe Mateta,France,jeanphilippe mateta,2,1.7,0,0,2,2025-11-16,43,1.0,0.046511627906976744
+Ahmed Sayed,Egypt,ahmed sayed,2,1.7,0,0,2,2025-03-25,50,1.0,0.04
+Ollie Watkins,England,ollie watkins,2,1.6,0,1,2,2024-11-14,44,1.0,0.045454545454545456
+Felix Horn Myhre,Norway,felix horn myhre,2,1.45,0,0,2,2025-09-09,37,1.0,0.05405405405405406
+Trent Alexander-Arnold,England,trent alexanderarnold,2,1.45,0,0,2,2024-10-13,44,1.0,0.045454545454545456
+İrfan Can Kahveci,Türkiye,irfan can kahveci,2,1.45,0,0,2,2025-10-11,42,1.0,0.047619047619047616
+Anthony Gordon,England,anthony gordon,2,1.45,0,0,2,2025-10-14,44,1.0,0.045454545454545456
+Yasin Ayari,Sweden,yasin ayari,2,1.45,0,0,2,2025-09-05,40,1.0,0.05
+Rafael Leão,Portugal,rafael leao,2,1.45,0,0,2,2024-11-15,43,1.0,0.046511627906976744
+Noa Lang,Netherlands,noa lang,2,1.45,0,0,2,2025-06-10,43,1.0,0.046511627906976744
+Joško Gvardiol,Croatia,josko gvardiol,2,1.45,0,0,2,2025-11-14,40,1.0,0.05
+Álex Baena,Spain,alex baena,2,1.45,0,0,2,2024-10-15,44,1.0,0.045454545454545456
+Adam Hložek,Czechia,adam hlozek,2,1.45,0,0,2,2025-06-06,40,1.0,0.05
+Teun Koopmeiners,Netherlands,teun koopmeiners,2,1.45,0,0,2,2024-11-16,43,1.0,0.046511627906976744
+Christopher Nkunku,France,christopher nkunku,2,1.45,0,0,2,2025-10-13,43,1.0,0.046511627906976744
+Abdülkerim Bardakcı,Türkiye,abdulkerim bardakc,2,1.45,0,0,2,2025-03-23,42,1.0,0.047619047619047616
+Orkun Kökçü,Türkiye,orkun kokcu,2,1.45,0,0,2,2025-03-20,42,1.0,0.047619047619047616
+Lukáš Červ,Czechia,lukas cerv,2,1.45,0,0,2,2025-09-05,40,1.0,0.05
+Chancel Mbemba,Congo DR,chancel mbemba,2,1.35,0,0,2,2025-11-13,48,1.0,0.041666666666666664
+Nathanaël Mbuku,Congo DR,nathanael mbuku,2,1.35,0,0,2,2025-12-30,48,1.0,0.041666666666666664
+Percy Tau,South Africa,percy tau,2,1.35,1,0,2,2024-01-21,52,1.0,0.038461538461538464
+Farès Chaïbi,Algeria,fares chaibi,2,1.35,0,0,2,2025-12-31,52,1.0,0.038461538461538464
+Hamza Rafia,Tunisia,hamza rafia,2,1.35,0,0,2,2024-01-20,49,1.0,0.04081632653061224
+Ismaël Gharbi,Tunisia,ismael gharbi,2,1.35,1,0,2,2025-12-30,49,1.0,0.04081632653061224
+Oumar Diakité,Ivory Coast,oumar diakite,2,1.35,0,0,2,2025-10-10,47,1.0,0.0425531914893617
+Firas Chaouat,Tunisia,firas chaouat,2,1.35,0,0,2,2026-01-03,49,1.0,0.04081632653061224
+Ali Abdi,Tunisia,ali abdi,2,1.35,2,0,2,2025-12-27,49,1.0,0.04081632653061224
+Sebastian Nanasi,Sweden,sebastian nanasi,2,1.2,0,0,1,2024-10-14,40,2.0,0.05
+Francisco Trincão,Portugal,francisco trincao,2,1.2,0,0,1,2025-03-23,43,2.0,0.046511627906976744
+Jack Grealish,England,jack grealish,2,1.2,0,0,2,2024-10-13,44,1.0,0.045454545454545456
+Ali Al-Bulaihi,Saudi Arabia,ali albulaihi,1,1.0,0,1,1,2024-01-16,60,1.0,0.016666666666666666
+Cade Cowell,United States,cade cowell,1,1.0,0,1,1,2023-07-02,57,1.0,0.017543859649122806
+Rebin Sulaka,Iraq,rebin sulaka,1,1.0,0,1,1,2024-01-24,51,1.0,0.0196078431372549
+Promise David,Canada,promise david,1,1.0,0,1,1,2025-06-17,46,1.0,0.021739130434782608
+Lucas Cavallini,Canada,lucas cavallini,1,1.0,0,1,1,2023-06-27,46,1.0,0.021739130434782608
+Dani Carvajal,Spain,dani carvajal,1,1.0,0,1,1,2024-06-15,44,1.0,0.022727272727272728
+Liam Millar,Canada,liam millar,1,1.0,0,1,1,2023-07-04,46,1.0,0.021739130434782608
+Matías Viña,Uruguay,matias vina,1,1.0,0,1,1,2024-06-23,42,1.0,0.023809523809523808
+Lukáš Provod,Czechia,lukas provod,1,1.0,0,1,1,2024-06-18,40,1.0,0.025
+Lisandro Martínez,Argentina,lisandro martinez,1,1.0,0,1,1,2024-07-04,42,1.0,0.023809523809523808
+Maximilian Arfsten,United States,maximilian arfsten,1,1.0,0,1,1,2025-06-29,57,1.0,0.017543859649122806
+Alexis Vega,Mexico,alexis vega,1,1.0,0,1,1,2025-06-28,60,1.0,0.016666666666666666
+Michel Aebischer,Switzerland,michel aebischer,1,1.0,0,1,1,2024-06-15,42,1.0,0.023809523809523808
+Luis Suárez,Uruguay,luis suarez,1,1.0,0,1,1,2024-07-13,42,1.0,0.023809523809523808
+Ramón Sosa,Paraguay,ramon sosa,1,1.0,0,1,1,2024-07-02,36,1.0,0.027777777777777776
+Karim Ansarifard,Iran,karim ansarifard,1,1.0,0,1,1,2024-01-14,42,1.0,0.023809523809523808
+Gaël Kakuta,Congo DR,gael kakuta,2,1.0,1,0,1,2025-12-30,48,2.0,0.041666666666666664
+Jordan Bos,Australia,jordan bos,1,1.0,0,1,1,2024-01-13,41,1.0,0.024390243902439025
+Miguel Borja,Colombia,miguel borja,1,1.0,1,1,1,2024-07-06,45,1.0,0.022222222222222223
+Samet Akaydin,Türkiye,samet akaydin,1,1.0,0,1,1,2024-07-06,42,1.0,0.023809523809523808
+Sávio,Brazil,savio,1,1.0,0,1,1,2024-06-28,40,1.0,0.025
+Jeremy Sarmiento,Ecuador,jeremy sarmiento,1,1.0,0,1,1,2024-06-22,42,1.0,0.023809523809523808
+Haji Wright,United States,haji wright,1,1.0,0,1,1,2025-06-15,57,1.0,0.017543859649122806
+Jeong Woo-yeong,South Korea,jeong wooyeong,1,1.0,0,1,1,2024-01-25,44,1.0,0.022727272727272728
+Shojae Khalilzadeh,Iran,shojae khalilzadeh,1,1.0,0,1,1,2024-01-14,42,1.0,0.023809523809523808
+Emre Can,Germany,emre can,1,1.0,0,1,1,2024-06-14,43,1.0,0.023255813953488372
+Jayden Nelson,Canada,jayden nelson,1,1.0,0,1,1,2023-07-04,46,1.0,0.021739130434782608
+Jassem Gaber,Qatar,jassem gaber,1,1.0,0,1,1,2024-02-07,53,1.0,0.018867924528301886
+Niko Sigur,Canada,niko sigur,1,1.0,0,1,1,2025-06-17,46,1.0,0.021739130434782608
+Stefan de Vrij,Netherlands,stefan de vrij,1,1.0,0,1,1,2024-07-06,43,1.0,0.023255813953488372
+Steven Vitória,Canada,steven vitoria,1,1.0,1,1,1,2023-07-09,46,1.0,0.021739130434782608
+Christian Pulisic,United States,christian pulisic,1,1.0,0,1,1,2024-06-23,57,1.0,0.017543859649122806
+Iván Anderson,Panama,ivan anderson,1,1.0,0,1,1,2023-07-12,58,1.0,0.017241379310344827
+Ismaël Koné,Canada,ismael kone,1,1.0,0,1,1,2024-07-13,46,1.0,0.021739130434782608
+İlkay Gündoğan,Germany,ilkay gundogan,1,1.0,0,1,1,2024-06-19,43,1.0,0.023255813953488372
+Hazem Shehata,Qatar,hazem shehata,1,1.0,0,1,1,2023-07-02,53,1.0,0.018867924528301886
+Brenden Aaronson,United States,brenden aaronson,1,1.0,0,1,1,2025-06-15,57,1.0,0.017543859649122806
+Tani Oluwaseyi,Canada,tani oluwaseyi,1,1.0,0,1,1,2025-06-17,46,1.0,0.021739130434782608
+Teboho Mokoena,South Africa,teboho mokoena,2,1.0,1,0,2,2024-02-07,52,1.0,0.038461538461538464
+Ibrahim Maza,Algeria,ibrahim maza,2,1.0,0,0,2,2025-12-31,52,1.0,0.038461538461538464
+Hwang In-beom,South Korea,hwang inbeom,1,1.0,0,1,1,2024-01-15,44,1.0,0.022727272727272728
+Jonathan Osorio,Canada,jonathan osorio,1,1.0,0,1,1,2023-07-04,46,1.0,0.021739130434782608
+Facundo Pellistri,Uruguay,facundo pellistri,1,1.0,0,1,1,2024-06-27,42,1.0,0.023809523809523808
+Abdoulaye Seck,Senegal,abdoulaye seck,2,1.0,0,0,2,2025-12-30,48,1.0,0.041666666666666664
+Gernot Trauner,Austria,gernot trauner,1,1.0,0,1,1,2024-06-21,40,1.0,0.025
+Bryan Reynolds,United States,bryan reynolds,1,1.0,0,1,1,2023-06-28,57,1.0,0.017543859649122806
+Rodri,Spain,rodri,1,1.0,0,1,1,2024-06-30,44,1.0,0.022727272727272728
+Gerardo Arteaga,Mexico,gerardo arteaga,1,1.0,0,1,1,2024-06-22,60,1.0,0.016666666666666666
+Gianluca Busio,United States,gianluca busio,1,1.0,0,1,1,2023-07-02,57,1.0,0.017543859649122806
+Bazoumana Touré,Ivory Coast,bazoumana toure,2,1.0,0,0,2,2026-01-06,47,1.0,0.0425531914893617
+Roberto Alvarado,Mexico,roberto alvarado,1,1.0,0,1,1,2023-07-12,60,1.0,0.016666666666666666
+Faisal Al-Ghamdi,Saudi Arabia,faisal alghamdi,1,1.0,0,1,1,2024-01-21,60,1.0,0.016666666666666666
+Mohamed Kanno,Saudi Arabia,mohamed kanno,1,1.0,0,1,1,2024-01-21,60,1.0,0.016666666666666666
+Max Mata,New Zealand,max mata,2,1.0,0,0,2,2024-06-30,36,1.0,0.05555555555555555
+Kwadwo Duah,Switzerland,kwadwo duah,1,1.0,0,1,1,2024-06-15,42,1.0,0.023809523809523808
+Érick Sánchez,Mexico,erick sanchez,1,1.0,0,1,1,2023-07-08,60,1.0,0.016666666666666666
+Odiljon Hamrobekov,Uzbekistan,odiljon hamrobekov,1,1.0,0,1,1,2024-02-03,45,1.0,0.022222222222222223
+Junior Hoilett,Canada,junior hoilett,1,1.0,1,1,1,2023-07-04,46,1.0,0.021739130434782608
+Saad Natiq,Iraq,saad natiq,1,1.0,0,1,1,2024-01-29,51,1.0,0.0196078431372549
+Richard Ríos,Colombia,richard rios,1,1.0,0,1,1,2024-07-06,45,1.0,0.022222222222222223
+Cole Palmer,England,cole palmer,1,1.0,0,1,1,2024-07-14,44,1.0,0.022727272727272728
+Nizar Al-Rashdan,Jordan,nizar alrashdan,1,1.0,0,1,1,2024-01-29,54,1.0,0.018518518518518517
+Zaid Tahseen,Iraq,zaid tahseen,1,0.85,0,0,1,2024-03-26,51,1.0,0.0196078431372549
+Omid Noorafkan,Iran,omid noorafkan,1,0.85,0,0,1,2024-03-21,42,1.0,0.023809523809523808
+Nicolás Tagliafico,Argentina,nicolas tagliafico,1,0.85,0,0,1,2023-09-12,42,1.0,0.023809523809523808
+Zeki Çelik,Türkiye,zeki celik,1,0.85,0,0,1,2025-10-11,42,1.0,0.023809523809523808
+Nihad Mujakić,Bosnia and Herzegovina,nihad mujakic,1,0.85,0,0,1,2025-09-06,36,1.0,0.027777777777777776
+Yannick Carrasco,Belgium,yannick carrasco,1,0.85,0,0,1,2023-09-09,41,1.0,0.024390243902439025
+Xander Severina,Curaçao,xander severina,1,0.85,0,0,1,2024-06-08,37,1.0,0.02702702702702703
+Nikola Katić,Bosnia and Herzegovina,nikola katic,1,0.85,0,0,1,2025-10-09,36,1.0,0.027777777777777776
+Ola Solbakken,Norway,ola solbakken,1,0.85,0,0,1,2023-06-20,37,1.0,0.02702702702702703
+Oihan Sancet,Spain,oihan sancet,1,0.85,0,0,1,2023-10-12,44,1.0,0.022727272727272728
+Yusuf Yazıcı,Türkiye,yusuf yazc,1,0.85,1,0,1,2023-11-21,42,1.0,0.023809523809523808
+Nikolaus Wurmbrand,Austria,nikolaus wurmbrand,1,0.85,0,0,1,2025-10-09,40,1.0,0.025
+Noni Madueke,England,noni madueke,1,0.85,0,0,1,2025-09-09,44,1.0,0.022727272727272728
+Agustín Canobbio,Uruguay,agustin canobbio,1,0.85,0,0,1,2023-09-12,42,1.0,0.023809523809523808
+Ridle Baku,Germany,ridle baku,1,0.85,0,0,1,2025-11-17,43,1.0,0.023255813953488372
+Otávio,Portugal,otavio,1,0.85,0,0,1,2023-03-26,43,1.0,0.023255813953488372
+Nicolas Raskin,Belgium,nicolas raskin,1,0.85,0,0,1,2025-09-07,41,1.0,0.024390243902439025
+Akam Hashim,Iraq,akam hashim,1,0.85,0,0,1,2025-03-20,51,1.0,0.0196078431372549
+Saed Al-Rosan,Jordan,saed alrosan,1,0.85,0,0,1,2024-03-26,54,1.0,0.018518518518518517
+Said Benrahma,Algeria,said benrahma,1,0.85,0,0,1,2024-06-10,52,1.0,0.019230769230769232
+Sajjad Jassim,Iraq,sajjad jassim,1,0.85,0,0,1,2025-06-10,51,1.0,0.0196078431372549
+Saleh Abu Al-Shamat,Saudi Arabia,saleh abu alshamat,1,0.85,0,0,1,2025-10-08,60,1.0,0.016666666666666666
+Ajdin Hrustic,Australia,ajdin hrustic,1,0.85,0,0,1,2024-06-06,41,1.0,0.024390243902439025
+Abdul Fatawu,Ghana,abdul fatawu,1,0.85,0,0,1,2024-06-10,39,1.0,0.02564102564102564
+Saleh Hardani,Iran,saleh hardani,1,0.85,0,0,1,2024-11-19,42,1.0,0.023809523809523808
+Salih Özcan,Türkiye,salih ozcan,1,0.85,0,0,1,2025-11-18,42,1.0,0.023809523809523808
+Samed Baždar,Bosnia and Herzegovina,samed bazdar,1,0.85,0,0,1,2025-09-06,36,1.0,0.027777777777777776
+Tim Payne,New Zealand,tim payne,1,0.85,0,0,1,2025-03-21,36,1.0,0.027777777777777776
+Aïssa Mandi,Algeria,aissa mandi,1,0.85,0,0,1,2025-03-25,52,1.0,0.019230769230769232
+Seifeddine Jaziri,Tunisia,seifeddine jaziri,1,0.85,0,0,1,2025-03-24,49,1.0,0.02040816326530612
+Tomáš Čvančara,Czechia,tomas cvancara,1,0.85,0,0,1,2023-03-24,40,1.0,0.025
+Shūto Machino,Japan,shuto machino,1,0.85,0,0,1,2025-06-10,41,1.0,0.024390243902439025
+Sidny Lopes Cabral,Cape Verde,sidny lopes cabral,1,0.85,0,0,1,2025-10-08,43,1.0,0.023255813953488372
+Sontje Hansen,Curaçao,sontje hansen,1,0.85,0,0,1,2025-11-13,37,1.0,0.02702702702702703
+Soufiane Rahimi,Morocco,soufiane rahimi,1,0.85,0,0,1,2024-06-11,54,1.0,0.018518518518518517
+Yassine Meriah,Tunisia,yassine meriah,1,0.85,0,0,1,2023-11-17,49,1.0,0.02040816326530612
+Stopira,Cape Verde,stopira,1,0.85,0,0,1,2025-10-13,43,1.0,0.023255813953488372
+Yerson Mosquera,Colombia,yerson mosquera,1,0.85,0,0,1,2024-09-10,45,1.0,0.022222222222222223
+Stuart Armstrong,Scotland,stuart armstrong,1,0.85,0,0,1,2023-11-19,40,1.0,0.025
+Yerry Mina,Colombia,yerry mina,1,0.85,0,0,1,2025-09-09,45,1.0,0.022222222222222223
+Ahmed Al Ganehi,Qatar,ahmed al ganehi,1,0.85,0,0,1,2025-03-20,53,1.0,0.018867924528301886
+Telmo Arcanjo,Cape Verde,telmo arcanjo,1,0.85,0,0,1,2025-10-08,43,1.0,0.023255813953488372
+Thalente Mbatha,South Africa,thalente mbatha,1,0.85,0,0,1,2025-10-14,52,1.0,0.019230769230769232
+Ryan Porteous,Scotland,ryan porteous,1,0.85,0,0,1,2023-09-08,40,1.0,0.025
+Rustam Ashurmatov,Uzbekistan,rustam ashurmatov,1,0.85,0,0,1,2024-03-21,45,1.0,0.022222222222222223
+Warren Zaïre-Emery,France,warren zaireemery,1,0.85,0,0,1,2023-11-18,43,1.0,0.023255813953488372
+Yuki Soma,Japan,yuki soma,1,0.85,1,0,1,2024-06-11,41,1.0,0.024390243902439025
+Park Jin-seob,South Korea,park jinseob,1,0.85,0,0,1,2024-03-26,44,1.0,0.022727272727272728
+Paulo Dybala,Argentina,paulo dybala,1,0.85,0,0,1,2024-09-05,42,1.0,0.023809523809523808
+Vladimír Coufal,Czechia,vladimir coufal,1,0.85,0,0,1,2025-11-17,40,1.0,0.025
+Pedro Miguel,Qatar,pedro miguel,1,0.85,0,0,1,2025-10-14,53,1.0,0.018867924528301886
+Petar Musa,Croatia,petar musa,1,0.85,0,0,1,2025-11-14,40,1.0,0.025
+Quilindschy Hartman,Netherlands,quilindschy hartman,1,0.85,0,0,1,2023-10-13,43,1.0,0.023255813953488372
+Quinten Timber,Netherlands,quinten timber,1,0.85,0,0,1,2025-09-07,43,1.0,0.023255813953488372
+Yannick Semedo,Cape Verde,yannick semedo,1,0.85,0,0,1,2025-03-20,43,1.0,0.023255813953488372
+Ramiz Zerrouki,Algeria,ramiz zerrouki,1,0.85,0,0,1,2023-11-19,52,1.0,0.019230769230769232
+Vakoun Issouf Bayo,Ivory Coast,vakoun issouf bayo,1,0.85,0,0,1,2025-09-05,47,1.0,0.02127659574468085
+Umut Nayir,Türkiye,umut nayir,1,0.85,0,0,1,2023-06-19,42,1.0,0.023809523809523808
+Alexis Saelemaekers,Belgium,alexis saelemaekers,1,0.85,0,0,1,2025-11-18,41,1.0,0.024390243902439025
+Tyrese Noslin,Curaçao,tyrese noslin,1,0.85,0,0,1,2025-09-09,37,1.0,0.02702702702702703
+Rúben Neves,Portugal,ruben neves,1,0.85,0,0,1,2025-10-11,43,1.0,0.023255813953488372
+Reece James,England,reece james,1,0.85,0,0,1,2025-03-24,44,1.0,0.022727272727272728
+Renato Gojković,Bosnia and Herzegovina,renato gojkovic,1,0.85,0,0,1,2023-11-16,36,1.0,0.027777777777777776
+Renato Veiga,Portugal,renato veiga,1,0.85,0,0,1,2025-11-16,43,1.0,0.023255813953488372
+Adam Taggart,Australia,adam taggart,1,0.85,0,0,1,2024-06-11,41,1.0,0.024390243902439025
+Robin Hranáč,Czechia,robin hranac,1,0.85,0,0,1,2025-11-17,40,1.0,0.025
+Robin Le Normand,Spain,robin le normand,1,0.85,0,0,1,2023-11-19,44,1.0,0.022727272727272728
+Robin Quaison,Sweden,robin quaison,1,0.85,0,0,1,2023-09-09,40,1.0,0.025
+Ronald Araújo,Uruguay,ronald araujo,1,0.85,0,0,1,2023-11-16,42,1.0,0.023809523809523808
+Toni Fruk,Croatia,toni fruk,1,0.85,0,0,1,2025-10-12,40,1.0,0.025
+Ró-Ró,Qatar,roro,1,0.85,0,0,1,2025-06-05,53,1.0,0.018867924528301886
+Roshon van Eijma,Curaçao,roshon van eijma,1,0.85,0,0,1,2025-11-13,37,1.0,0.02702702702702703
+Yousef Aymen,Qatar,yousef aymen,1,0.85,0,0,1,2024-06-11,53,1.0,0.018867924528301886
+Ryōya Morishita,Japan,ryoya morishita,1,0.85,0,0,1,2025-06-10,41,1.0,0.024390243902439025
+Luka Ivanušec,Croatia,luka ivanusec,1,0.85,0,0,1,2023-09-08,40,1.0,0.025
+Ali Lajami,Saudi Arabia,ali lajami,1,0.85,0,0,1,2024-06-11,60,1.0,0.016666666666666666
+Boualem Khoukhi,Qatar,boualem khoukhi,1,0.85,0,0,1,2025-10-14,53,1.0,0.018867924528301886
+Jesper Karlsson,Sweden,jesper karlsson,1,0.85,0,0,1,2023-03-27,40,1.0,0.025
+Jearl Margaritha,Curaçao,jearl margaritha,1,0.85,0,0,1,2025-06-10,37,1.0,0.02702702702702703
+Jean-Kévin Duverne,Haiti,jeankevin duverne,1,0.85,0,0,1,2024-06-06,37,1.0,0.02702702702702703
+Jayden Adams,South Africa,jayden adams,1,0.85,0,0,1,2025-03-25,52,1.0,0.019230769230769232
+Jaouen Hadjam,Algeria,jaouen hadjam,1,0.85,0,0,1,2025-03-25,52,1.0,0.019230769230769232
+Jan Vertonghen,Belgium,jan vertonghen,1,0.85,0,0,1,2023-09-12,41,1.0,0.024390243902439025
+Jan Kuchta,Czechia,jan kuchta,1,0.85,0,0,1,2023-03-24,40,1.0,0.025
+Jan Kliment,Czechia,jan kliment,1,0.85,0,0,1,2025-03-25,40,1.0,0.025
+Jaloliddin Masharipov,Uzbekistan,jaloliddin masharipov,1,0.85,0,0,1,2024-09-05,45,1.0,0.022222222222222223
+Hugo Ekitike,France,hugo ekitike,1,0.85,0,0,1,2025-11-13,43,1.0,0.023255813953488372
+Brandon Borrello,Australia,brandon borrello,1,0.85,0,0,1,2023-11-16,41,1.0,0.024390243902439025
+Brandon Mechele,Belgium,brandon mechele,1,0.85,0,0,1,2025-11-18,41,1.0,0.024390243902439025
+Islam Slimani,Algeria,islam slimani,1,0.85,0,0,1,2023-11-16,52,1.0,0.019230769230769232
+Iqraam Rayners,South Africa,iqraam rayners,1,0.85,0,0,1,2024-06-11,52,1.0,0.019230769230769232
+Igor Jesus,Brazil,igor jesus,1,0.85,0,0,1,2024-10-10,40,1.0,0.025
+Ibrahim Sadeh,Jordan,ibrahim sadeh,1,0.85,0,0,1,2024-06-06,54,1.0,0.018518518518518517
+Ibrahim Adel,Egypt,ibrahim adel,1,0.85,0,0,1,2025-10-08,50,1.0,0.02
+Hwang Ui-jo,South Korea,hwang uijo,1,0.85,1,0,1,2023-11-16,44,1.0,0.022727272727272728
+Bilal El Khannouss,Morocco,bilal el khannouss,1,0.85,0,0,1,2025-03-21,54,1.0,0.018518518518518517
+Bertuğ Yıldırım,Türkiye,bertug yldrm,1,0.85,0,0,1,2023-09-08,42,1.0,0.023809523809523808
+Benjamin Tahirović,Bosnia and Herzegovina,benjamin tahirovic,1,0.85,0,0,1,2025-09-06,36,1.0,0.027777777777777776
+Benjamin Pavard,France,benjamin pavard,1,0.85,0,0,1,2023-03-27,43,1.0,0.023255813953488372
+Kamaldeen Sulemana,Ghana,kamaldeen sulemana,1,0.85,0,0,1,2025-10-08,39,1.0,0.02564102564102564
+Kalvin Phillips,England,kalvin phillips,1,0.85,0,0,1,2023-06-19,44,1.0,0.022727272727272728
+Kalidou Koulibaly,Senegal,kalidou koulibaly,1,0.85,0,0,1,2025-09-05,48,1.0,0.020833333333333332
+Abdallah Nasib,Jordan,abdallah nasib,1,0.85,0,0,1,2025-03-20,54,1.0,0.018518518518518517
+Junya Itō,Japan,junya ito,1,0.85,0,0,1,2024-09-05,41,1.0,0.024390243902439025
+Júnior Alonso,Paraguay,junior alonso,1,0.85,0,0,1,2025-03-25,36,1.0,0.027777777777777776
+Jung Seung-hyun,South Korea,jung seunghyun,1,0.85,0,0,1,2023-11-21,44,1.0,0.022727272727272728
+Barış Alper Yılmaz,Türkiye,bars alper ylmaz,1,0.85,0,0,1,2023-10-12,42,1.0,0.023809523809523808
+Julian Ryerson,Norway,julian ryerson,1,0.85,0,0,1,2025-03-22,37,1.0,0.02702702702702703
+Bashar Resan,Iraq,bashar resan,1,0.85,0,0,1,2023-11-16,51,1.0,0.0196078431372549
+Jovani Welch,Panama,jovani welch,1,0.85,0,0,1,2024-06-09,58,1.0,0.017241379310344827
+Jovane Cabral,Cape Verde,jovane cabral,1,0.85,0,0,1,2025-09-04,43,1.0,0.023255813953488372
+Ben Gannon-Doak,Scotland,ben gannondoak,1,0.85,0,0,1,2025-11-15,40,1.0,0.025
+Nico Elvedi,Switzerland,nico elvedi,1,0.85,0,0,1,2025-09-08,42,1.0,0.023809523809523808
+Benjamin Nygren,Sweden,benjamin nygren,1,0.85,0,0,1,2025-11-15,40,1.0,0.025
+John Iredale,Australia,john iredale,1,0.85,0,0,1,2024-03-26,41,1.0,0.024390243902439025
+Johan Bakayoko,Belgium,johan bakayoko,1,0.85,0,0,1,2023-06-20,41,1.0,0.024390243902439025
+Hussein Ali,Iraq,hussein ali,1,0.85,0,0,1,2024-06-11,51,1.0,0.0196078431372549
+Houssem Aouar,Algeria,houssem aouar,1,0.85,0,0,1,2024-06-10,52,1.0,0.019230769230769232
+Keanu Baccus,Australia,keanu baccus,1,0.85,0,0,1,2024-03-21,41,1.0,0.024390243902439025
+Deniz Gül,Türkiye,deniz gul,1,0.85,0,0,1,2025-11-18,42,1.0,0.023809523809523808
+Emmanuel Agbadou,Ivory Coast,emmanuel agbadou,1,0.85,0,0,1,2025-10-10,47,1.0,0.02127659574468085
+Emil Holm,Sweden,emil holm,1,0.85,0,0,1,2023-09-12,40,1.0,0.025
+Eliesse Ben Seghir,Morocco,eliesse ben seghir,1,0.85,0,0,1,2024-06-07,54,1.0,0.018518518518518517
+Carlos Harvey,Panama,carlos harvey,1,0.85,0,0,1,2025-09-08,58,1.0,0.017241379310344827
+Duke Lacroix,Haiti,duke lacroix,1,0.85,0,0,1,2024-06-09,37,1.0,0.02702702702702703
+Cedric Itten,Switzerland,cedric itten,1,0.85,0,0,1,2023-09-12,42,1.0,0.023809523809523808
+Cengiz Ünder,Türkiye,cengiz under,1,0.85,0,0,1,2023-06-16,42,1.0,0.023809523809523808
+Diego Gómez,Paraguay,diego gomez,1,0.85,0,0,1,2024-09-10,36,1.0,0.027777777777777776
+Dayot Upamecano,France,dayot upamecano,1,0.85,0,0,1,2023-03-24,43,1.0,0.023255813953488372
+Bruno Guimarães,Brazil,bruno guimaraes,1,0.85,0,0,1,2025-09-04,40,1.0,0.025
+David Raum,Germany,david raum,1,0.85,0,0,1,2025-10-10,43,1.0,0.023255813953488372
+David Møller Wolfe,Norway,david mller wolfe,1,0.85,0,0,1,2025-03-25,37,1.0,0.02702702702702703
+Daizen Maeda,Japan,daizen maeda,1,0.85,0,0,1,2024-09-05,41,1.0,0.024390243902439025
+Chadi Riad,Morocco,chadi riad,1,0.85,0,0,1,2024-06-11,54,1.0,0.018518518518518517
+Cyle Larin,Canada,cyle larin,1,0.85,0,0,1,2024-03-23,46,1.0,0.021739130434782608
+Connor Metcalfe,Australia,connor metcalfe,1,0.85,0,0,1,2025-06-10,41,1.0,0.024390243902439025
+Charles Pickel,Congo DR,charles pickel,1,0.85,0,0,1,2025-03-25,48,1.0,0.020833333333333332
+Christian Kouamé,Ivory Coast,christian kouame,1,0.85,0,0,1,2023-11-20,47,1.0,0.02127659574468085
+Callum Wilson,England,callum wilson,1,0.85,1,0,1,2023-06-16,44,1.0,0.022727272727272728
+Esmir Bajraktarević,Bosnia and Herzegovina,esmir bajraktarevic,1,0.85,0,0,1,2025-11-15,36,1.0,0.027777777777777776
+Estêvão Willian,Brazil,estevao willian,1,0.85,0,0,1,2025-09-04,40,1.0,0.025
+Ezri Konsa,England,ezri konsa,1,0.85,0,0,1,2025-09-09,44,1.0,0.022727272727272728
+Haris Hajradinović,Bosnia and Herzegovina,haris hajradinovic,1,0.85,0,0,1,2025-03-24,36,1.0,0.027777777777777776
+Hannibal Mejbri,Tunisia,hannibal mejbri,1,0.85,0,0,1,2025-10-13,49,1.0,0.02040816326530612
+Gustav Lundgren,Sweden,gustav lundgren,1,0.85,0,0,1,2025-11-18,40,1.0,0.025
+Gustaf Lagerbielke,Sweden,gustaf lagerbielke,1,0.85,0,0,1,2026-03-31,40,1.0,0.025
+Bryan Labissiere,Haiti,bryan labissiere,1,0.85,0,0,1,2024-06-09,37,1.0,0.02702702702702703
+Giuliano Simeone,Argentina,giuliano simeone,1,0.85,0,0,1,2025-03-25,42,1.0,0.023809523809523808
+Gerson,Brazil,gerson,1,0.85,0,0,1,2024-11-19,40,1.0,0.025
+Gabriel Martinelli,Brazil,gabriel martinelli,1,0.85,0,0,1,2023-11-16,40,1.0,0.025
+Gabriel Magalhães,Brazil,gabriel magalhaes,1,0.85,0,0,1,2023-10-12,40,1.0,0.025
+Fredrik Aursnes,Norway,fredrik aursnes,1,0.85,0,0,1,2023-10-12,37,1.0,0.02702702702702703
+Francis de Vries,New Zealand,francis de vries,1,0.85,0,0,1,2024-11-18,36,1.0,0.027777777777777776
+Florian Thauvin,France,florian thauvin,1,0.85,0,0,1,2025-10-10,43,1.0,0.023255813953488372
+Florian Kainz,Austria,florian kainz,1,0.85,0,0,1,2023-03-27,40,1.0,0.025
+Firas Ben Larbi,Tunisia,firas ben larbi,1,0.85,0,0,1,2023-11-17,49,1.0,0.02040816326530612
+Ferdi Kadıoğlu,Türkiye,ferdi kadoglu,1,0.85,0,0,1,2026-03-26,42,1.0,0.023809523809523808
+Federico Viñas,Uruguay,federico vinas,1,0.85,0,0,1,2025-09-04,42,1.0,0.023809523809523808
+Callum McGregor,Scotland,callum mcgregor,1,0.85,0,0,1,2023-06-20,40,1.0,0.025
+Kaoru Mitoma,Japan,kaoru mitoma,1,0.85,0,0,1,2024-09-05,41,1.0,0.024390243902439025
+Jonathan Clauss,France,jonathan clauss,1,0.85,0,0,1,2023-11-18,43,1.0,0.023255813953488372
+Livano Comenencia,Curaçao,livano comenencia,1,0.85,0,0,1,2025-10-10,37,1.0,0.02702702702702703
+Micky van de Ven,Netherlands,micky van de ven,1,0.85,0,0,1,2025-06-10,43,1.0,0.023255813953488372
+Mateus Uribe,Colombia,mateus uribe,1,0.85,0,0,1,2023-10-12,45,1.0,0.022222222222222223
+Mohamed Elyounoussi,Norway,mohamed elyounoussi,1,0.85,0,0,1,2023-11-19,37,1.0,0.02702702702702703
+Lovro Majer,Croatia,lovro majer,1,0.85,0,0,1,2023-11-18,40,1.0,0.025
+Amirhossein Hosseinzadeh,Iran,amirhossein hosseinzadeh,1,0.85,0,0,1,2025-06-10,42,1.0,0.023809523809523808
+Mitch Duke,Australia,mitch duke,1,0.85,0,0,1,2025-06-10,41,1.0,0.024390243902439025
+Miroslav Stevanović,Bosnia and Herzegovina,miroslav stevanovic,1,0.85,0,0,1,2023-10-13,36,1.0,0.027777777777777776
+Ar'jany Martha,Curaçao,arjany martha,1,0.85,0,0,1,2025-11-13,37,1.0,0.02702702702702703
+Luis Sinisterra,Colombia,luis sinisterra,1,0.85,0,0,1,2024-10-15,45,1.0,0.022222222222222223
+Ao Tanaka,Japan,ao tanaka,1,0.85,0,0,1,2024-03-21,41,1.0,0.024390243902439025
+Luka Sučić,Croatia,luka sucic,1,0.85,0,0,1,2025-10-12,40,1.0,0.025
+Andreas Pereira,Brazil,andreas pereira,1,0.85,0,0,1,2024-10-15,40,1.0,0.025
+Miguel Almirón,Paraguay,miguel almiron,1,0.85,0,0,1,2024-11-19,36,1.0,0.027777777777777776
+Maghnes Akliouche,France,maghnes akliouche,1,0.85,0,0,1,2025-11-16,43,1.0,0.023255813953488372
+Malick Fofana,Belgium,malick fofana,1,0.85,0,0,1,2025-09-04,41,1.0,0.024390243902439025
+Andrés Gómez,Colombia,andres gomez,1,0.85,0,0,1,2024-11-15,45,1.0,0.022222222222222223
+Mohamed Hamdy,Egypt,mohamed hamdy,1,0.85,0,0,1,2025-10-12,50,1.0,0.02
+Manuel Ugarte,Uruguay,manuel ugarte,1,0.85,0,0,1,2024-11-15,42,1.0,0.023809523809523808
+Michael Boxall,New Zealand,michael boxall,1,0.85,0,0,1,2025-03-24,36,1.0,0.027777777777777776
+Marc Cucurella,Spain,marc cucurella,1,0.85,0,0,1,2025-09-04,44,1.0,0.022727272727272728
+Marc Guéhi,England,marc guehi,1,0.85,0,0,1,2025-09-09,44,1.0,0.022727272727272728
+Antoine Semenyo,Ghana,antoine semenyo,1,0.85,0,0,1,2025-03-21,39,1.0,0.02564102564102564
+Kerim Alajbegović,Bosnia and Herzegovina,kerim alajbegovic,1,0.85,0,0,1,2025-09-06,36,1.0,0.027777777777777776
+Antoine Griezmann,France,antoine griezmann,1,0.85,0,0,1,2023-03-24,43,1.0,0.023255813953488372
+Ángel Mena,Ecuador,angel mena,1,0.85,0,0,1,2023-11-21,42,1.0,0.023809523809523808
+Marko Stamenić,New Zealand,marko stamenic,1,0.85,0,0,1,2024-11-18,36,1.0,0.027777777777777776
+Marquinhos,Brazil,marquinhos,1,0.85,0,0,1,2023-09-12,40,1.0,0.025
+Marten de Roon,Netherlands,marten de roon,1,0.85,0,0,1,2023-09-07,43,1.0,0.023255813953488372
+Matthew Garbett,New Zealand,matthew garbett,1,0.85,0,0,1,2024-11-15,36,1.0,0.027777777777777776
+Martin Erlić,Croatia,martin erlic,1,0.85,0,0,1,2025-10-12,40,1.0,0.025
+Mats Wieffer,Netherlands,mats wieffer,1,0.85,0,0,1,2023-11-21,43,1.0,0.023255813953488372
+Armin Gigović,Bosnia and Herzegovina,armin gigovic,1,0.85,0,0,1,2025-03-21,36,1.0,0.027777777777777776
+Matheus Cunha,Brazil,matheus cunha,1,0.85,0,0,1,2025-03-25,40,1.0,0.025
+Kristoffer Ajer,Norway,kristoffer ajer,1,0.85,0,0,1,2025-03-25,37,1.0,0.02702702702702703
+Axel Tuanzebe,Congo DR,axel tuanzebe,1,0.85,0,0,1,2026-03-31,48,1.0,0.020833333333333332
+Kieran Tierney,Scotland,kieran tierney,1,0.85,0,0,1,2025-11-18,40,1.0,0.025
+Kim Jin-gyu,South Korea,kim jingyu,1,0.85,0,0,1,2025-06-05,44,1.0,0.022727272727272728
+Ko Itakura,Japan,ko itakura,1,0.85,0,0,1,2024-11-19,41,1.0,0.024390243902439025
+Aziz Behich,Australia,aziz behich,1,0.85,0,0,1,2025-06-05,41,1.0,0.024390243902439025
+Nadiem Amiri,Germany,nadiem amiri,1,0.85,0,0,1,2025-09-07,43,1.0,0.023255813953488372
+Nayef Aguerd,Morocco,nayef aguerd,1,0.85,0,0,1,2025-03-25,54,1.0,0.018518518518518517
+Myles Lewis-Skelly,England,myles lewisskelly,1,0.85,0,0,1,2025-03-21,44,1.0,0.022727272727272728
+Amine Gouiri,Algeria,amine gouiri,1,0.85,0,0,1,2025-03-21,52,1.0,0.019230769230769232
+Mondy Prunier,Haiti,mondy prunier,1,0.85,0,0,1,2025-06-07,37,1.0,0.02702702702702703
+Mohau Nkota,South Africa,mohau nkota,1,0.85,0,0,1,2025-09-05,52,1.0,0.019230769230769232
+Kye Rowles,Australia,kye rowles,1,0.85,0,0,1,2024-03-21,41,1.0,0.024390243902439025
+Khojiakbar Alijonov,Uzbekistan,khojiakbar alijonov,1,0.85,0,0,1,2025-03-20,45,1.0,0.022222222222222223
+Kyle Walker,England,kyle walker,1,0.85,0,0,1,2023-09-09,44,1.0,0.022727272727272728
+Amar Dedić,Bosnia and Herzegovina,amar dedic,1,0.85,0,0,1,2023-03-23,36,1.0,0.027777777777777776
+Aurélien Tchouaméni,France,aurelien tchouameni,1,0.85,0,0,1,2023-09-07,43,1.0,0.023255813953488372
+Assan Ouédraogo,Germany,assan ouedraogo,1,0.85,0,0,1,2025-11-17,43,1.0,0.023255813953488372
+Arthur Theate,Belgium,arthur theate,1,0.85,0,0,1,2025-09-04,41,1.0,0.024390243902439025
+Leandro Bacuna,Curaçao,leandro bacuna,1,0.85,1,0,1,2025-11-13,37,1.0,0.02702702702702703
+Nestory Irankunda,Australia,nestory irankunda,1,0.85,1,0,1,2024-06-11,41,1.0,0.024390243902439025
+Amar Rahmanović,Bosnia and Herzegovina,amar rahmanovic,1,0.85,0,0,1,2023-10-13,36,1.0,0.027777777777777776
+Mohammad Mehdi Mohebi,Iran,mohammad mehdi mohebi,1,0.85,0,0,1,2025-06-10,42,1.0,0.023809523809523808
+Kevin Felida,Curaçao,kevin felida,1,0.85,0,0,1,2025-06-10,37,1.0,0.02702702702702703
+Mohammad Abu Zrayq,Jordan,mohammad abu zrayq,1,0.85,0,0,1,2024-03-26,54,1.0,0.018518518518518517
+Lewis Ferguson,Scotland,lewis ferguson,1,0.85,0,0,1,2025-10-09,40,1.0,0.025
+Khuliso Mudau,South Africa,khuliso mudau,1,0.85,0,0,1,2023-11-18,52,1.0,0.019230769230769232
+Bryan Zaragoza,Spain,bryan zaragoza,1,0.6,1,0,1,2024-11-18,44,1.0,0.022727272727272728
+Matthias Seidl,Austria,matthias seidl,1,0.6,0,0,1,2024-10-10,40,1.0,0.025
+Mattéo Guendouzi,France,matteo guendouzi,1,0.6,0,0,1,2024-10-10,43,1.0,0.023255813953488372
+Eduardo Camavinga,France,eduardo camavinga,1,0.6,0,0,1,2024-10-10,43,1.0,0.023255813953488372
+Andy Robertson,Scotland,andy robertson,1,0.6,0,0,1,2024-11-18,40,1.0,0.025
+Conor Gallagher,England,conor gallagher,1,0.6,0,0,1,2024-11-17,44,1.0,0.022727272727272728
+Felix Nmecha,Germany,felix nmecha,1,0.6,0,0,1,2024-11-19,43,1.0,0.023255813953488372
+Curtis Jones,England,curtis jones,1,0.6,0,0,1,2024-11-14,44,1.0,0.022727272727272728
+Andi Zeqiri,Switzerland,andi zeqiri,1,0.6,1,0,1,2024-11-18,42,1.0,0.023809523809523808
+Nuno Mendes,Portugal,nuno mendes,1,0.6,0,0,1,2025-06-08,43,1.0,0.023255813953488372
+Diogo Dalot,Portugal,diogo dalot,1,0.6,0,0,1,2024-09-05,43,1.0,0.023255813953488372
+Ken Sema,Sweden,ken sema,1,0.6,0,0,1,2024-10-11,40,1.0,0.025
+Brian Brobbey,Netherlands,brian brobbey,1,0.6,0,0,1,2024-11-19,43,1.0,0.023255813953488372
+Borna Sosa,Croatia,borna sosa,1,0.6,0,0,1,2024-10-15,40,1.0,0.025
+Rayan Cherki,France,rayan cherki,1,0.6,0,0,1,2025-06-05,43,1.0,0.023255813953488372
+Jarrod Bowen,England,jarrod bowen,1,0.6,0,0,1,2024-11-17,44,1.0,0.022727272727272728
+Loïs Openda,Belgium,lois openda,1,0.6,0,0,1,2024-10-14,41,1.0,0.024390243902439025
+Jamie Leweling,Germany,jamie leweling,1,0.6,0,0,1,2024-10-14,43,1.0,0.023255813953488372
+Jens Petter Hauge,Norway,jens petter hauge,1,0.6,0,0,1,2024-11-14,37,1.0,0.02702702702702703
+Billy Gilmour,Scotland,billy gilmour,1,0.6,0,0,1,2024-09-05,40,1.0,0.025
+Steven Bergwijn,Netherlands,steven bergwijn,1,0.6,0,0,1,2023-06-18,43,1.0,0.023255813953488372
+Joël Monteiro,Switzerland,joel monteiro,1,0.6,0,0,1,2024-11-18,42,1.0,0.023809523809523808
+Lukáš Kalvach,Czechia,lukas kalvach,1,0.6,0,0,1,2024-09-07,40,1.0,0.025
+Igor Matanović,Croatia,igor matanovic,1,0.6,0,0,1,2024-10-12,40,1.0,0.025
+Taylor Harwood-Bellis,England,taylor harwoodbellis,1,0.6,0,0,1,2024-11-17,44,1.0,0.022727272727272728
+Aymeric Laporte,Spain,aymeric laporte,1,0.6,0,0,1,2024-10-15,44,1.0,0.022727272727272728
+Ian Maatsen,Netherlands,ian maatsen,1,0.6,0,0,1,2025-03-23,43,1.0,0.023255813953488372
+Petar Sučić,Croatia,petar sucic,1,0.6,0,0,1,2024-10-15,40,1.0,0.025
+Pedro Neto,Portugal,pedro neto,1,0.6,0,0,1,2024-11-15,43,1.0,0.023255813953488372
+Bryan Gil,Spain,bryan gil,1,0.6,0,0,1,2024-11-18,44,1.0,0.022727272727272728
+Joshua Zirkzee,Netherlands,joshua zirkzee,1,0.6,0,0,1,2024-09-07,43,1.0,0.023255813953488372
+Martin Baturina,Croatia,martin baturina,1,0.6,0,0,1,2024-10-15,40,1.0,0.025
+Ayoze Pérez,Spain,ayoze perez,1,0.6,0,0,1,2024-11-15,44,1.0,0.022727272727272728
+Aleksandar Pavlović,Germany,aleksandar pavlovic,1,0.6,0,0,1,2024-09-07,43,1.0,0.023255813953488372
+Georginio Wijnaldum,Netherlands,georginio wijnaldum,1,0.6,0,0,1,2023-06-18,43,1.0,0.023255813953488372
+Leon Goretzka,Germany,leon goretzka,1,0.6,0,0,1,2025-03-20,43,1.0,0.023255813953488372
+Ben Old,New Zealand,ben old,1,0.5,0,0,1,2024-06-21,36,1.0,0.027777777777777776
+Montassar Talbi,Tunisia,montassar talbi,1,0.5,0,0,1,2025-12-27,49,1.0,0.02040816326530612
+Bebé,Cape Verde,bebe,1,0.5,0,0,1,2024-01-19,43,1.0,0.023255813953488372
+Jesse Randall,New Zealand,jesse randall,1,0.5,0,0,1,2024-06-30,36,1.0,0.027777777777777776
+Arthur Masuaku,Congo DR,arthur masuaku,1,0.5,0,0,1,2024-02-02,48,1.0,0.020833333333333332
+Romain Saïss,Morocco,romain saiss,1,0.5,0,0,1,2024-01-17,54,1.0,0.018518518518518517
+Kevin Pina,Cape Verde,kevin pina,1,0.5,0,0,1,2024-01-19,43,1.0,0.023255813953488372
+Tshepang Moremi,South Africa,tshepang moremi,1,0.5,0,0,1,2025-12-29,52,1.0,0.019230769230769232
+Silas Katompa Mvumpa,Congo DR,silas katompa mvumpa,1,0.5,0,0,1,2024-01-21,48,1.0,0.020833333333333332
+Cameron Howieson,New Zealand,cameron howieson,1,0.5,0,0,1,2024-06-30,36,1.0,0.027777777777777776
+Ellyes Skhiri,Tunisia,ellyes skhiri,1,0.5,0,0,1,2025-12-23,49,1.0,0.02040816326530612
+Garry Rodrigues,Cape Verde,garry rodrigues,1,0.5,0,0,1,2024-01-14,43,1.0,0.023255813953488372
+Yasser Ibrahim,Egypt,yasser ibrahim,1,0.5,0,0,1,2026-01-05,50,1.0,0.02
+Ramy Rabia,Egypt,ramy rabia,1,0.5,0,0,1,2026-01-10,50,1.0,0.02
+Ibrahim Mbaye,Senegal,ibrahim mbaye,1,0.5,0,0,1,2026-01-03,48,1.0,0.020833333333333332
+Thapelo Maseko,South Africa,thapelo maseko,1,0.5,0,0,1,2024-01-21,52,1.0,0.019230769230769232
+Finn Surman,New Zealand,finn surman,1,0.5,0,0,1,2024-06-27,36,1.0,0.027777777777777776
+Guéla Doué,Ivory Coast,guela doue,1,0.5,0,0,1,2026-01-10,47,1.0,0.02127659574468085
+Achraf Hakimi,Morocco,achraf hakimi,1,0.5,0,0,1,2024-01-21,54,1.0,0.018518518518518517
+Adil Boulbina,Algeria,adil boulbina,1,0.5,0,0,1,2026-01-06,52,1.0,0.019230769230769232
+Bryan Teixeira,Cape Verde,bryan teixeira,1,0.5,0,0,1,2024-01-22,43,1.0,0.023255813953488372
+Gilson Tavares,Cape Verde,gilson tavares,1,0.5,0,0,1,2024-01-22,43,1.0,0.023255813953488372
+Marwan Attia,Egypt,marwan attia,1,0.5,0,0,1,2026-01-05,50,1.0,0.02
+Zineddine Belaïd,Algeria,zineddine belaid,1,0.5,0,0,1,2025-12-31,52,1.0,0.019230769230769232

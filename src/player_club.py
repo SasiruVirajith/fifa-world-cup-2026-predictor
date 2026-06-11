@@ -1,235 +1,295 @@
 """
 player_club.py
 ──────────────
-Club-season player stats for 2024–25 / 2025–26.
+Club-season player stats for pre-WC 2026 snapshot (2024/25 + 2025/26 blended).
 
-Primary: CSV drops in data/raw/club/ (manual FBref export when scraping is blocked).
-Fallback: soccerdata FBref scrape (often 403).
+Layers:
+  - Understat (Big 5 xG/xA)
+  - API-Football (Tier B + Big 5 fallback)
 """
 
 from __future__ import annotations
 
 import re
-import time
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
+from src.club_fetcher import fetch_club_stats
+from src.api_football_scraper import load_cached_api_football_stats
+from src.league_difficulty import attach_league_difficulty
+from src.understat_scraper import load_cached_understat_stats
 from src.config import (
     CLUB_RAW_DIR,
-    FBREF_CLUB_LEAGUES,
-    FBREF_CLUB_SEASONS,
     NATION_ALIASES,
-    RAW_DIR,
     WC2026_ALL_TEAMS,
 )
 from src.labels import normalize_player_name, normalize_team_name
 
 CLUB_RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-STAT_FILES = {
-    "shooting": ["shooting", "standard"],
-    "passing": ["passing"],
-    "goalkeeper": ["keeper", "goalkeeper", "keepers"],
-}
+_CLUB_UNIFIED: pd.DataFrame | None = None
 
 
 def _nation_to_team(nation: str) -> str | None:
-    if pd.isna(nation):
+    if pd.isna(nation) or not str(nation).strip():
         return None
     raw = str(nation).strip()
-    # FBref often uses "eng England" style prefixes
     raw = re.sub(r"^[a-z]{3}\s+", "", raw, flags=re.I)
     team = NATION_ALIASES.get(raw, raw)
     team = normalize_team_name(team)
     return team if team in WC2026_ALL_TEAMS else None
 
 
-def _load_fbref_table(path: Path) -> pd.DataFrame:
-    if not path.exists():
-        return pd.DataFrame()
-    try:
-        df = pd.read_csv(path, header=[0, 1])
-        df.columns = ["_".join(str(c) for c in col).strip("_") for col in df.columns]
-    except Exception:
-        df = pd.read_csv(path)
-    return df.reset_index(drop=True)
-
-
-def _pick_column(df: pd.DataFrame, patterns: list[str]) -> str | None:
-    for col in df.columns:
-        cl = str(col).lower()
-        if all(p.lower() in cl for p in patterns):
-            return col
-    return None
-
-
-def _numeric(df: pd.DataFrame, col: str | None) -> pd.Series:
-    if col is None or col not in df.columns:
-        return pd.Series(np.nan, index=df.index)
-    return pd.to_numeric(df[col], errors="coerce")
-
-
-def _parse_club_frame(df: pd.DataFrame, stat_type: str) -> pd.DataFrame:
+def _normalize_unified_rows(df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
         return df
-
-    out = pd.DataFrame(index=df.index)
-    player_col = _pick_column(df, ["player"]) or _pick_column(df, ["unnamed"])
-    nation_col = _pick_column(df, ["nation"]) or _pick_column(df, ["nat"])
-    mins_col = _pick_column(df, ["min"]) or _pick_column(df, ["90s"])
-
-    out["player"] = df[player_col] if player_col else df.iloc[:, 0]
-    out["nation_raw"] = df[nation_col] if nation_col else ""
-    out["team"] = out["nation_raw"].apply(_nation_to_team)
-    out["minutes"] = _numeric(df, mins_col)
-    if out["minutes"].max() and out["minutes"].max() < 50:
-        out["minutes"] = out["minutes"] * 90
-
-    if stat_type == "shooting":
-        out["goals_total"] = _numeric(df, _pick_column(df, ["standard", "gls"]) or _pick_column(df, ["gls"]))
-        out["xg_total"] = _numeric(df, _pick_column(df, ["expected", "xg"]) or _pick_column(df, ["xg"]))
-        out["shots_total"] = _numeric(df, _pick_column(df, ["standard", "sh"]) or _pick_column(df, ["sh"]))
-        sot_col = _pick_column(df, ["sot%"]) or _pick_column(df, ["sot"])
-        out["shots_on_target_pct"] = _numeric(df, sot_col)
-        mins90 = out["minutes"].replace(0, np.nan) / 90
-        out["goals_per90"] = out["goals_total"] / mins90
-        out["xg_per90"] = out["xg_total"] / mins90
-        out["npxg_per90"] = out["xg_per90"]
-        out["shots_per90"] = out["shots_total"] / mins90
-    elif stat_type == "passing":
-        out["assists_total"] = _numeric(df, _pick_column(df, ["total", "ast"]) or _pick_column(df, ["ast"]))
-        out["xa_total"] = _numeric(df, _pick_column(df, ["total", "xag"]) or _pick_column(df, ["xag"]))
-        out["key_passes_total"] = _numeric(df, _pick_column(df, ["total", "kp"]) or _pick_column(df, ["kp"]))
-        out["progressive_passes_total"] = _numeric(df, _pick_column(df, ["total", "prgp"]) or _pick_column(df, ["prgp"]))
-        cmp_col = _pick_column(df, ["cmp%"]) or _pick_column(df, ["cmp"])
-        out["pass_completion_pct"] = _numeric(df, cmp_col)
-        mins90 = out["minutes"].replace(0, np.nan) / 90
-        out["xa_per90"] = out["xa_total"] / mins90
-        out["key_passes_per90"] = out["key_passes_total"] / mins90
-        out["progressive_passes_per90"] = out["progressive_passes_total"] / mins90
-    elif stat_type == "goalkeeper":
-        out["save_pct"] = _numeric(df, _pick_column(df, ["save%"]))
-        out["clean_sheet_pct"] = _numeric(df, _pick_column(df, ["cs%"]))
-        out["ga_total"] = _numeric(df, _pick_column(df, ["ga90"]) or _pick_column(df, ["ga"]))
-        out["ga90"] = _numeric(df, _pick_column(df, ["ga90"]))
-        out["psxg_minus_ga"] = _numeric(
-            df,
-            _pick_column(df, ["psxg+/-"]) or _pick_column(df, ["psxg-ga"]),
-        )
-
+    out = df.copy()
     out["player_norm"] = out["player"].apply(normalize_player_name)
-    out = out[out["team"].notna()].copy()
+    for col in (
+        "minutes", "goals_total", "xg_total", "shots_total", "assists_total",
+        "xa_total", "key_passes_total", "progressive_passes_total",
+    ):
+        if col in out.columns:
+            out[col] = pd.to_numeric(out[col], errors="coerce").fillna(0)
     return out
 
 
-def _manual_club_files() -> dict[str, list[Path]]:
-    found: dict[str, list[Path]] = {k: [] for k in STAT_FILES}
-    for season in FBREF_CLUB_SEASONS:
-        season_tag = season.replace("-", "")
-        for stat_type, keywords in STAT_FILES.items():
-            for kw in keywords:
-                for path in CLUB_RAW_DIR.glob(f"*{kw}*{season_tag}*.csv"):
-                    found[stat_type].append(path)
-                for path in CLUB_RAW_DIR.glob(f"fbref_{stat_type}_{season}.csv"):
-                    found[stat_type].append(path)
-    return found
-
-
-def fetch_club_stats_via_soccerdata(force: bool = False) -> bool:
-    """Attempt automated FBref club fetch; returns True if any file saved."""
-    try:
-        import soccerdata as sd
-    except ImportError:
-        return False
-
-    saved = False
-    for league in FBREF_CLUB_LEAGUES:
-        for season in FBREF_CLUB_SEASONS:
-            tag = league.split("-")[0].lower()
-            for stat_type, sd_name in [
-                ("shooting", "shooting"),
-                ("passing", "passing"),
-                ("goalkeeper", "keeper"),
-            ]:
-                out = CLUB_RAW_DIR / f"fbref_{stat_type}_{tag}_{season}.csv"
-                if out.exists() and not force:
-                    saved = True
-                    continue
-                try:
-                    fbref = sd.FBref(leagues=league, seasons=season)
-                    time.sleep(3)
-                    df = fbref.read_player_season_stats(stat_type=sd_name)
-                    df.to_csv(out)
-                    print(f"  [OK] Club {stat_type} {league} {season} -> {out.name}")
-                    saved = True
-                except Exception as e:
-                    print(f"  [WARN] FBref {league} {season} {stat_type}: {e}")
-    return saved
-
-
-def load_club_player_stats() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def _consolidate_unified(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Load and aggregate club stats across manual/scraped CSV files.
-
-    Returns (shooting, passing, goalkeeper) DataFrames keyed by player_norm + team.
+    One row per player with difficulty-weighted club production.
+    Goals/xG from Saudi/MLS etc. are discounted vs Big 5 output.
     """
-    files = _manual_club_files()
-    shooting_frames, passing_frames, gk_frames = [], [], []
+    if df.empty:
+        return df
+    df = attach_league_difficulty(df)
+    sum_cols = [
+        "goals_total", "xg_total", "shots_total", "assists_total",
+        "xa_total", "key_passes_total", "progressive_passes_total", "ga_total",
+    ]
+    mean_cols = ["shots_on_target_pct", "pass_completion_pct", "save_pct", "clean_sheet_pct", "ga90", "psxg_minus_ga"]
 
-    for path in files["shooting"]:
-        parsed = _parse_club_frame(_load_fbref_table(path), "shooting")
-        if not parsed.empty:
-            shooting_frames.append(parsed)
-    for path in files["passing"]:
-        parsed = _parse_club_frame(_load_fbref_table(path), "passing")
-        if not parsed.empty:
-            passing_frames.append(parsed)
-    for path in files["goalkeeper"]:
-        parsed = _parse_club_frame(_load_fbref_table(path), "goalkeeper")
-        if not parsed.empty:
-            gk_frames.append(parsed)
+    rows: list[dict] = []
+    for player_norm, grp in df.groupby("player_norm"):
+        mins = grp["minutes"].fillna(0).clip(lower=0)
+        diff = grp["league_difficulty"].fillna(0.5)
+        weights = mins * diff
+        wsum = float(weights.sum())
+        total_mins = float(mins.sum())
+        if wsum <= 0:
+            weights = mins.clip(lower=1)
+            wsum = float(weights.sum())
 
-    def _aggregate(frames: list[pd.DataFrame], sum_cols: list[str], mean_cols: list[str]) -> pd.DataFrame:
-        if not frames:
-            return pd.DataFrame()
-        df = pd.concat(frames, ignore_index=True)
-        agg = {c: "sum" for c in sum_cols if c in df.columns}
-        agg.update({c: "mean" for c in mean_cols if c in df.columns})
-        if "minutes" in df.columns:
-            agg["minutes"] = "sum"
-        grouped = df.groupby(["player", "player_norm", "team"], as_index=False).agg(agg)
-        if "minutes" in grouped.columns:
-            mins90 = grouped["minutes"].replace(0, np.nan) / 90
-            if "goals_total" in grouped.columns:
-                grouped["goals_per90"] = grouped["goals_total"] / mins90
-            if "xg_total" in grouped.columns:
-                grouped["xg_per90"] = grouped["xg_total"] / mins90
-                grouped["npxg_per90"] = grouped["xg_per90"]
-            if "shots_total" in grouped.columns:
-                grouped["shots_per90"] = grouped["shots_total"] / mins90
-            if "xa_total" in grouped.columns:
-                grouped["xa_per90"] = grouped["xa_total"] / mins90
-            if "key_passes_total" in grouped.columns:
-                grouped["key_passes_per90"] = grouped["key_passes_total"] / mins90
-            if "progressive_passes_total" in grouped.columns:
-                grouped["progressive_passes_per90"] = grouped["progressive_passes_total"] / mins90
+        best = grp.sort_values("league_difficulty", ascending=False).iloc[0]
+        rec: dict = {
+            "player": best["player"],
+            "player_norm": player_norm,
+            "nation_raw": best.get("nation_raw", ""),
+            "source": best.get("source", ""),
+            "minutes": total_mins,
+            "league_difficulty": float((mins * diff).sum() / max(total_mins, 1)),
+        }
+
+        for col in sum_cols:
+            if col not in grp.columns:
+                continue
+            vals = pd.to_numeric(grp[col], errors="coerce").fillna(0)
+            per90 = vals / (mins.replace(0, np.nan) / 90)
+            adj_per90 = (per90.fillna(0) * weights).sum() / wsum
+            rec[col] = adj_per90 * total_mins / 90 if total_mins > 0 else 0.0
+
+        for col in mean_cols:
+            if col not in grp.columns:
+                continue
+            vals = pd.to_numeric(grp[col], errors="coerce")
+            rec[col] = float((vals.fillna(0) * weights).sum() / wsum)
+
+        rows.append(rec)
+    return pd.DataFrame(rows)
+
+
+def _dedupe_unified(df: pd.DataFrame) -> pd.DataFrame:
+    """Legacy alias  -  consolidates with league difficulty weighting."""
+    return _consolidate_unified(df)
+
+
+def _attach_wc_team(unified: pd.DataFrame, intl_lookup: pd.DataFrame | None) -> pd.DataFrame:
+    df = unified.copy()
+    df["team"] = df["nation_raw"].apply(_nation_to_team)
+
+    if intl_lookup is not None and not intl_lookup.empty:
+        weight_col = "intl_weighted_goals" if "intl_weighted_goals" in intl_lookup.columns else "intl_goals"
+        intl_teams = (
+            intl_lookup.groupby("player_norm")
+            .apply(lambda g: g.sort_values(weight_col, ascending=False).iloc[0]["team"])
+            .reset_index(name="team_intl")
+        )
+        df = df.merge(intl_teams, on="player_norm", how="left")
+        df["team"] = df["team"].fillna(df["team_intl"])
+        df = df.drop(columns=["team_intl"], errors="ignore")
+
+    return df[df["team"].notna()].copy()
+
+
+def _aggregate_stat_frames(frames: list[pd.DataFrame], sum_cols: list[str], mean_cols: list[str]) -> pd.DataFrame:
+    if not frames:
+        return pd.DataFrame()
+    combined = pd.concat(frames, ignore_index=True)
+    agg = {c: "sum" for c in sum_cols if c in combined.columns}
+    agg.update({c: "mean" for c in mean_cols if c in combined.columns})
+    if "minutes" in combined.columns:
+        agg["minutes"] = "sum"
+    grouped = combined.groupby(["player", "player_norm", "team"], as_index=False).agg(agg)
+    if "minutes" not in grouped.columns:
         return grouped
+    mins90 = grouped["minutes"].replace(0, np.nan) / 90
+    if "goals_total" in grouped.columns:
+        grouped["goals_per90"] = grouped["goals_total"] / mins90
+    if "xg_total" in grouped.columns:
+        grouped["xg_per90"] = grouped["xg_total"] / mins90
+        grouped["npxg_per90"] = grouped["xg_per90"]
+    if "shots_total" in grouped.columns:
+        grouped["shots_per90"] = grouped["shots_total"] / mins90
+    if "xa_total" in grouped.columns:
+        grouped["xa_per90"] = grouped["xa_total"] / mins90
+    if "key_passes_total" in grouped.columns:
+        grouped["key_passes_per90"] = grouped["key_passes_total"] / mins90
+    if "progressive_passes_total" in grouped.columns:
+        grouped["progressive_passes_per90"] = grouped["progressive_passes_total"] / mins90
+    return grouped
 
-    shooting = _aggregate(
-        shooting_frames,
-        ["goals_total", "xg_total", "shots_total"],
-        ["shots_on_target_pct", "goals_per90", "xg_per90", "shots_per90"],
+
+def _unified_to_stat_frames(unified: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    if unified.empty:
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+
+    df = unified.copy()
+    if "league_difficulty" not in df.columns:
+        df = attach_league_difficulty(df)
+    mins90 = df["minutes"].replace(0, np.nan) / 90
+
+    shooting = df[
+        [
+            "player", "player_norm", "team", "minutes", "league_difficulty",
+            "goals_total", "xg_total", "shots_total", "shots_on_target_pct",
+        ]
+    ].copy()
+    shooting["goals_per90"] = shooting["goals_total"] / mins90
+    shooting["xg_per90"] = shooting["xg_total"] / mins90
+    shooting["npxg_per90"] = shooting["xg_per90"]
+    shooting["shots_per90"] = shooting["shots_total"] / mins90
+
+    passing = df[
+        [
+            "player", "player_norm", "team", "minutes",
+            "assists_total", "xa_total", "key_passes_total",
+            "progressive_passes_total", "pass_completion_pct",
+        ]
+    ].copy()
+    passing["xa_per90"] = passing["xa_total"] / mins90
+    passing["key_passes_per90"] = passing["key_passes_total"] / mins90
+    passing["progressive_passes_per90"] = passing["progressive_passes_total"] / mins90
+
+    save_col = df["save_pct"] if "save_pct" in df.columns else pd.Series(np.nan, index=df.index)
+    ga90_col = df["ga90"] if "ga90" in df.columns else pd.Series(np.nan, index=df.index)
+    gk_cols = ["save_pct", "clean_sheet_pct", "ga_total", "ga90", "psxg_minus_ga"]
+    gk_cols = [c for c in gk_cols if c in df.columns]
+    gk_mask = save_col.notna() | ga90_col.notna()
+    gk = df.loc[gk_mask, ["player", "player_norm", "team"] + gk_cols].copy() if gk_cols else pd.DataFrame()
+
+    shooting_agg = _aggregate_stat_frames(
+        [shooting], ["goals_total", "xg_total", "shots_total"], ["shots_on_target_pct", "league_difficulty"],
     )
-    passing = _aggregate(
-        passing_frames,
+    passing_agg = _aggregate_stat_frames(
+        [passing],
         ["assists_total", "xa_total", "key_passes_total", "progressive_passes_total"],
-        ["pass_completion_pct", "xa_per90", "key_passes_per90", "progressive_passes_per90"],
+        ["pass_completion_pct"],
     )
-    gk = _aggregate(
-        gk_frames,
+    gk_agg = _aggregate_stat_frames(
+        [gk] if not gk.empty else [],
         ["ga_total"],
         ["save_pct", "clean_sheet_pct", "ga90", "psxg_minus_ga"],
     )
+    return shooting_agg, passing_agg, gk_agg
+
+
+def fetch_and_cache_club_stats(force: bool = False) -> None:
+    global _CLUB_UNIFIED
+    unified, _ = fetch_club_stats(force=force)
+    unified = _normalize_unified_rows(unified)
+    _CLUB_UNIFIED = _dedupe_unified(unified)
+
+
+def load_club_from_cache() -> None:
+    """Populate in-memory club table from cached JSON only (no HTTP)."""
+    global _CLUB_UNIFIED
+    frames = [load_cached_understat_stats(), load_cached_api_football_stats()]
+    frames = [f for f in frames if not f.empty]
+    if not frames:
+        _CLUB_UNIFIED = pd.DataFrame()
+        return
+    unified = pd.concat(frames, ignore_index=True)
+    unified = _normalize_unified_rows(unified)
+    _CLUB_UNIFIED = _dedupe_unified(unified)
+
+
+def club_data_status() -> dict:
+    status = {
+        "loaded": False,
+        "understat_files": 0,
+        "api_files": 0,
+        "player_rows": 0,
+    }
+    understat_dir = CLUB_RAW_DIR / "understat"
+    api_dir = CLUB_RAW_DIR / "api_football"
+    if understat_dir.exists():
+        status["understat_files"] = len(list(understat_dir.glob("*.json")))
+    if api_dir.exists():
+        status["api_files"] = len(list(api_dir.glob("*.json")))
+    if _CLUB_UNIFIED is not None and not _CLUB_UNIFIED.empty:
+        status["loaded"] = True
+        status["player_rows"] = len(_CLUB_UNIFIED)
+    elif status["understat_files"] or status["api_files"]:
+        status["loaded"] = True
+    return status
+
+
+def load_club_player_stats(
+    intl_lookup: pd.DataFrame | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    global _CLUB_UNIFIED
+
+    shooting_frames: list[pd.DataFrame] = []
+    passing_frames: list[pd.DataFrame] = []
+    gk_frames: list[pd.DataFrame] = []
+
+    if _CLUB_UNIFIED is not None and not _CLUB_UNIFIED.empty:
+        attached = _attach_wc_team(_CLUB_UNIFIED, intl_lookup)
+        s, p, g = _unified_to_stat_frames(attached)
+        if not s.empty:
+            shooting_frames.append(s)
+        if not p.empty:
+            passing_frames.append(p)
+        if not g.empty:
+            gk_frames.append(g)
+
+    shooting = _aggregate_stat_frames(
+        shooting_frames, ["goals_total", "xg_total", "shots_total"], ["shots_on_target_pct", "league_difficulty"],
+    )
+    passing = _aggregate_stat_frames(
+        passing_frames,
+        ["assists_total", "xa_total", "key_passes_total", "progressive_passes_total"],
+        ["pass_completion_pct"],
+    )
+    gk = _aggregate_stat_frames(
+        gk_frames, ["ga_total"], ["save_pct", "clean_sheet_pct", "ga90", "psxg_minus_ga"],
+    )
     return shooting, passing, gk
+
+
+__all__ = [
+    "club_data_status",
+    "fetch_and_cache_club_stats",
+    "load_club_from_cache",
+    "load_club_player_stats",
+]

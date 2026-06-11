@@ -18,7 +18,9 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.achievements_canonical import build_canonical_achievements, canon_team
+from src.cache_utils import cache_age_days, is_cache_fresh
 from src.config import (
+    CACHE_TTL_DAYS,
     FIFA_RANKINGS_API,
     FIFA_RANKINGS_LIMIT,
     MARTJ42_BASE,
@@ -40,15 +42,25 @@ CONTINENTAL_KEYWORDS = {
 }
 
 
-def download_martj42_dataset(force: bool = False) -> dict:
-    """Download all martj42 international results files from GitHub."""
+def download_martj42_dataset(force: bool = False, ttl_days: int = CACHE_TTL_DAYS) -> dict:
+    """
+    Download all martj42 international results files from GitHub.
+
+    Re-downloads when force=True, file is missing, or cache is older than ttl_days.
+    """
     paths = {}
     for name, filename in MARTJ42_FILES.items():
         path = RAW_DIR / filename
-        if path.exists() and not force:
-            print(f"  [cached] {filename}")
+        if path.exists() and not force and is_cache_fresh(path, ttl_days):
+            age = cache_age_days(path)
+            age_str = f"{age:.1f}d" if age is not None else "?"
+            print(f"  [cached] {filename} (fresh, {age_str} old)")
             paths[name] = path
             continue
+        if path.exists() and not force:
+            age = cache_age_days(path)
+            age_str = f"{age:.1f}d" if age is not None else "?"
+            print(f"  [stale] {filename} ({age_str} old, TTL {ttl_days}d)  -  re-downloading")
         url = f"{MARTJ42_BASE}/{filename}"
         print(f"  Downloading {filename}...")
         try:
@@ -66,11 +78,15 @@ def _fifa_team_name(raw: str) -> str:
     return normalize_team_name(raw.strip())
 
 
-def fetch_fifa_rankings(force: bool = False) -> pd.DataFrame:
+def fetch_fifa_rankings(force: bool = False, ttl_days: int = CACHE_TTL_DAYS) -> pd.DataFrame:
     """Fetch latest men's FIFA world rankings from api.fifa.com."""
     path = RAW_DIR / "fifa_latest_ranking.csv"
-    if path.exists() and not force:
+    if path.exists() and not force and is_cache_fresh(path, ttl_days):
         return pd.read_csv(path)
+    if path.exists() and not force:
+        age = cache_age_days(path)
+        age_str = f"{age:.1f}d" if age is not None else "?"
+        print(f"  [stale] fifa_latest_ranking.csv ({age_str} old, TTL {ttl_days}d)  -  refreshing")
 
     print("  Fetching FIFA men's rankings from api.fifa.com...")
     try:

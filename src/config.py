@@ -13,10 +13,6 @@ PROCESSED_DIR = ROOT_DIR / "data" / "processed"
 MODELS_DIR = ROOT_DIR / "models"
 OUTPUTS_DIR = ROOT_DIR / "outputs"
 
-# ── StatsBomb IDs ────────────────────────────────────────────────────────────
-STATSBOMB_COMPETITION_ID = 43
-STATSBOMB_SEASONS = {2018: 3, 2022: 106}
-
 # ── Tournament years ─────────────────────────────────────────────────────────
 WC_YEARS = [1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022]
 
@@ -45,19 +41,6 @@ FIFA_RANKINGS_LIMIT = 300
 # Match model training window
 MATCH_MODEL_START_YEAR = 2000
 RECENT_FORM_YEARS = 4  # friendlies + tournaments in last N years weighted heavily
-
-# ── WC winners & awards (labels) ─────────────────────────────────────────────
-WC_WINNERS = {
-    2022: "Argentina", 2018: "France", 2014: "Germany", 2010: "Spain",
-    2006: "Italy", 2002: "Brazil", 1998: "France", 1994: "Brazil",
-    1990: "Germany", 1986: "Argentina",
-}
-
-GOLDEN_GLOVE_WINNERS = {
-    2022: "Emiliano Martínez", 2018: "Thibaut Courtois", 2014: "Manuel Neuer",
-    2010: "Iker Casillas", 2006: "Gianluigi Buffon", 2002: "Oliver Kahn",
-    1998: "Fabien Barthez", 1994: "Michel Preud'homme", 1990: "Luis Goycochea",
-}
 
 # ── Team name harmonization ───────────────────────────────────────────────────
 TEAM_ALIASES = {
@@ -139,21 +122,56 @@ MODERN_TEAMS = {
 
 DRAW_THRESHOLD = 0.30
 N_SIMULATIONS_DEFAULT = 5000
-CACHE_TTL_DAYS = 7
+CACHE_TTL_DAYS = 7  # martj42 / FIFA refresh window
+CLUB_CACHE_TTL_DAYS = 3650  # club snapshot  -  frozen post-season
+# API season years: 2024 = 2024/25, 2025 = 2025/26 (both blended in player_club)
+CLUB_SEASONS = [2024, 2025]
+
+
+def club_seasons_from_config(cfg: dict) -> list[int]:
+    """Resolve club stat seasons from config (supports legacy single ``season`` key)."""
+    if cfg.get("seasons"):
+        return [int(s) for s in cfg["seasons"]]
+    if cfg.get("season") is not None:
+        return [int(cfg["season"])]
+    return list(CLUB_SEASONS)
 
 # ── 2026 player award pipeline ───────────────────────────────────────────────
 PLAYER_INTL_START = "2023-01-01"
-PLAYER_INTL_TRAIN_START = "2019-01-01"
+# Scale raw rate×matches estimate to historical WC Golden Boot band (~6–8 for favorites)
+GOLDEN_BOOT_GOALS_CALIBRATION = 1.70
 CLUB_RAW_DIR = RAW_DIR / "club"
+CLUB_RAW_UNDERSTAT = CLUB_RAW_DIR / "understat"
+CLUB_RAW_API_FOOTBALL = CLUB_RAW_DIR / "api_football"
 
-FBREF_CLUB_LEAGUES = [
+UNDERSTAT_LEAGUES_PATH = ROOT_DIR / "config" / "understat_leagues.json"
+API_FOOTBALL_CONFIG_PATH = ROOT_DIR / "config" / "api_football.json"
+API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
+API_FOOTBALL_KEY_ENV = "APIFOOTBALL_KEY"
+API_FOOTBALL_RATE_LIMIT_SEC = 6  # free tier: 10 req/min
+
+# Big 5  -  Understat (primary) with API-Football fallback
+UNDERSTAT_LEAGUE_KEYS = [
     "ENG-Premier League",
     "ESP-La Liga",
     "GER-Bundesliga",
     "ITA-Serie A",
     "FRA-Ligue 1",
 ]
-FBREF_CLUB_SEASONS = ["2024-2025", "2025-2026"]
+
+# Tier B  -  API-Football only (MLS, Saudi, etc.)
+API_FOOTBALL_TIER_B_KEYS = [
+    "POR-Primeira Liga",
+    "NED-Eredivisie",
+    "BEL-Belgian Pro League",
+    "TUR-Super Lig",
+    "ENG-Championship",
+    "USA-MLS",
+    "MEX-Liga MX",
+    "KSA-Saudi Pro League",
+    "BRA-Serie A",
+    "ARG-Primera Division",
+]
 
 # Tournament weighting for international goal involvement
 TOURNAMENT_TIER_WEIGHTS = {
